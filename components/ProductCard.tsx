@@ -6,7 +6,6 @@ import {
   Product,
   Size,
   Frame,
-  SIZES,
   FRAMES,
   SIZE_LABELS,
   FRAME_LABELS,
@@ -29,7 +28,8 @@ interface Props {
 }
 
 export default function ProductCard({ product }: Props) {
-  const [selectedSize, setSelectedSize] = useState<Size>('A4');
+  const availableSizes = [...new Set(product.variants.map((v) => v.size))] as Size[];
+  const [selectedSize, setSelectedSize] = useState<Size>(availableSizes[0] ?? 'A4');
   const [selectedFrame, setSelectedFrame] = useState<Frame>('black');
   const [btnState, setBtnState] = useState<ButtonState>('idle');
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -161,7 +161,7 @@ export default function ProductCard({ product }: Props) {
                 btnState === 'picking' ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             >
-              {SIZES.map((size) => (
+              {availableSizes.map((size) => (
                 <button
                   key={size}
                   onClick={(e) => handleSizeClick(size, e)}

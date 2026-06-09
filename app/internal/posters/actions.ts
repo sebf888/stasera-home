@@ -1,0 +1,529 @@
+'use server';
+
+import { promises as fs } from 'fs';
+import path from 'path';
+import sharp from 'sharp';
+import { revalidatePath } from 'next/cache';
+import {
+  ArtistProfile,
+  DELIVERY_RETURN_TEMPLATES,
+  PosterDraft,
+  PRODUCT_DETAIL_TEMPLATES,
+  posterAdminEnabled,
+  readArtists,
+  readPosterDrafts,
+  writeArtists,
+  writePosterDrafts,
+} from '@/lib/poster-admin';
+import { FORMAT_SIZES, PosterFormat, Size, SizePrices } from '@/data/products';
+
+const MAX_IMAGE_BYTES = 30 * 1024 * 1024;
+const MAX_PRINT_BYTES = 250 * 1024 * 1024;
+const ALLOWED_PREVIEW_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
+const ALLOWED_PRINT_TYPES = new Set(['application/pdf', 'image/jpeg', 'image/png', 'image/tiff']);
+
+export interface PosterUploadState {
+  ok: boolean;
+  message: string;
+  slug?: string;
+}
+
+export type PosterActionState = PosterUploadState;
+
+export async function updateArtist(
+  _prevState: PosterActionState,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  const slug = field(formData, 'artistSlug');
+  const name = field(formData, 'artistName');
+  const about = field(formData, 'artistAbout');
+
+  if (!slug || !name || !about) {
+    return { ok: false, message: 'Artist slug, name and about text are required.' };
+  }
+
+  const artists = await readArtists();
+  const idx = artists.findIndex((a) => a.slug === slug);
+  if (idx < 0) return { ok: false, message: 'Artist not found.' };
+
+  const updated: ArtistProfile = {
+    ...artists[idx],
+    name,
+    about,
+    updatedAt: new Date().toISOString(),
+  };
+
+  artists[idx] = updated;
+  await writeArtists(artists.sort((a, b) => a.name.localeCompare(b.name)));
+  revalidatePath('/internal/posters');
+
+  return { ok: true, message: `Updated ${name}.` };
+}
+
+export async function addArtist(
+  _prevState: PosterActionState,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  const name = field(formData, 'artistName');
+  const about = field(formData, 'artistAbout');
+
+  if (!name || !about) {
+    return { ok: false, message: 'Artist name and about text are required.' };
+  }
+
+  const artists = await readArtists();
+  const slug = uniqueSlug(slugify(name), artists.map((artist) => artist.slug));
+  const now = new Date().toISOString();
+  const artist: ArtistProfile = {
+    slug,
+    name,
+    about,
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  await writeArtists([...artists, artist].sort((a, b) => a.name.localeCompare(b.name)));
+  revalidatePath('/internal/posters');
+
+  return { ok: true, message: `Added artist ${name}.`, slug };
+}
+
+export async function createPosterDraft(
+  _prevState: PosterUploadState,
+  formData: FormData
+): Promise<PosterUploadState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  try {
+    const name = field(formData, 'name');
+    const artistSlug = field(formData, 'artistSlug');
+    const summary = field(formData, 'summary');
+    const productDetailsId = field(formData, 'productDetailsId');
+    const deliveryAndReturnsId = field(formData, 'deliveryAndReturnsId');
+    const notes = field(formData, 'notes', false);
+    const format = (field(formData, 'format', false) || 'a-series') as PosterFormat;
+    const basePrices = parsePriceFields(formData, format);
+    const posterImage = fileField(formData, 'posterImage');
+    const printFile = fileField(formData, 'printFile');
+    const lifestyleFiles = formData
+      .getAll('lifestyleImages')
+      .filter((value): value is File => value instanceof File && value.size > 0);
+
+    if (!name || !artistSlug || !summary || !productDetailsId || !deliveryAndReturnsId) {
+      return { ok: false, message: 'Poster name, artist, summary, product details, and delivery/returns are required.' };
+    }
+
+    const artists = await readArtists();
+    const artist = artists.find((candidate) => candidate.slug === artistSlug);
+    const productDetails = PRODUCT_DETAIL_TEMPLATES.find((template) => template.id === productDetailsId);
+    const deliveryAndReturns = DELIVERY_RETURN_TEMPLATES.find((template) => template.id === deliveryAndReturnsId);
+
+    if (!artist) return { ok: false, message: 'Select a saved artist before creating the poster.' };
+    if (!productDetails) return { ok: false, message: 'Select a product details template.' };
+    if (!deliveryAndReturns) return { ok: false, message: 'Select a delivery and returns template.' };
+
+    if (!printFile || printFile.size === 0) {
+      return { ok: false, message: 'Upload the print-ready master file that Gelato will use.' };
+    }
+
+    if (posterImage && posterImage.size > 0 && !ALLOWED_PREVIEW_TYPES.has(posterImage.type)) {
+      return { ok: false, message: 'The preview image must be JPEG, PNG, or WebP.' };
+    }
+
+    if (!ALLOWED_PRINT_TYPES.has(printFile.type)) {
+      return { ok: false, message: 'The print master must be PDF, JPEG, PNG, or TIFF.' };
+    }
+
+    if (posterImage && posterImage.size > MAX_IMAGE_BYTES) {
+      return { ok: false, message: 'The preview image is over 30MB. Export a smaller RGB preview.' };
+    }
+
+    if (printFile.size > MAX_PRINT_BYTES) {
+      return { ok: false, message: 'The print master is over 250MB.' };
+    }
+
+    for (const lifestyleFile of lifestyleFiles) {
+      if (!ALLOWED_PREVIEW_TYPES.has(lifestyleFile.type)) {
+        return { ok: false, message: 'Lifestyle images must be JPEG, PNG, or WebP.' };
+      }
+      if (lifestyleFile.size > MAX_IMAGE_BYTES) {
+        return { ok: false, message: 'One of the lifestyle images is over 30MB.' };
+      }
+    }
+
+    const drafts = await readPosterDrafts();
+    const slug = uniqueSlug(slugify(name), drafts.map((draft) => draft.slug));
+    const id = `poster_${slug.replace(/-/g, '_')}`;
+    const createdAt = new Date().toISOString();
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'posters', slug);
+    const privateDir = path.join(process.cwd(), 'data', 'poster-masters', slug);
+
+    await fs.mkdir(uploadDir, { recursive: true });
+    await fs.mkdir(privateDir, { recursive: true });
+
+    const printBuffer = Buffer.from(await printFile.arrayBuffer());
+    const previewBuffer = await previewBufferFor(printFile, printBuffer, posterImage);
+    const printExtension = extensionFor(printFile);
+    const printFileName = `print-master${printExtension}`;
+    const privatePrintPath = path.join(privateDir, printFileName);
+
+    await fs.writeFile(privatePrintPath, printBuffer);
+    await writeDerivatives(previewBuffer, uploadDir);
+    const lifestyleImages = await writeLifestyleImages(lifestyleFiles, uploadDir, slug);
+
+    const publicBase = `/uploads/posters/${slug}`;
+    const draft: PosterDraft = {
+      id,
+      slug,
+      name,
+      artist: artist.name,
+      artistSlug: artist.slug,
+      description: summary,
+      descriptions: {
+        aboutArtist: artist.about,
+        deliveryAndReturns: deliveryAndReturns.body,
+        productDetails: productDetails.body,
+      },
+      templateIds: {
+        deliveryAndReturns: deliveryAndReturns.id,
+        productDetails: productDetails.id,
+      },
+      status: 'draft',
+      createdAt,
+      updatedAt: createdAt,
+      printFilePath: `data/poster-masters/${slug}/${printFileName}`,
+      printFileUrl: '',
+      images: {
+        flat: `${publicBase}/poster-flat.webp`,
+        frame: `${publicBase}/poster-frame.webp`,
+        thumb: `${publicBase}/poster-thumb.webp`,
+        lifestyle: lifestyleImages,
+      },
+      format,
+      basePrices,
+      stripePriceIds: {},
+      gelatoProductUids: {},
+      notes: notes || '',
+    };
+
+    await writePosterDrafts([draft, ...drafts]);
+    revalidatePath('/internal/posters');
+
+    return { ok: true, message: `Created draft for ${name}.`, slug };
+  } catch (error) {
+    if (error instanceof Error && error.message === 'PDF_PREVIEW_UNAVAILABLE') {
+      return {
+        ok: false,
+        message: 'This server could not render the PDF preview. Upload a JPEG, PNG, or WebP site preview as a fallback.',
+      };
+    }
+
+    console.error('[Poster Admin] Upload failed:', error);
+    return { ok: false, message: 'Upload failed. Check the terminal for details.' };
+  }
+}
+
+export async function updatePosterDraft(
+  _prevState: PosterActionState,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  try {
+    const slug = field(formData, 'slug');
+    const name = field(formData, 'name');
+    const artistSlug = field(formData, 'artistSlug');
+    const summary = field(formData, 'summary');
+    const status = field(formData, 'status') as PosterDraft['status'];
+    const productDetailsId = field(formData, 'productDetailsId');
+    const deliveryAndReturnsId = field(formData, 'deliveryAndReturnsId');
+    const printFileUrl = field(formData, 'printFileUrl', false);
+    const notes = field(formData, 'notes', false);
+    const format = (field(formData, 'format', false) || 'a-series') as PosterFormat;
+    const basePrices = parsePriceFields(formData, format);
+    const posterImage = fileField(formData, 'posterImage');
+    const printFile = fileField(formData, 'printFile');
+    const lifestyleFiles = formData
+      .getAll('lifestyleImages')
+      .filter((value): value is File => value instanceof File && value.size > 0);
+
+    if (!slug || !name || !artistSlug || !summary || !status || !productDetailsId || !deliveryAndReturnsId) {
+      return { ok: false, message: 'Missing required poster fields.' };
+    }
+
+    if (!['draft', 'ready-for-stripe', 'ready-for-gelato', 'ready-to-publish'].includes(status)) {
+      return { ok: false, message: 'Invalid poster status.' };
+    }
+
+    if (posterImage && posterImage.size > 0 && !ALLOWED_PREVIEW_TYPES.has(posterImage.type)) {
+      return { ok: false, message: 'The preview image must be JPEG, PNG, or WebP.' };
+    }
+
+    if (printFile && printFile.size > 0 && !ALLOWED_PRINT_TYPES.has(printFile.type)) {
+      return { ok: false, message: 'The print master must be PDF, JPEG, PNG, or TIFF.' };
+    }
+
+    for (const lifestyleFile of lifestyleFiles) {
+      if (!ALLOWED_PREVIEW_TYPES.has(lifestyleFile.type)) {
+        return { ok: false, message: 'Lifestyle images must be JPEG, PNG, or WebP.' };
+      }
+      if (lifestyleFile.size > MAX_IMAGE_BYTES) {
+        return { ok: false, message: 'One of the lifestyle images is over 30MB.' };
+      }
+    }
+
+    const drafts = await readPosterDrafts();
+    const draftIndex = drafts.findIndex((draft) => draft.slug === slug);
+    if (draftIndex < 0) return { ok: false, message: 'Poster draft not found.' };
+
+    const artists = await readArtists();
+    const artist = artists.find((candidate) => candidate.slug === artistSlug);
+    const productDetails = PRODUCT_DETAIL_TEMPLATES.find((template) => template.id === productDetailsId);
+    const deliveryAndReturns = DELIVERY_RETURN_TEMPLATES.find((template) => template.id === deliveryAndReturnsId);
+
+    if (!artist) return { ok: false, message: 'Select a saved artist.' };
+    if (!productDetails) return { ok: false, message: 'Select a product details template.' };
+    if (!deliveryAndReturns) return { ok: false, message: 'Select a delivery and returns template.' };
+
+    const existing = drafts[draftIndex];
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'posters', existing.slug);
+    const privateDir = path.join(process.cwd(), 'data', 'poster-masters', existing.slug);
+    let printFilePath = existing.printFilePath;
+
+    await fs.mkdir(uploadDir, { recursive: true });
+    await fs.mkdir(privateDir, { recursive: true });
+
+    if (printFile && printFile.size > 0) {
+      const printBuffer = Buffer.from(await printFile.arrayBuffer());
+      const previewBuffer = await previewBufferFor(printFile, printBuffer, posterImage);
+      const printExtension = extensionFor(printFile);
+      const printFileName = `print-master${printExtension}`;
+      await fs.writeFile(path.join(privateDir, printFileName), printBuffer);
+      await writeDerivatives(previewBuffer, uploadDir);
+      printFilePath = `data/poster-masters/${existing.slug}/${printFileName}`;
+    } else if (posterImage && posterImage.size > 0) {
+      await writeDerivatives(Buffer.from(await posterImage.arrayBuffer()), uploadDir);
+    }
+
+    const lifestyleImages = lifestyleFiles.length
+      ? await writeLifestyleImages(lifestyleFiles, uploadDir, existing.slug, existing.images.lifestyle.length)
+      : [];
+
+    const updated: PosterDraft = {
+      ...existing,
+      name,
+      artist: artist.name,
+      artistSlug: artist.slug,
+      description: summary,
+      descriptions: {
+        aboutArtist: artist.about,
+        deliveryAndReturns: deliveryAndReturns.body,
+        productDetails: productDetails.body,
+      },
+      templateIds: {
+        deliveryAndReturns: deliveryAndReturns.id,
+        productDetails: productDetails.id,
+      },
+      status,
+      format,
+      basePrices,
+      updatedAt: new Date().toISOString(),
+      printFilePath,
+      printFileUrl,
+      images: {
+        ...existing.images,
+        lifestyle: [...existing.images.lifestyle, ...lifestyleImages],
+      },
+      notes: notes || '',
+    };
+
+    drafts[draftIndex] = updated;
+    await writePosterDrafts(drafts);
+    revalidatePath('/internal/posters');
+
+    return { ok: true, message: `Updated ${name}.`, slug: existing.slug };
+  } catch (error) {
+    if (error instanceof Error && error.message === 'PDF_PREVIEW_UNAVAILABLE') {
+      return {
+        ok: false,
+        message: 'This server could not render the PDF preview. Upload a JPEG, PNG, or WebP site preview as a fallback.',
+      };
+    }
+
+    console.error('[Poster Admin] Update failed:', error);
+    return { ok: false, message: 'Update failed. Check the terminal for details.' };
+  }
+}
+
+async function writeLifestyleImages(files: File[], uploadDir: string, slug: string, startIndex = 0) {
+  const images: string[] = [];
+
+  for (const [index, file] of files.entries()) {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filename = `poster-lifestyle-${startIndex + index + 1}.webp`;
+
+    await sharp(buffer, { limitInputPixels: false })
+      .rotate()
+      .resize({ width: 1800, height: 1800, fit: 'inside', withoutEnlargement: true })
+      .webp({ quality: 82 })
+      .toFile(path.join(uploadDir, filename));
+
+    images.push(`/uploads/posters/${slug}/${filename}`);
+  }
+
+  return images;
+}
+
+async function previewBufferFor(printFile: File, printBuffer: Buffer, posterImage: File | null) {
+  if (posterImage && posterImage.size > 0) {
+    return Buffer.from(await posterImage.arrayBuffer());
+  }
+
+  if (ALLOWED_PREVIEW_TYPES.has(printFile.type)) {
+    return printBuffer;
+  }
+
+  if (printFile.type === 'application/pdf') {
+    try {
+      return await sharp(printBuffer, {
+        density: 220,
+        limitInputPixels: false,
+        pages: 1,
+      })
+        .rotate()
+        .flatten({ background: '#ffffff' })
+        .png()
+        .toBuffer();
+    } catch (error) {
+      console.error('[Poster Admin] PDF preview generation failed:', error);
+      throw new Error('PDF_PREVIEW_UNAVAILABLE');
+    }
+  }
+
+  throw new Error('PREVIEW_SOURCE_UNAVAILABLE');
+}
+
+async function writeDerivatives(previewBuffer: Buffer, uploadDir: string) {
+  const normalized = sharp(previewBuffer, { limitInputPixels: false }).rotate();
+
+  await normalized
+    .clone()
+    .resize({ width: 1600, height: 2240, fit: 'inside', withoutEnlargement: true })
+    .webp({ quality: 86 })
+    .toFile(path.join(uploadDir, 'poster-flat.webp'));
+
+  await normalized
+    .clone()
+    .resize({ width: 520, height: 728, fit: 'cover' })
+    .webp({ quality: 78 })
+    .toFile(path.join(uploadDir, 'poster-thumb.webp'));
+
+  const posterLayer = await normalized
+    .clone()
+    .resize({ width: 1120, height: 1568, fit: 'cover' })
+    .webp({ quality: 88 })
+    .toBuffer();
+
+  const frameSvg = Buffer.from(`
+    <svg width="1600" height="2200" viewBox="0 0 1600 2200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1600" height="2200" fill="#f6f3ee"/>
+      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="#211f1d"/>
+      <rect x="228" y="248" width="1144" height="1592" rx="2" fill="#f7f2e9"/>
+      <rect x="240" y="260" width="1120" height="1568" fill="transparent"/>
+      <rect x="240" y="260" width="1120" height="1568" fill="url(#glass)" opacity="0.22"/>
+      <rect x="240" y="260" width="1120" height="1568" fill="none" stroke="rgba(0,0,0,0.24)" stroke-width="4"/>
+      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="14"/>
+      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="8"/>
+      <ellipse cx="800" cy="1990" rx="510" ry="52" fill="rgba(0,0,0,0.16)"/>
+      <defs>
+        <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="white" stop-opacity="0.85"/>
+          <stop offset="0.26" stop-color="white" stop-opacity="0"/>
+          <stop offset="0.64" stop-color="white" stop-opacity="0.18"/>
+          <stop offset="1" stop-color="black" stop-opacity="0.16"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  `);
+
+  await sharp({
+    create: {
+      width: 1600,
+      height: 2200,
+      channels: 4,
+      background: '#f6f3ee',
+    },
+  })
+    .composite([
+      { input: posterLayer, left: 240, top: 260 },
+      { input: frameSvg, left: 0, top: 0 },
+    ])
+    .webp({ quality: 86 })
+    .toFile(path.join(uploadDir, 'poster-frame.webp'));
+}
+
+function field(formData: FormData, key: string, required = true) {
+  const value = formData.get(key);
+  if (typeof value !== 'string') return '';
+  const trimmed = value.trim();
+  if (required && !trimmed) return '';
+  return trimmed;
+}
+
+function fileField(formData: FormData, key: string) {
+  const value = formData.get(key);
+  return value instanceof File ? value : null;
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80) || 'poster';
+}
+
+function uniqueSlug(base: string, existing: string[]) {
+  let candidate = base;
+  let count = 2;
+  while (existing.includes(candidate)) {
+    candidate = `${base}-${count}`;
+    count += 1;
+  }
+  return candidate;
+}
+
+function extensionFor(file: File) {
+  const extension = path.extname(file.name).toLowerCase();
+  if (extension) return extension;
+  if (file.type === 'application/pdf') return '.pdf';
+  if (file.type === 'image/png') return '.png';
+  if (file.type === 'image/tiff') return '.tif';
+  return '.jpg';
+}
+
+function parsePriceFields(formData: FormData, format: PosterFormat): Partial<Record<Size, SizePrices>> {
+  const prices: Partial<Record<Size, SizePrices>> = {};
+  for (const size of FORMAT_SIZES[format]) {
+    const u = parseInt(field(formData, `price_${size}_unframed`, false) || '', 10);
+    const f = parseInt(field(formData, `price_${size}_framed`, false) || '', 10);
+    if (!isNaN(u) && u > 0 && !isNaN(f) && f > 0) {
+      prices[size] = { unframed: u, framed: f };
+    }
+  }
+  return prices;
+}

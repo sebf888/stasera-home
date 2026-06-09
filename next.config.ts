@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'picsum.photos' },
     ],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '260mb',
+    },
+  },
 };
 
 export default nextConfig;

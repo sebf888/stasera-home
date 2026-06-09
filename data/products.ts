@@ -1,29 +1,72 @@
-export type Size = 'A4' | 'A3' | '50x70' | '70x100';
+import { GELATO_UIDS } from './gelato-config';
+
+export type PosterFormat = 'a-series' | 'ratio-4x3';
+export type Size = 'A4' | 'A3' | 'A2' | 'A1' | '6x8' | '12x16' | '18x24' | '24x32';
 export type Frame = 'none' | 'black' | 'white' | 'wood';
 
-export const SIZES: Size[] = ['A4', 'A3', '50x70', '70x100'];
+export const FORMAT_SIZES: Record<PosterFormat, Size[]> = {
+  'a-series':  ['A4', 'A3', 'A2', 'A1'],
+  'ratio-4x3': ['6x8', '12x16', '18x24', '24x32'],
+};
+
+export const FORMAT_LABELS: Record<PosterFormat, string> = {
+  'a-series':  'A-series — A4, A3, A2, A1',
+  'ratio-4x3': '4:3 ratio — 6×8", 12×16", 18×24", 24×32"',
+};
+
+export const SIZES: Size[] = ['A4', 'A3', 'A2', 'A1', '6x8', '12x16', '18x24', '24x32'];
 export const FRAMES: Frame[] = ['none', 'black', 'white', 'wood'];
 
 export const SIZE_LABELS: Record<Size, string> = {
-  A4: 'A4',
-  A3: 'A3',
-  '50x70': '50×70',
-  '70x100': '70×100',
+  A4:     'A4',
+  A3:     'A3',
+  A2:     'A2',
+  A1:     'A1',
+  '6x8':   '6×8"',
+  '12x16': '12×16"',
+  '18x24': '18×24"',
+  '24x32': '24×32"',
 };
 
 export const FRAME_LABELS: Record<Frame, string> = {
-  none: 'No Frame',
+  none:  'No Frame',
   black: 'Black Frame',
   white: 'White Frame',
-  wood: 'Wood Frame',
+  wood:  'Wood Frame',
+};
+
+export interface SizePrices {
+  unframed: number;
+  framed: number;
+}
+
+export const DEFAULT_PRICES: Record<PosterFormat, Partial<Record<Size, SizePrices>>> = {
+  'a-series': {
+    A4: { unframed: 2500, framed: 4500 },
+    A3: { unframed: 3500, framed: 5500 },
+    A2: { unframed: 5500, framed: 7500 },
+    A1: { unframed: 7500, framed: 9500 },
+  },
+  'ratio-4x3': {
+    '6x8':   { unframed: 2500, framed: 4500 },
+    '12x16': { unframed: 3500, framed: 5500 },
+    '18x24': { unframed: 5500, framed: 7500 },
+    '24x32': { unframed: 7500, framed: 9500 },
+  },
 };
 
 export interface Variant {
   size: Size;
   frame: Frame;
   priceGBP: number; // in pence, e.g. 2500 = £25.00
-  stripePriceId: string; // fill in after Stripe setup
-  gelatoProductUid: string; // fill in after Gelato mapping
+  stripePriceId: string;
+  gelatoProductUid: string;
+}
+
+export interface ProductDescriptions {
+  aboutArtist?: string;
+  deliveryAndReturns?: string;
+  productDetails?: string;
 }
 
 export interface Product {
@@ -31,28 +74,32 @@ export interface Product {
   slug: string;
   name: string;
   artist: string;
+  artistSlug?: string;
   description: string;
-  images: string[]; // 5 URLs — index 0 is the hero/grid image
-  printFileUrl?: string; // publicly accessible URL of the print-ready file for Gelato
+  descriptions?: ProductDescriptions;
+  images: string[]; // index 0 is the hero/grid image
+  printFileUrl?: string;
+  format: PosterFormat;
   variants: Variant[];
 }
 
-const FRAME_UPCHARGE: Record<Frame, number> = {
-  none: 0,
-  black: 2000, // +£20
-  white: 2000, // +£20
-  wood: 2500,  // +£25
-};
-
-function buildVariants(basePrices: Record<Size, number>): Variant[] {
-  return SIZES.flatMap((size) =>
-    FRAMES.map((frame) => ({
-      size,
-      frame,
-      priceGBP: basePrices[size] + FRAME_UPCHARGE[frame],
-      stripePriceId: `price_placeholder_${size}_${frame}`,
-      gelatoProductUid: `gelato_placeholder_${size}_${frame}`,
-    }))
+export function buildVariants(
+  format: PosterFormat,
+  customPrices: Partial<Record<Size, SizePrices>> = {},
+): Variant[] {
+  const defaults = DEFAULT_PRICES[format];
+  return FORMAT_SIZES[format].flatMap((size) =>
+    FRAMES.map((frame) => {
+      const prices = customPrices[size] ?? defaults[size] ?? { unframed: 0, framed: 0 };
+      const uid = GELATO_UIDS[format]?.[`${size}_${frame}`];
+      return {
+        size,
+        frame,
+        priceGBP: frame === 'none' ? prices.unframed : prices.framed,
+        stripePriceId: `price_placeholder_${size}_${frame}`,
+        gelatoProductUid: uid || `gelato_pending_${size}_${frame}`,
+      };
+    })
   );
 }
 
@@ -63,14 +110,9 @@ export const products: Product[] = [
     name: 'Waiting for',
     artist: 'Coco Hewitt',
     description: 'An exploration of stillness and anticipation rendered in quiet abstraction.',
-    images: [
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-    ],
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    images: Array(5).fill('/poster-placeholder.jpg'),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '2',
@@ -78,14 +120,9 @@ export const products: Product[] = [
     name: 'Desire',
     artist: 'Alexander Khebbad',
     description: 'A charged composition oscillating between tension and release.',
-    images: [
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-    ],
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    images: Array(5).fill('/poster-placeholder.jpg'),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '3',
@@ -93,14 +130,9 @@ export const products: Product[] = [
     name: 'Denim 440',
     artist: 'Bermuda Indigo',
     description: 'Deep indigo tones layered in a meditative textile-inspired study.',
-    images: [
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-    ],
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    images: Array(5).fill('/poster-placeholder.jpg'),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '4',
@@ -108,14 +140,9 @@ export const products: Product[] = [
     name: 'Soft Hands',
     artist: 'Lottie Burns',
     description: 'Figurative warmth distilled into gesture and negative space.',
-    images: [
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-      '/poster-placeholder.jpg',
-    ],
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    images: Array(5).fill('/poster-placeholder.jpg'),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '5',
@@ -124,7 +151,8 @@ export const products: Product[] = [
     artist: 'Elena Voss',
     description: 'Stillness rendered in layers of translucent blue.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '6',
@@ -133,7 +161,8 @@ export const products: Product[] = [
     artist: 'Tobias Mehr',
     description: 'Geological abstraction in warm ochre and charcoal.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '7',
@@ -142,7 +171,8 @@ export const products: Product[] = [
     artist: 'Nadia Soleil',
     description: 'The quiet aftermath of a storm caught in ink and wash.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '8',
@@ -151,7 +181,8 @@ export const products: Product[] = [
     artist: 'James Okafor',
     description: 'Expansive negative space and a single horizon line.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '9',
@@ -160,7 +191,8 @@ export const products: Product[] = [
     artist: 'Cecile Arnaud',
     description: 'Bone and chalk tones layered into quiet density.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '10',
@@ -169,7 +201,8 @@ export const products: Product[] = [
     artist: 'Riku Tanaka',
     description: 'Industrial textures softened by organic form.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '11',
@@ -178,7 +211,8 @@ export const products: Product[] = [
     artist: 'Mara Lindqvist',
     description: 'Shore at receding water, spare and silver.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '12',
@@ -187,7 +221,8 @@ export const products: Product[] = [
     artist: 'Felix Obando',
     description: 'Last light through a particulate atmosphere.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '13',
@@ -196,7 +231,8 @@ export const products: Product[] = [
     artist: 'Iris Fontaine',
     description: 'Warm ochre suspended in translucent layers of amber and gold.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '14',
@@ -205,7 +241,8 @@ export const products: Product[] = [
     artist: 'Petter Nygaard',
     description: 'A Nordic coastline rendered in grey wash and silence.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '15',
@@ -214,7 +251,8 @@ export const products: Product[] = [
     artist: 'Yuki Mori',
     description: 'Charcoal gradients dissolving into a quiet, breathable void.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
   {
     id: '16',
@@ -223,7 +261,8 @@ export const products: Product[] = [
     artist: 'Camille Drevet',
     description: 'Blush tones fractured by a fine electric tension.',
     images: Array(5).fill('/poster-placeholder.jpg'),
-    variants: buildVariants({ A4: 2500, A3: 3500, '50x70': 5500, '70x100': 7500 }),
+    format: 'a-series',
+    variants: buildVariants('a-series'),
   },
 ];
 
