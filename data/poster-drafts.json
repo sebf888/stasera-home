@@ -1,0 +1,52 @@
+[
+  {
+    "id": "poster_american_psycho",
+    "slug": "american-psycho",
+    "name": "American Psycho",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "asadfasdf",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-05T23:56:05.734Z",
+    "updatedAt": "2026-06-08T22:35:53.358Z",
+    "printFilePath": "data/poster-masters/american-psycho/print-master.png",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/American+Psycho+-+Stack.jpg",
+    "images": {
+      "flat": "/uploads/posters/american-psycho/poster-flat.webp",
+      "frame": "/uploads/posters/american-psycho/poster-frame.webp",
+      "thumb": "/uploads/posters/american-psycho/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {
+      "6x8": {
+        "unframed": 2500,
+        "framed": 4500
+      },
+      "12x16": {
+        "unframed": 3500,
+        "framed": 5500
+      },
+      "18x24": {
+        "unframed": 5500,
+        "framed": 7500
+      },
+      "24x32": {
+        "unframed": 7500,
+        "framed": 9500
+      }
+    },
+    "stripePriceIds": {},
+    "gelatoProductUids": {},
+    "notes": ""
+  }
+]
