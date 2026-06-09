@@ -16,7 +16,7 @@ export default async function ShopPage() {
     artistSlug: draft.artistSlug,
     description: draft.description,
     descriptions: draft.descriptions,
-    images: [draft.images.frame, draft.images.flat, ...draft.images.lifestyle].filter(Boolean),
+    images: [draft.images.flat, ...draft.images.lifestyle].filter(Boolean),
     printFileUrl: draft.printFileUrl,
     format: draft.format ?? 'a-series',
     variants: buildVariants(draft.format ?? 'a-series', draft.basePrices ?? {}),

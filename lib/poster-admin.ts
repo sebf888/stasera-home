@@ -150,7 +150,6 @@ export function productSnippet(draft: PosterDraft) {
     productDetails: '${escapeSnippet(draft.descriptions?.productDetails ?? '')}',
   },
   images: [
-    '${draft.images.frame}',
     '${draft.images.flat}',
 ${lifestyleLines.join('\n')}
   ].filter(Boolean),

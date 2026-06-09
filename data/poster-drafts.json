@@ -1,5 +1,55 @@
 [
   {
+    "id": "poster_goodfellas",
+    "slug": "goodfellas",
+    "name": "Goodfellas",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "idk",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-09T18:47:49.939Z",
+    "updatedAt": "2026-06-09T18:49:48.433Z",
+    "printFilePath": "data/poster-masters/goodfellas/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/GoodFellas.jpg",
+    "images": {
+      "flat": "/uploads/posters/goodfellas/poster-flat.webp",
+      "frame": "/uploads/posters/goodfellas/poster-flat.webp",
+      "thumb": "/uploads/posters/goodfellas/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {
+      "6x8": {
+        "unframed": 2500,
+        "framed": 4500
+      },
+      "12x16": {
+        "unframed": 3500,
+        "framed": 5500
+      },
+      "18x24": {
+        "unframed": 5500,
+        "framed": 7500
+      },
+      "24x32": {
+        "unframed": 7500,
+        "framed": 9500
+      }
+    },
+    "stripePriceIds": {},
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
     "id": "poster_american_psycho",
     "slug": "american-psycho",
     "name": "American Psycho",

@@ -205,7 +205,7 @@ export async function createPosterDraft(
       printFileUrl: '',
       images: {
         flat: `${publicBase}/poster-flat.webp`,
-        frame: `${publicBase}/poster-frame.webp`,
+        frame: `${publicBase}/poster-flat.webp`,
         thumb: `${publicBase}/poster-thumb.webp`,
         lifestyle: lifestyleImages,
       },
@@ -430,48 +430,6 @@ async function writeDerivatives(previewBuffer: Buffer, uploadDir: string) {
     .webp({ quality: 78 })
     .toFile(path.join(uploadDir, 'poster-thumb.webp'));
 
-  const posterLayer = await normalized
-    .clone()
-    .resize({ width: 1120, height: 1568, fit: 'cover' })
-    .webp({ quality: 88 })
-    .toBuffer();
-
-  const frameSvg = Buffer.from(`
-    <svg width="1600" height="2200" viewBox="0 0 1600 2200" xmlns="http://www.w3.org/2000/svg">
-      <rect width="1600" height="2200" fill="#f6f3ee"/>
-      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="#211f1d"/>
-      <rect x="228" y="248" width="1144" height="1592" rx="2" fill="#f7f2e9"/>
-      <rect x="240" y="260" width="1120" height="1568" fill="transparent"/>
-      <rect x="240" y="260" width="1120" height="1568" fill="url(#glass)" opacity="0.22"/>
-      <rect x="240" y="260" width="1120" height="1568" fill="none" stroke="rgba(0,0,0,0.24)" stroke-width="4"/>
-      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="14"/>
-      <rect x="186" y="206" width="1228" height="1676" rx="4" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="8"/>
-      <ellipse cx="800" cy="1990" rx="510" ry="52" fill="rgba(0,0,0,0.16)"/>
-      <defs>
-        <linearGradient id="glass" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stop-color="white" stop-opacity="0.85"/>
-          <stop offset="0.26" stop-color="white" stop-opacity="0"/>
-          <stop offset="0.64" stop-color="white" stop-opacity="0.18"/>
-          <stop offset="1" stop-color="black" stop-opacity="0.16"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  `);
-
-  await sharp({
-    create: {
-      width: 1600,
-      height: 2200,
-      channels: 4,
-      background: '#f6f3ee',
-    },
-  })
-    .composite([
-      { input: posterLayer, left: 240, top: 260 },
-      { input: frameSvg, left: 0, top: 0 },
-    ])
-    .webp({ quality: 86 })
-    .toFile(path.join(uploadDir, 'poster-frame.webp'));
 }
 
 function field(formData: FormData, key: string, required = true) {

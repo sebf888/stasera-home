@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import {
   Product,
@@ -75,22 +76,47 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div>
-      {/* Cover image — natural size, constrained by viewport units */}
-      <Image
-        src={product.images[0]}
-        alt={product.name}
-        width={700}
-        height={980}
-        sizes="(max-width: 1024px) 50vw, 20vw"
-        className="block w-full h-auto"
-        style={{ filter: 'drop-shadow(-4px 1px 3px rgba(0, 0, 0, 0.72))' }}
-      />
+      <Link href={`/shop/${product.slug}`} className="block group">
+        <div
+          className="relative w-full"
+          style={{ aspectRatio: '8/11' }}
+        >
+          {/* Poster image positioned inside aperture (with bleed) */}
+          <div
+            className="absolute overflow-hidden"
+            style={{
+              left:   product.format === 'a-series' ? '10.625%' : '8.594%',
+              top:    '9.659%',
+              width:  product.format === 'a-series' ? '78.75%'  : '82.813%',
+              height: '80.682%',
+            }}
+          >
+            <Image
+              src={product.images[0]}
+              fill
+              sizes="(max-width: 1024px) 50vw, 20vw"
+              className="object-cover"
+              alt={product.name}
+            />
+          </div>
+          {/* Frame overlay */}
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 10 }}>
+            <Image
+              src={`/frames/frame-${product.format}-${selectedFrame === 'none' ? 'black' : selectedFrame}.webp`}
+              fill
+              sizes="(max-width: 1024px) 50vw, 20vw"
+              className="object-cover"
+              alt=""
+            />
+          </div>
+        </div>
 
-      {/* Title — full card width, single line */}
-      <p className="mt-4 text-[12px] tracking-[-0.03em] text-[#4B4C4A] leading-snug whitespace-nowrap">
-        <span className="font-medium">{product.name}</span>
-        <span className="font-normal"> by {product.artist}</span>
-      </p>
+        {/* Title — full card width, single line */}
+        <p className="mt-4 text-[12px] tracking-[-0.03em] text-[#4B4C4A] leading-snug whitespace-nowrap">
+          <span className="font-medium">{product.name}</span>
+          <span className="font-normal"> by {product.artist}</span>
+        </p>
+      </Link>
 
       {/* Price + swatches (left) | Button (right, top at price midpoint) */}
       <div className="mt-[1px] flex items-start justify-between gap-3">
