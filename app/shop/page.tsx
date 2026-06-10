@@ -19,7 +19,7 @@ export default async function ShopPage() {
     images: [draft.images.flat, ...draft.images.lifestyle].filter(Boolean),
     printFileUrl: draft.printFileUrl,
     format: draft.format ?? 'a-series',
-    variants: buildVariants(draft.format ?? 'a-series', draft.basePrices ?? {}),
+    variants: buildVariants(draft.format ?? 'a-series', draft.basePrices ?? {}, draft.stripePriceIds ?? {}),
   }));
 
   if (products.length === 0) {

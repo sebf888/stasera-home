@@ -47,7 +47,9 @@ export async function createGelatoOrder(
 
   const items: GelatoOrderItem[] = lineItems.map((lineItem, idx) => {
     const product = lineItem.price?.product as Stripe.Product | null;
-    const meta = product?.metadata ?? {};
+    const priceMeta = (lineItem.price as Stripe.Price | null)?.metadata ?? {};
+    const productMeta = product?.metadata ?? {};
+    const meta = priceMeta.gelatoProductUid ? priceMeta : productMeta;
     return {
       itemReferenceId: `item-${idx + 1}`,
       productUid: meta.gelatoProductUid ?? '',

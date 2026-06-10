@@ -1,6 +1,5 @@
 import Stripe from 'stripe';
 import { CartItem } from '@/lib/cart-context';
-import { SIZE_LABELS, FRAME_LABELS } from '@/data/products';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -12,30 +11,21 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Cart is empty' }, { status: 400 });
     }
 
+    const unpurchasable = items.find(
+      (item) => !item.stripePriceId || item.stripePriceId.startsWith('price_placeholder')
+    );
+    if (unpurchasable) {
+      return Response.json(
+        { error: `"${unpurchasable.name}" is not available for purchase. Refresh the page and try again.` },
+        { status: 400 }
+      );
+    }
+
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000';
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      line_items: items.map((item) => ({
-        price_data: {
-          currency: 'gbp',
-          unit_amount: item.priceGBP,
-          product_data: {
-            name: `${item.name} — ${SIZE_LABELS[item.size]}${
-              item.frame !== 'none' ? ` + ${FRAME_LABELS[item.frame]}` : ''
-            }`,
-            description: `by ${item.artist}`,
-            metadata: {
-              gelatoProductUid: item.gelatoProductUid,
-              size: item.size,
-              frame: item.frame,
-              printFileUrl: item.printFileUrl,
-              productId: item.productId,
-            },
-          },
-        },
-        quantity: item.quantity,
-      })),
+      line_items: items.map((item) => ({ price: item.stripePriceId, quantity: item.quantity })),
       shipping_address_collection: {
         allowed_countries: [
           'GB', 'US', 'DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'CH',

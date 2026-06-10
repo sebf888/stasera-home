@@ -86,17 +86,19 @@ export interface Product {
 export function buildVariants(
   format: PosterFormat,
   customPrices: Partial<Record<Size, SizePrices>> = {},
+  stripePriceIds: Record<string, string> = {},
 ): Variant[] {
   const defaults = DEFAULT_PRICES[format];
   return FORMAT_SIZES[format].flatMap((size) =>
     FRAMES.map((frame) => {
       const prices = customPrices[size] ?? defaults[size] ?? { unframed: 0, framed: 0 };
       const uid = GELATO_UIDS[format]?.[`${size}_${frame}`];
+      const key = `${size}_${frame}`;
       return {
         size,
         frame,
         priceGBP: frame === 'none' ? prices.unframed : prices.framed,
-        stripePriceId: `price_placeholder_${size}_${frame}`,
+        stripePriceId: stripePriceIds[key] || `price_placeholder_${size}_${frame}`,
         gelatoProductUid: uid || `gelato_pending_${size}_${frame}`,
       };
     })

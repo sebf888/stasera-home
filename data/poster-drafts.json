@@ -1,11 +1,994 @@
 [
   {
+    "id": "poster_tyler_the_creator_call_me_if_you_get_lost",
+    "slug": "tyler-the-creator-call-me-if-you-get-lost",
+    "name": "Tyler the Creator   Call Me if You Get Lost",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Tyler the Creator - CMiYGL Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:40.652Z",
+    "updatedAt": "2026-06-10T17:15:37.879Z",
+    "printFilePath": "data/poster-masters/tyler-the-creator-call-me-if-you-get-lost/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Tyler+the+Creator+-+Call+Me+if+You+Get+Lost.jpg",
+    "images": {
+      "flat": "/uploads/posters/tyler-the-creator-call-me-if-you-get-lost/poster-flat.webp",
+      "frame": "/uploads/posters/tyler-the-creator-call-me-if-you-get-lost/poster-flat.webp",
+      "thumb": "/uploads/posters/tyler-the-creator-call-me-if-you-get-lost/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcjDsdGxbrpLwT3kCWxLN",
+      "A4_black": "price_1TgpckDsdGxbrpLw6PkE3OuL",
+      "A4_white": "price_1TgpckDsdGxbrpLwxMmXLxfO",
+      "A4_wood": "price_1TgpckDsdGxbrpLwZOLYJD5Q",
+      "A3_none": "price_1TgpclDsdGxbrpLwix9vFqht",
+      "A3_black": "price_1TgpclDsdGxbrpLweo5QqMuA",
+      "A3_white": "price_1TgpclDsdGxbrpLwHB6xwXqe",
+      "A3_wood": "price_1TgpclDsdGxbrpLwC6ZPjp5U",
+      "A2_none": "price_1TgpcmDsdGxbrpLw7fBTxUqE",
+      "A2_black": "price_1TgpcmDsdGxbrpLw5loa9NE3",
+      "A2_white": "price_1TgpcnDsdGxbrpLwjsCCEnA1",
+      "A2_wood": "price_1TgpcnDsdGxbrpLw1E7C8vmN",
+      "A1_none": "price_1TgpcnDsdGxbrpLwjFzeixhg",
+      "A1_black": "price_1TgpcoDsdGxbrpLwns2CNnxC",
+      "A1_white": "price_1TgpcoDsdGxbrpLwPYLCS5Pi",
+      "A1_wood": "price_1TgpcoDsdGxbrpLwT4U8vHVs"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_the_weeknd_trilogy",
+    "slug": "the-weeknd-trilogy",
+    "name": "The Weeknd   Trilogy",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "The Weeknd - Trilogy Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:38.732Z",
+    "updatedAt": "2026-06-10T17:15:37.410Z",
+    "printFilePath": "data/poster-masters/the-weeknd-trilogy/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/The+Weeknd+-+Trilogy.jpg",
+    "images": {
+      "flat": "/uploads/posters/the-weeknd-trilogy/poster-flat.webp",
+      "frame": "/uploads/posters/the-weeknd-trilogy/poster-flat.webp",
+      "thumb": "/uploads/posters/the-weeknd-trilogy/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpceDsdGxbrpLwQLHonn0E",
+      "A4_black": "price_1TgpceDsdGxbrpLwcAz2pxCq",
+      "A4_white": "price_1TgpceDsdGxbrpLwhQ9ZsqLl",
+      "A4_wood": "price_1TgpceDsdGxbrpLwKu6FDqVD",
+      "A3_none": "price_1TgpcfDsdGxbrpLwym8snNeV",
+      "A3_black": "price_1TgpcfDsdGxbrpLwpUmiVp2q",
+      "A3_white": "price_1TgpcfDsdGxbrpLwCc047oVn",
+      "A3_wood": "price_1TgpcgDsdGxbrpLw5RJ6WLqJ",
+      "A2_none": "price_1TgpcgDsdGxbrpLwZuwftS7n",
+      "A2_black": "price_1TgpcgDsdGxbrpLwlZMawcH5",
+      "A2_white": "price_1TgpchDsdGxbrpLwz3tAEOnN",
+      "A2_wood": "price_1TgpchDsdGxbrpLwKGEyjrLC",
+      "A1_none": "price_1TgpchDsdGxbrpLwQYMP8D8s",
+      "A1_black": "price_1TgpciDsdGxbrpLwH8JwOU3Z",
+      "A1_white": "price_1TgpciDsdGxbrpLwpIxwYSnR",
+      "A1_wood": "price_1TgpcjDsdGxbrpLwTsHjidzt"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_vivienne_westwood_nike_poster",
+    "slug": "vivienne-westwood-nike-poster",
+    "name": "Vivienne Westwood Nike  Poster",
+    "artist": "Erzrahd",
+    "artistSlug": "erzrahd",
+    "description": "Vivienne Moss Poster",
+    "descriptions": {
+      "aboutArtist": "PlaceHolder",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:37.249Z",
+    "updatedAt": "2026-06-10T17:48:53.885Z",
+    "printFilePath": "data/poster-masters/vivienne-westwood-nike-poster/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Vivienne+Westwood+Nike++Poster.jpg",
+    "images": {
+      "flat": "/uploads/posters/vivienne-westwood-nike-poster/poster-flat.webp",
+      "frame": "/uploads/posters/vivienne-westwood-nike-poster/poster-flat.webp",
+      "thumb": "/uploads/posters/vivienne-westwood-nike-poster/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcZDsdGxbrpLwobVEu53P",
+      "A4_black": "price_1TgpcZDsdGxbrpLwA6HhCh4f",
+      "A4_white": "price_1TgpcZDsdGxbrpLwx8IbMzJ6",
+      "A4_wood": "price_1TgpcaDsdGxbrpLwsTTk9OvY",
+      "A3_none": "price_1TgpcaDsdGxbrpLwe5Q99KtP",
+      "A3_black": "price_1TgpcaDsdGxbrpLwWo6hvio1",
+      "A3_white": "price_1TgpcaDsdGxbrpLw3QBwpIYR",
+      "A3_wood": "price_1TgpcbDsdGxbrpLwnFD3tUZz",
+      "A2_none": "price_1TgpcbDsdGxbrpLwb609DWGx",
+      "A2_black": "price_1TgpcbDsdGxbrpLw1DwKkAlY",
+      "A2_white": "price_1TgpccDsdGxbrpLwLnIhTemv",
+      "A2_wood": "price_1TgpccDsdGxbrpLw5Q42WSBq",
+      "A1_none": "price_1TgpccDsdGxbrpLwrfnrYhum",
+      "A1_black": "price_1TgpccDsdGxbrpLwpC6MQO1I",
+      "A1_white": "price_1TgpcdDsdGxbrpLwIZF1VT2E",
+      "A1_wood": "price_1TgpcdDsdGxbrpLwnSakZlFa"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_lil_uzi_pink_tape_poste",
+    "slug": "lil-uzi-pink-tape-poste",
+    "name": "LIL UZI Pink Tape Poste",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "LIL UZI VERT - Pink Tape Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:35.615Z",
+    "updatedAt": "2026-06-10T17:15:36.021Z",
+    "printFilePath": "data/poster-masters/lil-uzi-pink-tape-poste/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/LIL+UZI+Pink+Tape+Poste.jpg",
+    "images": {
+      "flat": "/uploads/posters/lil-uzi-pink-tape-poste/poster-flat.webp",
+      "frame": "/uploads/posters/lil-uzi-pink-tape-poste/poster-flat.webp",
+      "thumb": "/uploads/posters/lil-uzi-pink-tape-poste/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcTDsdGxbrpLwslSyS5sa",
+      "A4_black": "price_1TgpcTDsdGxbrpLwwLTHxCiD",
+      "A4_white": "price_1TgpcUDsdGxbrpLwMOOsH86R",
+      "A4_wood": "price_1TgpcUDsdGxbrpLwh0Jv9WrV",
+      "A3_none": "price_1TgpcUDsdGxbrpLwZn4hhRUa",
+      "A3_black": "price_1TgpcVDsdGxbrpLwhLBzHeUE",
+      "A3_white": "price_1TgpcVDsdGxbrpLwcaP6zze0",
+      "A3_wood": "price_1TgpcWDsdGxbrpLw8TqLpt6V",
+      "A2_none": "price_1TgpcWDsdGxbrpLwgQo4MwcB",
+      "A2_black": "price_1TgpcWDsdGxbrpLwpndeZzz6",
+      "A2_white": "price_1TgpcXDsdGxbrpLw4lQRKNXr",
+      "A2_wood": "price_1TgpcXDsdGxbrpLwaRItepuV",
+      "A1_none": "price_1TgpcXDsdGxbrpLwY13sqbai",
+      "A1_black": "price_1TgpcXDsdGxbrpLwLAgZacRk",
+      "A1_white": "price_1TgpcYDsdGxbrpLwrisEtjWL",
+      "A1_wood": "price_1TgpcYDsdGxbrpLwgmiJdWPX"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_travis_scott_utopia_final",
+    "slug": "travis-scott-utopia-final",
+    "name": "Travis Scott Utopia Final",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Travis Scott - Utopia Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:33.856Z",
+    "updatedAt": "2026-06-10T17:15:35.385Z",
+    "printFilePath": "data/poster-masters/travis-scott-utopia-final/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Travis+Scott+Utopia+Final.jpg",
+    "images": {
+      "flat": "/uploads/posters/travis-scott-utopia-final/poster-flat.webp",
+      "frame": "/uploads/posters/travis-scott-utopia-final/poster-flat.webp",
+      "thumb": "/uploads/posters/travis-scott-utopia-final/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcNDsdGxbrpLwGepGFH4j",
+      "A4_black": "price_1TgpcODsdGxbrpLwdzLDbuC8",
+      "A4_white": "price_1TgpcODsdGxbrpLwJxnwbtjk",
+      "A4_wood": "price_1TgpcPDsdGxbrpLwFPLkASy1",
+      "A3_none": "price_1TgpcPDsdGxbrpLwmAuW15XQ",
+      "A3_black": "price_1TgpcPDsdGxbrpLwNtyXAhqx",
+      "A3_white": "price_1TgpcQDsdGxbrpLwJNpV6NqZ",
+      "A3_wood": "price_1TgpcQDsdGxbrpLwsbtC4iWK",
+      "A2_none": "price_1TgpcQDsdGxbrpLwtLbYUCwR",
+      "A2_black": "price_1TgpcRDsdGxbrpLwXU6AY7Jp",
+      "A2_white": "price_1TgpcRDsdGxbrpLwhG5QvcF7",
+      "A2_wood": "price_1TgpcRDsdGxbrpLwKbT3SExv",
+      "A1_none": "price_1TgpcSDsdGxbrpLwBCCoGnzR",
+      "A1_black": "price_1TgpcSDsdGxbrpLwufwQI87i",
+      "A1_white": "price_1TgpcSDsdGxbrpLwRYwDW10e",
+      "A1_wood": "price_1TgpcSDsdGxbrpLwXSgPEizc"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_steve_lacy_gemini_rights",
+    "slug": "steve-lacy-gemini-rights",
+    "name": "Steve Lacy   Gemini Rights",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Steve Lacy - Gemini Rights Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:31.956Z",
+    "updatedAt": "2026-06-10T17:15:34.863Z",
+    "printFilePath": "data/poster-masters/steve-lacy-gemini-rights/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Steve+Lacy+-+Gemini+Rights.jpg",
+    "images": {
+      "flat": "/uploads/posters/steve-lacy-gemini-rights/poster-flat.webp",
+      "frame": "/uploads/posters/steve-lacy-gemini-rights/poster-flat.webp",
+      "thumb": "/uploads/posters/steve-lacy-gemini-rights/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcIDsdGxbrpLwhmJETXLc",
+      "A4_black": "price_1TgpcJDsdGxbrpLwjzOG7mv8",
+      "A4_white": "price_1TgpcJDsdGxbrpLw4hXk1EUp",
+      "A4_wood": "price_1TgpcJDsdGxbrpLwXIt4QXDJ",
+      "A3_none": "price_1TgpcJDsdGxbrpLwF2Rgx23v",
+      "A3_black": "price_1TgpcKDsdGxbrpLw040WLClV",
+      "A3_white": "price_1TgpcKDsdGxbrpLwJ0HgezV9",
+      "A3_wood": "price_1TgpcKDsdGxbrpLwRHr864qh",
+      "A2_none": "price_1TgpcLDsdGxbrpLwBWzIRgTb",
+      "A2_black": "price_1TgpcLDsdGxbrpLw4VpGqeqx",
+      "A2_white": "price_1TgpcLDsdGxbrpLwfnIuLhUI",
+      "A2_wood": "price_1TgpcMDsdGxbrpLwaCjiXySv",
+      "A1_none": "price_1TgpcMDsdGxbrpLwluNS67rd",
+      "A1_black": "price_1TgpcMDsdGxbrpLwcYPMWVQX",
+      "A1_white": "price_1TgpcNDsdGxbrpLwH6AXBfRF",
+      "A1_wood": "price_1TgpcNDsdGxbrpLw6vIjtFHO"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_blade_runner_2049_updated",
+    "slug": "blade-runner-2049-updated",
+    "name": "Blade Runner 2049 Updated",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Blade Runner 2049 Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:29.701Z",
+    "updatedAt": "2026-06-10T17:08:32.790Z",
+    "printFilePath": "data/poster-masters/blade-runner-2049-updated/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Blade+Runner+2049+Updated.jpg",
+    "images": {
+      "flat": "/uploads/posters/blade-runner-2049-updated/poster-flat.webp",
+      "frame": "/uploads/posters/blade-runner-2049-updated/poster-flat.webp",
+      "thumb": "/uploads/posters/blade-runner-2049-updated/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpcDDsdGxbrpLwDoQMtDPz",
+      "A4_black": "price_1TgpcDDsdGxbrpLwl5Etez9y",
+      "A4_white": "price_1TgpcDDsdGxbrpLwJLrbRw0H",
+      "A4_wood": "price_1TgpcEDsdGxbrpLwCLW7KlSD",
+      "A3_none": "price_1TgpcEDsdGxbrpLwCaVdAnL3",
+      "A3_black": "price_1TgpcEDsdGxbrpLwHXVsE3si",
+      "A3_white": "price_1TgpcFDsdGxbrpLwtsWto1ct",
+      "A3_wood": "price_1TgpcFDsdGxbrpLwvWtaSN5E",
+      "A2_none": "price_1TgpcFDsdGxbrpLwimZeLRqi",
+      "A2_black": "price_1TgpcGDsdGxbrpLwtvluymZw",
+      "A2_white": "price_1TgpcGDsdGxbrpLwkASgbQ3Y",
+      "A2_wood": "price_1TgpcGDsdGxbrpLwhA3E2VOj",
+      "A1_none": "price_1TgpcHDsdGxbrpLwNoyNiwUd",
+      "A1_black": "price_1TgpcHDsdGxbrpLwUPK5Kqa9",
+      "A1_white": "price_1TgpcHDsdGxbrpLwUSQkraMw",
+      "A1_wood": "price_1TgpcHDsdGxbrpLwKyBvBs14"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_dune",
+    "slug": "dune",
+    "name": "Dune",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Dune Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:26.905Z",
+    "updatedAt": "2026-06-10T17:13:32.608Z",
+    "printFilePath": "data/poster-masters/dune/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Dune.jpg",
+    "images": {
+      "flat": "/uploads/posters/dune/poster-flat.webp",
+      "frame": "/uploads/posters/dune/poster-flat.webp",
+      "thumb": "/uploads/posters/dune/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tgpc7DsdGxbrpLwZhno9toh",
+      "A4_black": "price_1Tgpc8DsdGxbrpLw42ktiUFa",
+      "A4_white": "price_1Tgpc8DsdGxbrpLwn4C4GXTH",
+      "A4_wood": "price_1Tgpc8DsdGxbrpLwqkTKMRWL",
+      "A3_none": "price_1Tgpc9DsdGxbrpLwaMxuobHJ",
+      "A3_black": "price_1Tgpc9DsdGxbrpLwikFBCB1i",
+      "A3_white": "price_1Tgpc9DsdGxbrpLw151816V4",
+      "A3_wood": "price_1TgpcADsdGxbrpLwWosw66vt",
+      "A2_none": "price_1TgpcADsdGxbrpLwvX1t1xBd",
+      "A2_black": "price_1TgpcADsdGxbrpLwcxuB9ryV",
+      "A2_white": "price_1TgpcBDsdGxbrpLwe4ndGN1x",
+      "A2_wood": "price_1TgpcBDsdGxbrpLwYKzlQxv0",
+      "A1_none": "price_1TgpcBDsdGxbrpLw7Hv4aQKY",
+      "A1_black": "price_1TgpcCDsdGxbrpLwyb5SALoI",
+      "A1_white": "price_1TgpcCDsdGxbrpLwdDKPDCOw",
+      "A1_wood": "price_1TgpcCDsdGxbrpLwx1iX3W6H"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_destroy_lonely_w",
+    "slug": "destroy-lonely-w",
+    "name": "Destroy Lonely W",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Destroy Lonely Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T17:02:24.880Z",
+    "updatedAt": "2026-06-10T17:15:33.474Z",
+    "printFilePath": "data/poster-masters/destroy-lonely-w/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Destroy+Lonely+W.jpg",
+    "images": {
+      "flat": "/uploads/posters/destroy-lonely-w/poster-flat.webp",
+      "frame": "/uploads/posters/destroy-lonely-w/poster-flat.webp",
+      "thumb": "/uploads/posters/destroy-lonely-w/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgpbpDsdGxbrpLwhbB7MJHi",
+      "A4_black": "price_1TgpbpDsdGxbrpLw7QxAWmoo",
+      "A4_white": "price_1TgpbpDsdGxbrpLwWq4llyml",
+      "A4_wood": "price_1TgpbqDsdGxbrpLwk93GGkti",
+      "A3_none": "price_1TgpbqDsdGxbrpLwAwLHHXlC",
+      "A3_black": "price_1TgpbqDsdGxbrpLwvENzR2p3",
+      "A3_white": "price_1TgpbrDsdGxbrpLwFoGVisfx",
+      "A3_wood": "price_1TgpbrDsdGxbrpLwGQZULe2G",
+      "A2_none": "price_1TgpbrDsdGxbrpLwuBRELbZi",
+      "A2_black": "price_1TgpbrDsdGxbrpLwqvh4ZFO6",
+      "A2_white": "price_1TgpbsDsdGxbrpLwqIQVwLm5",
+      "A2_wood": "price_1TgpbsDsdGxbrpLwstWCv5pp",
+      "A1_none": "price_1TgpbsDsdGxbrpLwtM1fyFHo",
+      "A1_black": "price_1TgpbtDsdGxbrpLwvSM1ZbMy",
+      "A1_white": "price_1TgpbtDsdGxbrpLwl6jHYhwJ",
+      "A1_wood": "price_1TgpbtDsdGxbrpLwmeKZ8bGQ"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_sonder",
+    "slug": "sonder",
+    "name": "Sonder",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Sonder Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T16:20:21.467Z",
+    "updatedAt": "2026-06-10T17:15:32.953Z",
+    "printFilePath": "data/poster-masters/sonder/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Sonder+.jpg",
+    "images": {
+      "flat": "/uploads/posters/sonder/poster-flat.webp",
+      "frame": "/uploads/posters/sonder/poster-flat.webp",
+      "thumb": "/uploads/posters/sonder/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tgp73DsdGxbrpLwgr7N17kl",
+      "A4_black": "price_1Tgp73DsdGxbrpLwG42bQE5k",
+      "A4_white": "price_1Tgp74DsdGxbrpLwCSs9os9w",
+      "A4_wood": "price_1Tgp74DsdGxbrpLwdAiIwlb7",
+      "A3_none": "price_1Tgp74DsdGxbrpLwROLaI1jV",
+      "A3_black": "price_1Tgp75DsdGxbrpLwgmdY8fWS",
+      "A3_white": "price_1Tgp75DsdGxbrpLwVIjQLkwW",
+      "A3_wood": "price_1Tgp75DsdGxbrpLwdno0mVeV",
+      "A2_none": "price_1Tgp76DsdGxbrpLwf88DHpuF",
+      "A2_black": "price_1Tgp76DsdGxbrpLwq1a4gR40",
+      "A2_white": "price_1Tgp76DsdGxbrpLwAp11P7Xo",
+      "A2_wood": "price_1Tgp76DsdGxbrpLweGga9Lw2",
+      "A1_none": "price_1Tgp77DsdGxbrpLwhFRrwaEW",
+      "A1_black": "price_1Tgp77DsdGxbrpLwqUoQQ8GM",
+      "A1_white": "price_1Tgp77DsdGxbrpLwq0MYCGso",
+      "A1_wood": "price_1Tgp77DsdGxbrpLw7locjVnr"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_scarface_minimal",
+    "slug": "scarface-minimal",
+    "name": "Scarface Minimal",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Scarface Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T16:20:20.555Z",
+    "updatedAt": "2026-06-10T16:36:15.187Z",
+    "printFilePath": "data/poster-masters/scarface-minimal/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Scarface+Minimal.jpg",
+    "images": {
+      "flat": "/uploads/posters/scarface-minimal/poster-flat.webp",
+      "frame": "/uploads/posters/scarface-minimal/poster-flat.webp",
+      "thumb": "/uploads/posters/scarface-minimal/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tgp6xDsdGxbrpLwyJzLJJkf",
+      "A4_black": "price_1Tgp6yDsdGxbrpLwBcj6giWy",
+      "A4_white": "price_1Tgp6yDsdGxbrpLwPCKhuFGu",
+      "A4_wood": "price_1Tgp6yDsdGxbrpLwLqxIfpL7",
+      "A3_none": "price_1Tgp6zDsdGxbrpLwMZVzvTc2",
+      "A3_black": "price_1Tgp6zDsdGxbrpLwaTxIvzsw",
+      "A3_white": "price_1Tgp6zDsdGxbrpLwTQUwU5Ya",
+      "A3_wood": "price_1Tgp70DsdGxbrpLwM0oXAbGz",
+      "A2_none": "price_1Tgp70DsdGxbrpLwvBQ3dVkP",
+      "A2_black": "price_1Tgp70DsdGxbrpLwM12fyRlv",
+      "A2_white": "price_1Tgp71DsdGxbrpLwhRihKEdi",
+      "A2_wood": "price_1Tgp71DsdGxbrpLwDVU2GUOF",
+      "A1_none": "price_1Tgp71DsdGxbrpLwai67KHqK",
+      "A1_black": "price_1Tgp72DsdGxbrpLwsusR2S6Q",
+      "A1_white": "price_1Tgp72DsdGxbrpLw6zZmSaKv",
+      "A1_wood": "price_1Tgp72DsdGxbrpLwzGUq5Mxv"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_travis_scott_utopia_wide",
+    "slug": "travis-scott-utopia-wide",
+    "name": "Travis Scott Utopia Wide",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "draft",
+    "createdAt": "2026-06-10T16:20:19.131Z",
+    "updatedAt": "2026-06-10T17:15:32.402Z",
+    "printFilePath": "data/poster-masters/travis-scott-utopia-wide/print-master.jpg",
+    "printFileUrl": "",
+    "images": {
+      "flat": "/uploads/posters/travis-scott-utopia-wide/poster-flat.webp",
+      "frame": "/uploads/posters/travis-scott-utopia-wide/poster-flat.webp",
+      "thumb": "/uploads/posters/travis-scott-utopia-wide/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {},
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_kanye_west_yeezus_big",
+    "slug": "kanye-west-yeezus-big",
+    "name": "Kanye West   Yeezus Big",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Kanye West - Yeezus Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T16:20:17.425Z",
+    "updatedAt": "2026-06-10T17:15:31.225Z",
+    "printFilePath": "data/poster-masters/kanye-west-yeezus-big/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Kanye+West+-+Yeezus.jpg",
+    "images": {
+      "flat": "/uploads/posters/kanye-west-yeezus-big/poster-flat.webp",
+      "frame": "/uploads/posters/kanye-west-yeezus-big/poster-flat.webp",
+      "thumb": "/uploads/posters/kanye-west-yeezus-big/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "6x8_none": "price_1Tgp6sDsdGxbrpLwDjEnF7wF",
+      "6x8_black": "price_1Tgp6sDsdGxbrpLwNWneF1FH",
+      "6x8_white": "price_1Tgp6tDsdGxbrpLwwZMpQNY1",
+      "6x8_wood": "price_1Tgp6tDsdGxbrpLwUdvIGaBw",
+      "12x16_none": "price_1Tgp6tDsdGxbrpLw2neIEsG1",
+      "12x16_black": "price_1Tgp6uDsdGxbrpLw6RjyChcM",
+      "12x16_white": "price_1Tgp6uDsdGxbrpLws7qucnly",
+      "12x16_wood": "price_1Tgp6uDsdGxbrpLwcU3bWCER",
+      "18x24_none": "price_1Tgp6uDsdGxbrpLw9c3od5Sq",
+      "18x24_black": "price_1Tgp6vDsdGxbrpLwexaH60CY",
+      "18x24_white": "price_1Tgp6vDsdGxbrpLw0WUT2ED0",
+      "18x24_wood": "price_1Tgp6vDsdGxbrpLw6MMcyahq",
+      "24x32_none": "price_1Tgp6vDsdGxbrpLwlgQJQRAR",
+      "24x32_black": "price_1Tgp6wDsdGxbrpLwWZ1FNOJG",
+      "24x32_white": "price_1Tgp6wDsdGxbrpLwjEVqCbgW",
+      "24x32_wood": "price_1Tgp6xDsdGxbrpLwepgdFLCT"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_frank_ocean_blond",
+    "slug": "frank-ocean-blond",
+    "name": "Frank Ocean   Blond",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "Frank Ocean - Blond Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T16:20:15.803Z",
+    "updatedAt": "2026-06-10T17:15:30.680Z",
+    "printFilePath": "data/poster-masters/frank-ocean-blond/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Frank+Ocean+-+Blond.jpg",
+    "images": {
+      "flat": "/uploads/posters/frank-ocean-blond/poster-flat.webp",
+      "frame": "/uploads/posters/frank-ocean-blond/poster-flat.webp",
+      "thumb": "/uploads/posters/frank-ocean-blond/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tgp6mDsdGxbrpLwTlvrYtfe",
+      "A4_black": "price_1Tgp6nDsdGxbrpLwOK00z9NX",
+      "A4_white": "price_1Tgp6nDsdGxbrpLwL7McUyv9",
+      "A4_wood": "price_1Tgp6nDsdGxbrpLw8jfiEKtE",
+      "A3_none": "price_1Tgp6oDsdGxbrpLweChsCS6A",
+      "A3_black": "price_1Tgp6oDsdGxbrpLwyHjacneL",
+      "A3_white": "price_1Tgp6pDsdGxbrpLwdthflF8I",
+      "A3_wood": "price_1Tgp6pDsdGxbrpLwa5Pa16PC",
+      "A2_none": "price_1Tgp6pDsdGxbrpLwJvbjoAuF",
+      "A2_black": "price_1Tgp6qDsdGxbrpLwhdEIgxZA",
+      "A2_white": "price_1Tgp6qDsdGxbrpLw8RYaSuVV",
+      "A2_wood": "price_1Tgp6qDsdGxbrpLwT4oLv2n3",
+      "A1_none": "price_1Tgp6qDsdGxbrpLw4TXHApDG",
+      "A1_black": "price_1Tgp6rDsdGxbrpLwGW6VXkT2",
+      "A1_white": "price_1Tgp6rDsdGxbrpLwKasDM2zE",
+      "A1_wood": "price_1Tgp6rDsdGxbrpLwNxex4tnq"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_fight_club",
+    "slug": "fight-club",
+    "name": "Fight Club",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Fight Club Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T16:18:31.833Z",
+    "updatedAt": "2026-06-10T16:35:59.320Z",
+    "printFilePath": "data/poster-masters/fight-club/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Fight+Club+.jpg",
+    "images": {
+      "flat": "/uploads/posters/fight-club/poster-flat.webp",
+      "frame": "/uploads/posters/fight-club/poster-flat.webp",
+      "thumb": "/uploads/posters/fight-club/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "6x8_none": "price_1Tgp6hDsdGxbrpLwe97B2td0",
+      "6x8_black": "price_1Tgp6iDsdGxbrpLwFJd1aS1X",
+      "6x8_white": "price_1Tgp6iDsdGxbrpLwoDAlwc57",
+      "6x8_wood": "price_1Tgp6iDsdGxbrpLw9anYoGQL",
+      "12x16_none": "price_1Tgp6iDsdGxbrpLwdKCBHuQJ",
+      "12x16_black": "price_1Tgp6jDsdGxbrpLwQnu4JJk9",
+      "12x16_white": "price_1Tgp6jDsdGxbrpLw5ZmOVbNt",
+      "12x16_wood": "price_1Tgp6jDsdGxbrpLwZREDWh7g",
+      "18x24_none": "price_1Tgp6kDsdGxbrpLwIatL6hLc",
+      "18x24_black": "price_1Tgp6kDsdGxbrpLwe3CV5DeM",
+      "18x24_white": "price_1Tgp6kDsdGxbrpLwfjEI2AzH",
+      "18x24_wood": "price_1Tgp6lDsdGxbrpLw5dwvCNgX",
+      "24x32_none": "price_1Tgp6lDsdGxbrpLwK3EHJk1R",
+      "24x32_black": "price_1Tgp6lDsdGxbrpLw5qOxTXh2",
+      "24x32_white": "price_1Tgp6lDsdGxbrpLwLa4xTN21",
+      "24x32_wood": "price_1Tgp6mDsdGxbrpLw6Tueoph9"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_fantastic_mr_fox_poster",
+    "slug": "fantastic-mr-fox-poster",
+    "name": "Fantastic Mr Fox Poster",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Fantastic Mr. Fox Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T15:56:47.296Z",
+    "updatedAt": "2026-06-10T16:35:53.878Z",
+    "printFilePath": "data/poster-masters/fantastic-mr-fox-poster/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Fantastic+Mr+Fox+Poster.jpg",
+    "images": {
+      "flat": "/uploads/posters/fantastic-mr-fox-poster/poster-flat.webp",
+      "frame": "/uploads/posters/fantastic-mr-fox-poster/poster-flat.webp",
+      "thumb": "/uploads/posters/fantastic-mr-fox-poster/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tgp6cDsdGxbrpLwkAznlthi",
+      "A4_black": "price_1Tgp6cDsdGxbrpLwZvPWqpmc",
+      "A4_white": "price_1Tgp6dDsdGxbrpLwklb1qDeG",
+      "A4_wood": "price_1Tgp6dDsdGxbrpLwF3yMsGs6",
+      "A3_none": "price_1Tgp6dDsdGxbrpLwoGcSNZOW",
+      "A3_black": "price_1Tgp6eDsdGxbrpLwlhAvzf4W",
+      "A3_white": "price_1Tgp6eDsdGxbrpLwm7Mxzd9D",
+      "A3_wood": "price_1Tgp6eDsdGxbrpLwlXwX3CG2",
+      "A2_none": "price_1Tgp6eDsdGxbrpLwhNKNZzNy",
+      "A2_black": "price_1Tgp6fDsdGxbrpLwc8jlMPRA",
+      "A2_white": "price_1Tgp6fDsdGxbrpLw9rQpIxuo",
+      "A2_wood": "price_1Tgp6fDsdGxbrpLw3YJWv717",
+      "A1_none": "price_1Tgp6gDsdGxbrpLw08mabAhP",
+      "A1_black": "price_1Tgp6gDsdGxbrpLw5tHvPu10",
+      "A1_white": "price_1Tgp6gDsdGxbrpLw28jXcHmW",
+      "A1_wood": "price_1Tgp6hDsdGxbrpLwyK4CTPd0"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_mf_doom_nike",
+    "slug": "mf-doom-nike",
+    "name": "MF DOOM   Nike",
+    "artist": "J. Kadera",
+    "artistSlug": "j-kadera",
+    "description": "MF DOOM Nike Poster",
+    "descriptions": {
+      "aboutArtist": "blank 4 now",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T13:35:42.458Z",
+    "updatedAt": "2026-06-10T17:15:29.946Z",
+    "printFilePath": "data/poster-masters/mf-doom-nike/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/MF+DOOM+-+Nike.jpg",
+    "images": {
+      "flat": "/uploads/posters/mf-doom-nike/poster-flat.webp",
+      "frame": "/uploads/posters/mf-doom-nike/poster-flat.webp",
+      "thumb": "/uploads/posters/mf-doom-nike/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TgniHDsdGxbrpLwdYqqVV7S",
+      "A4_black": "price_1TgniHDsdGxbrpLwcgr48RJ0",
+      "A4_white": "price_1TgniIDsdGxbrpLwd1vlmCbu",
+      "A4_wood": "price_1TgniIDsdGxbrpLw5RYLhPdN",
+      "A3_none": "price_1TgniIDsdGxbrpLwKko2Ud0a",
+      "A3_black": "price_1TgniJDsdGxbrpLw9g4QU0Ex",
+      "A3_white": "price_1TgniJDsdGxbrpLw3b526AdG",
+      "A3_wood": "price_1TgniJDsdGxbrpLwhF7vHE8v",
+      "A2_none": "price_1TgniKDsdGxbrpLwi8vzeJt3",
+      "A2_black": "price_1TgniKDsdGxbrpLwRJEvHPyx",
+      "A2_white": "price_1TgniKDsdGxbrpLwm9MHWMd4",
+      "A2_wood": "price_1TgniKDsdGxbrpLw1MX2wFnV",
+      "A1_none": "price_1TgniLDsdGxbrpLw60ZfF2yS",
+      "A1_black": "price_1TgniLDsdGxbrpLw0cp1F9DR",
+      "A1_white": "price_1TgniLDsdGxbrpLwLvhzgU4S",
+      "A1_wood": "price_1TgniMDsdGxbrpLwX2Ss9paH"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_la_haine",
+    "slug": "la-haine",
+    "name": "La Haine",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "La Haine Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T13:35:41.050Z",
+    "updatedAt": "2026-06-10T16:35:43.034Z",
+    "printFilePath": "data/poster-masters/la-haine/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/La+Haine.jpg",
+    "images": {
+      "flat": "/uploads/posters/la-haine/poster-flat.webp",
+      "frame": "/uploads/posters/la-haine/poster-flat.webp",
+      "thumb": "/uploads/posters/la-haine/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "6x8_none": "price_1Tgp6RDsdGxbrpLwFtw4nadN",
+      "6x8_black": "price_1Tgp6RDsdGxbrpLwzoCMQyC3",
+      "6x8_white": "price_1Tgp6SDsdGxbrpLw5DFVebcT",
+      "6x8_wood": "price_1Tgp6SDsdGxbrpLwPz3oB4D0",
+      "12x16_none": "price_1Tgp6SDsdGxbrpLwQP6WoHz0",
+      "12x16_black": "price_1Tgp6TDsdGxbrpLwfthHi7Hl",
+      "12x16_white": "price_1Tgp6TDsdGxbrpLwSXDk264L",
+      "12x16_wood": "price_1Tgp6TDsdGxbrpLw45ZU9drk",
+      "18x24_none": "price_1Tgp6UDsdGxbrpLwvQRi3ACC",
+      "18x24_black": "price_1Tgp6UDsdGxbrpLwy9c1nGND",
+      "18x24_white": "price_1Tgp6UDsdGxbrpLwreR0RKaJ",
+      "18x24_wood": "price_1Tgp6VDsdGxbrpLwv1XarCJS",
+      "24x32_none": "price_1Tgp6VDsdGxbrpLw3tz0iWmw",
+      "24x32_black": "price_1Tgp6VDsdGxbrpLwX1IeBQ2X",
+      "24x32_white": "price_1Tgp6WDsdGxbrpLw1A01bVTf",
+      "24x32_wood": "price_1Tgp6WDsdGxbrpLwQJA21AIa"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_interstellar",
+    "slug": "interstellar",
+    "name": "Interstellar",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Interstellar Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T13:35:37.541Z",
+    "updatedAt": "2026-06-10T16:35:37.784Z",
+    "printFilePath": "data/poster-masters/interstellar/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Interstellar+.jpg",
+    "images": {
+      "flat": "/uploads/posters/interstellar/poster-flat.webp",
+      "frame": "/uploads/posters/interstellar/poster-flat.webp",
+      "thumb": "/uploads/posters/interstellar/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "6x8_none": "price_1Tgp6MDsdGxbrpLwOgnOHDVV",
+      "6x8_black": "price_1Tgp6MDsdGxbrpLwCDcPSkD0",
+      "6x8_white": "price_1Tgp6MDsdGxbrpLwwLiOdEOE",
+      "6x8_wood": "price_1Tgp6NDsdGxbrpLw1veMb1CV",
+      "12x16_none": "price_1Tgp6NDsdGxbrpLwyHvkoRL4",
+      "12x16_black": "price_1Tgp6NDsdGxbrpLwN785c1wH",
+      "12x16_white": "price_1Tgp6ODsdGxbrpLw5GdLLeBq",
+      "12x16_wood": "price_1Tgp6ODsdGxbrpLwS6Op8NAb",
+      "18x24_none": "price_1Tgp6ODsdGxbrpLwh3bhtors",
+      "18x24_black": "price_1Tgp6PDsdGxbrpLwTZpdZSEO",
+      "18x24_white": "price_1Tgp6PDsdGxbrpLwbRimZKjw",
+      "18x24_wood": "price_1Tgp6PDsdGxbrpLwk0VtWTpA",
+      "24x32_none": "price_1Tgp6PDsdGxbrpLwKsFbKVeG",
+      "24x32_black": "price_1Tgp6QDsdGxbrpLwgUi13oT3",
+      "24x32_white": "price_1Tgp6QDsdGxbrpLwMg0J0Auh",
+      "24x32_wood": "price_1Tgp6QDsdGxbrpLwomrul0Id"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_donnie_darko_updated",
+    "slug": "donnie-darko-updated",
+    "name": "Donnie Darko Updated",
+    "artist": "D. Vallelonga",
+    "artistSlug": "d-vallelonga",
+    "description": "Donnie Darko Poster",
+    "descriptions": {
+      "aboutArtist": "test",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-10T13:35:33.364Z",
+    "updatedAt": "2026-06-10T16:35:32.380Z",
+    "printFilePath": "data/poster-masters/donnie-darko-updated/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Donnie+Darko+Updated.jpg",
+    "images": {
+      "flat": "/uploads/posters/donnie-darko-updated/poster-flat.webp",
+      "frame": "/uploads/posters/donnie-darko-updated/poster-flat.webp",
+      "thumb": "/uploads/posters/donnie-darko-updated/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "ratio-4x3",
+    "basePrices": {},
+    "stripePriceIds": {
+      "6x8_none": "price_1Tgp6HDsdGxbrpLwQLekj9dN",
+      "6x8_black": "price_1Tgp6HDsdGxbrpLwuApZ96Et",
+      "6x8_white": "price_1Tgp6HDsdGxbrpLwN1eDoNtM",
+      "6x8_wood": "price_1Tgp6IDsdGxbrpLw8BEoIYcW",
+      "12x16_none": "price_1Tgp6IDsdGxbrpLwxrRGM0U7",
+      "12x16_black": "price_1Tgp6IDsdGxbrpLwJ3kHrefF",
+      "12x16_white": "price_1Tgp6IDsdGxbrpLw1XVOnh37",
+      "12x16_wood": "price_1Tgp6JDsdGxbrpLwW4bvewnA",
+      "18x24_none": "price_1Tgp6JDsdGxbrpLwCBBYJYY5",
+      "18x24_black": "price_1Tgp6JDsdGxbrpLwUr8IadKi",
+      "18x24_white": "price_1Tgp6KDsdGxbrpLw12YTmcrL",
+      "18x24_wood": "price_1Tgp6KDsdGxbrpLwInvJqf6W",
+      "24x32_none": "price_1Tgp6KDsdGxbrpLwo1Zi9mfs",
+      "24x32_black": "price_1Tgp6KDsdGxbrpLwIcSO2WDG",
+      "24x32_white": "price_1Tgp6LDsdGxbrpLwpWBoW3xX",
+      "24x32_wood": "price_1Tgp6LDsdGxbrpLwckIgne6C"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
     "id": "poster_goodfellas",
     "slug": "goodfellas",
     "name": "Goodfellas",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
-    "description": "idk",
+    "description": "Goodfellas Poster",
     "descriptions": {
       "aboutArtist": "test",
       "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
@@ -17,7 +1000,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-09T18:47:49.939Z",
-    "updatedAt": "2026-06-09T18:49:48.433Z",
+    "updatedAt": "2026-06-10T16:25:44.404Z",
     "printFilePath": "data/poster-masters/goodfellas/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/GoodFellas.jpg",
     "images": {
@@ -55,7 +1038,7 @@
     "name": "American Psycho",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
-    "description": "asadfasdf",
+    "description": "American Psycho Poster",
     "descriptions": {
       "aboutArtist": "test",
       "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
@@ -67,7 +1050,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-05T23:56:05.734Z",
-    "updatedAt": "2026-06-08T22:35:53.358Z",
+    "updatedAt": "2026-06-10T16:25:45.704Z",
     "printFilePath": "data/poster-masters/american-psycho/print-master.png",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/American+Psycho+-+Stack.jpg",
     "images": {

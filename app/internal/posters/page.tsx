@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import PosterUploadForm, { ArtistEditForm, ArtistForm, PosterEditForm } from './PosterUploadForm';
+import PosterUploadForm, { ArtistEditForm, ArtistForm, PosterEditForm, PublishArchiveForm } from './PosterUploadForm';
 import {
   DELIVERY_RETURN_TEMPLATES,
   PRODUCT_DETAIL_TEMPLATES,
@@ -28,10 +28,26 @@ export default async function InternalPosterDashboard() {
             <p className="text-xs uppercase tracking-[0.16em] text-[#74756f]">Internal</p>
             <h1 className="mt-2 text-2xl font-medium tracking-normal sm:text-3xl">Poster upload dashboard</h1>
           </div>
-          <div className="grid grid-cols-3 gap-6 text-right text-sm">
-            <Metric label="Drafts" value={drafts.length} />
-            <Metric label="Ready" value={drafts.filter((draft) => draft.status === 'ready-to-publish').length} />
-            <Metric label="Assets" value={drafts.reduce((sum, draft) => sum + 3 + draft.images.lifestyle.length, 0)} />
+          <div className="flex flex-wrap items-end gap-8">
+            <div className="grid grid-cols-3 gap-6 text-right text-sm">
+              <Metric label="Total" value={drafts.length} />
+              <Metric label="Published" value={drafts.filter((draft) => draft.status === 'ready-to-publish').length} />
+              <Metric label="Assets" value={drafts.reduce((sum, draft) => sum + 3 + draft.images.lifestyle.length, 0)} />
+            </div>
+            <div className="flex gap-2">
+              <a
+                href="/internal/posters/spreadsheet"
+                className="h-10 border border-[#c9c1b3] bg-white px-5 text-sm text-[#55564f] flex items-center hover:bg-[#f6f3ee] whitespace-nowrap"
+              >
+                Spreadsheet
+              </a>
+              <a
+                href="/internal/posters/batch"
+                className="h-10 bg-[#334157] px-5 text-sm text-white flex items-center hover:opacity-90 whitespace-nowrap"
+              >
+                Batch upload
+              </a>
+            </div>
           </div>
         </header>
 
@@ -102,12 +118,18 @@ export default async function InternalPosterDashboard() {
                   <div className="grid gap-2 md:grid-cols-[1fr_auto] md:items-start">
                     <div>
                       <h3 className="text-xl font-medium">{draft.name}</h3>
-                      <p className="text-sm text-[#666861]">by {draft.artist}</p>
+                      <p className="text-sm text-[#666861]">by {draft.artist || <span className="italic text-[#9d2f2f]">no artist set</span>}</p>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="w-fit border border-[#c9c1b3] px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#55564f]">
-                        {draft.status.replace(/-/g, ' ')}
-                      </span>
+                    <div className="flex flex-wrap items-center gap-2">
+                      {draft.status === 'ready-to-publish' ? (
+                        <span className="w-fit border border-[#4a8c6c] bg-[#f0f7f3] px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#2f684e]">
+                          Published
+                        </span>
+                      ) : (
+                        <span className="w-fit border border-[#c9c1b3] px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#55564f]">
+                          Draft
+                        </span>
+                      )}
                       <span className="w-fit border border-[#b8c9d8] bg-[#f0f4f8] px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#334157]">
                         {FORMAT_LABELS[draft.format ?? 'a-series'].split(' — ')[0]}
                       </span>
@@ -133,11 +155,10 @@ export default async function InternalPosterDashboard() {
                       ]}
                     />
                     <ChecklistBlock
-                      title="Next"
+                      title="Before publishing"
                       items={[
-                        draft.images.lifestyle.length ? 'Review lifestyle order' : 'Add lifestyle images',
-                        'Create Stripe prices',
-                        'Upload master to cloud/signed URL',
+                        draft.images.lifestyle.length ? 'Lifestyle images ✓' : 'Add lifestyle images',
+                        draft.printFileUrl ? 'Print file URL ✓' : 'Add public print file URL',
                         gelatoConfigStatus(draft.format ?? 'a-series'),
                       ]}
                     />
@@ -150,6 +171,11 @@ export default async function InternalPosterDashboard() {
                       ]}
                     />
                   </div>
+
+                  <PublishArchiveForm
+                    slug={draft.slug}
+                    isPublished={draft.status === 'ready-to-publish'}
+                  />
 
                   {draft.notes && (
                     <div className="border border-[#e4ded4] bg-[#fbfaf7] p-3">

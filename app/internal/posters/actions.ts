@@ -3,6 +3,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import Stripe from 'stripe';
 import { revalidatePath } from 'next/cache';
 import {
   ArtistProfile,
@@ -15,7 +16,7 @@ import {
   writeArtists,
   writePosterDrafts,
 } from '@/lib/poster-admin';
-import { FORMAT_SIZES, PosterFormat, Size, SizePrices } from '@/data/products';
+import { FORMAT_SIZES, PosterFormat, Size, SizePrices, buildVariants } from '@/data/products';
 
 const MAX_IMAGE_BYTES = 30 * 1024 * 1024;
 const MAX_PRINT_BYTES = 250 * 1024 * 1024;
@@ -246,7 +247,6 @@ export async function updatePosterDraft(
     const name = field(formData, 'name');
     const artistSlug = field(formData, 'artistSlug');
     const summary = field(formData, 'summary');
-    const status = field(formData, 'status') as PosterDraft['status'];
     const productDetailsId = field(formData, 'productDetailsId');
     const deliveryAndReturnsId = field(formData, 'deliveryAndReturnsId');
     const printFileUrl = field(formData, 'printFileUrl', false);
@@ -259,12 +259,8 @@ export async function updatePosterDraft(
       .getAll('lifestyleImages')
       .filter((value): value is File => value instanceof File && value.size > 0);
 
-    if (!slug || !name || !artistSlug || !summary || !status || !productDetailsId || !deliveryAndReturnsId) {
+    if (!slug || !name || !artistSlug || !summary || !productDetailsId || !deliveryAndReturnsId) {
       return { ok: false, message: 'Missing required poster fields.' };
-    }
-
-    if (!['draft', 'ready-for-stripe', 'ready-for-gelato', 'ready-to-publish'].includes(status)) {
-      return { ok: false, message: 'Invalid poster status.' };
     }
 
     if (posterImage && posterImage.size > 0 && !ALLOWED_PREVIEW_TYPES.has(posterImage.type)) {
@@ -336,7 +332,7 @@ export async function updatePosterDraft(
         deliveryAndReturns: deliveryAndReturns.id,
         productDetails: productDetails.id,
       },
-      status,
+      status: existing.status,
       format,
       basePrices,
       updatedAt: new Date().toISOString(),
@@ -364,6 +360,283 @@ export async function updatePosterDraft(
 
     console.error('[Poster Admin] Update failed:', error);
     return { ok: false, message: 'Update failed. Check the terminal for details.' };
+  }
+}
+
+export async function publishPoster(
+  _prevState: PosterActionState,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  const slug = field(formData, 'slug');
+  if (!slug) return { ok: false, message: 'Missing poster slug.' };
+
+  const drafts = await readPosterDrafts();
+  const idx = drafts.findIndex((d) => d.slug === slug);
+  if (idx < 0) return { ok: false, message: 'Poster not found.' };
+
+  const draft = drafts[idx];
+
+  if (!draft.printFileUrl) {
+    return { ok: false, message: 'Add a public print file URL before publishing — Gelato needs it to fulfil orders.' };
+  }
+
+  const now = new Date().toISOString();
+
+  const hasRealPriceIds = Object.values(draft.stripePriceIds ?? {}).some(
+    (id) => id && !id.startsWith('price_placeholder')
+  );
+
+  if (hasRealPriceIds) {
+    drafts[idx] = { ...draft, status: 'ready-to-publish', updatedAt: now };
+    await writePosterDrafts(drafts);
+    revalidatePath('/internal/posters');
+    revalidatePath('/shop');
+    revalidatePath(`/shop/${slug}`);
+    return { ok: true, message: `${draft.name} is now live on the shop.` };
+  }
+
+  try {
+    const stripeKey = process.env.STRIPE_SECRET_KEY;
+    if (!stripeKey) throw new Error('STRIPE_SECRET_KEY is not set');
+
+    const stripe = new Stripe(stripeKey);
+    const format = draft.format ?? 'a-series';
+    const variants = buildVariants(format, draft.basePrices ?? {});
+
+    const stripeProduct = await stripe.products.create({
+      name: draft.name,
+      description: draft.description,
+      metadata: { productId: draft.id, slug: draft.slug },
+    });
+
+    const stripePriceIds: Record<string, string> = {};
+
+    for (const variant of variants) {
+      const key = `${variant.size}_${variant.frame}`;
+      const price = await stripe.prices.create({
+        product: stripeProduct.id,
+        currency: 'gbp',
+        unit_amount: variant.priceGBP,
+        metadata: {
+          gelatoProductUid: variant.gelatoProductUid,
+          printFileUrl: draft.printFileUrl,
+          size: variant.size,
+          frame: variant.frame,
+          productId: draft.id,
+        },
+      });
+      stripePriceIds[key] = price.id;
+    }
+
+    drafts[idx] = { ...draft, status: 'ready-to-publish', stripePriceIds, updatedAt: now };
+    await writePosterDrafts(drafts);
+    revalidatePath('/internal/posters');
+    revalidatePath('/shop');
+    revalidatePath(`/shop/${slug}`);
+
+    return { ok: true, message: `${draft.name} is now live on the shop.` };
+  } catch (error) {
+    console.error('[Poster Admin] Publish failed:', error);
+    return { ok: false, message: 'Failed to create Stripe products. Check the terminal for details.' };
+  }
+}
+
+export async function archivePoster(
+  _prevState: PosterActionState,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  const slug = field(formData, 'slug');
+  if (!slug) return { ok: false, message: 'Missing poster slug.' };
+
+  const drafts = await readPosterDrafts();
+  const idx = drafts.findIndex((d) => d.slug === slug);
+  if (idx < 0) return { ok: false, message: 'Poster not found.' };
+
+  drafts[idx] = { ...drafts[idx], status: 'draft', updatedAt: new Date().toISOString() };
+  await writePosterDrafts(drafts);
+  revalidatePath('/internal/posters');
+  revalidatePath('/shop');
+  revalidatePath(`/shop/${slug}`);
+
+  return { ok: true, message: `${drafts[idx].name} has been archived.` };
+}
+
+export async function updatePosterFields(
+  _prevState: PosterActionState | null,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  const slug = field(formData, 'slug');
+  if (!slug) return { ok: false, message: 'Missing poster slug.' };
+
+  const drafts = await readPosterDrafts();
+  const idx = drafts.findIndex((d) => d.slug === slug);
+  if (idx < 0) return { ok: false, message: 'Poster not found.' };
+
+  const existing = drafts[idx];
+  const name = field(formData, 'name', false) || existing.name;
+  const artistSlug = field(formData, 'artistSlug', false);
+  const format = (field(formData, 'format', false) || existing.format || 'a-series') as PosterFormat;
+  const description = field(formData, 'description', false) ?? existing.description;
+  const printFileUrl = field(formData, 'printFileUrl', false) ?? existing.printFileUrl;
+
+  const artists = await readArtists();
+  const artist = artists.find((a) => a.slug === artistSlug);
+
+  drafts[idx] = {
+    ...existing,
+    name,
+    artist: artist?.name ?? existing.artist,
+    artistSlug: artist?.slug ?? existing.artistSlug,
+    description,
+    printFileUrl,
+    format,
+    descriptions: {
+      ...existing.descriptions,
+      aboutArtist: artist?.about ?? existing.descriptions?.aboutArtist ?? '',
+    },
+    updatedAt: new Date().toISOString(),
+  };
+
+  await writePosterDrafts(drafts);
+  revalidatePath('/internal/posters');
+  revalidatePath('/internal/posters/spreadsheet');
+  revalidatePath('/shop');
+  revalidatePath(`/shop/${slug}`);
+
+  return { ok: true, message: 'Saved.' };
+}
+
+export async function createDraftFromMaster(
+  _prevState: PosterActionState | null,
+  formData: FormData
+): Promise<PosterActionState> {
+  if (!posterAdminEnabled()) {
+    return { ok: false, message: 'Poster admin is disabled in this environment.' };
+  }
+
+  try {
+    const printFile = fileField(formData, 'printFile');
+    if (!printFile || printFile.size === 0) {
+      return { ok: false, message: 'No print file provided.' };
+    }
+    if (!ALLOWED_PRINT_TYPES.has(printFile.type)) {
+      return { ok: false, message: 'Print master must be PDF, JPEG, PNG, or TIFF.' };
+    }
+    if (printFile.size > MAX_PRINT_BYTES) {
+      return { ok: false, message: 'Print master is over 250 MB.' };
+    }
+
+    const rawName = field(formData, 'name', false) || printFile.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
+    const name = rawName || 'Untitled';
+    const artistSlug = field(formData, 'artistSlug', false);
+    const summary = field(formData, 'summary', false) || '';
+    const printFileUrl = field(formData, 'printFileUrl', false) || '';
+    const notes = field(formData, 'notes', false) || '';
+    const format = (field(formData, 'format', false) || 'a-series') as PosterFormat;
+
+    const productDetailsId = field(formData, 'productDetailsId', false) || PRODUCT_DETAIL_TEMPLATES[0]?.id || '';
+    const deliveryAndReturnsId = field(formData, 'deliveryAndReturnsId', false) || DELIVERY_RETURN_TEMPLATES[0]?.id || '';
+    const productDetails = PRODUCT_DETAIL_TEMPLATES.find((t) => t.id === productDetailsId) ?? PRODUCT_DETAIL_TEMPLATES[0];
+    const deliveryAndReturns = DELIVERY_RETURN_TEMPLATES.find((t) => t.id === deliveryAndReturnsId) ?? DELIVERY_RETURN_TEMPLATES[0];
+
+    const artists = await readArtists();
+    const artist = artists.find((a) => a.slug === artistSlug);
+
+    const posterImage = fileField(formData, 'posterImage');
+    const lifestyleFiles = formData
+      .getAll('lifestyleImages')
+      .filter((v): v is File => v instanceof File && v.size > 0);
+
+    for (const lf of lifestyleFiles) {
+      if (!ALLOWED_PREVIEW_TYPES.has(lf.type)) {
+        return { ok: false, message: 'Lifestyle images must be JPEG, PNG, or WebP.' };
+      }
+      if (lf.size > MAX_IMAGE_BYTES) {
+        return { ok: false, message: 'One lifestyle image is over 30 MB.' };
+      }
+    }
+
+    const drafts = await readPosterDrafts();
+    const slug = uniqueSlug(slugify(name), drafts.map((d) => d.slug));
+    const id = `poster_${slug.replace(/-/g, '_')}`;
+    const createdAt = new Date().toISOString();
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'posters', slug);
+    const privateDir = path.join(process.cwd(), 'data', 'poster-masters', slug);
+
+    await fs.mkdir(uploadDir, { recursive: true });
+    await fs.mkdir(privateDir, { recursive: true });
+
+    const printBuffer = Buffer.from(await printFile.arrayBuffer());
+    const previewBuffer = await previewBufferFor(printFile, printBuffer, posterImage);
+    const printExtension = extensionFor(printFile);
+    const printFileName = `print-master${printExtension}`;
+
+    await fs.writeFile(path.join(privateDir, printFileName), printBuffer);
+    await writeDerivatives(previewBuffer, uploadDir);
+    const lifestyleImages = await writeLifestyleImages(lifestyleFiles, uploadDir, slug);
+
+    const publicBase = `/uploads/posters/${slug}`;
+    const basePrices = parsePriceFields(formData, format);
+
+    const draft: PosterDraft = {
+      id,
+      slug,
+      name,
+      artist: artist?.name ?? '',
+      artistSlug: artist?.slug ?? '',
+      description: summary,
+      descriptions: {
+        aboutArtist: artist?.about ?? '',
+        deliveryAndReturns: deliveryAndReturns?.body ?? '',
+        productDetails: productDetails?.body ?? '',
+      },
+      templateIds: {
+        deliveryAndReturns: deliveryAndReturns?.id ?? '',
+        productDetails: productDetails?.id ?? '',
+      },
+      status: 'draft',
+      createdAt,
+      updatedAt: createdAt,
+      printFilePath: `data/poster-masters/${slug}/${printFileName}`,
+      printFileUrl,
+      images: {
+        flat: `${publicBase}/poster-flat.webp`,
+        frame: `${publicBase}/poster-flat.webp`,
+        thumb: `${publicBase}/poster-thumb.webp`,
+        lifestyle: lifestyleImages,
+      },
+      format,
+      basePrices,
+      stripePriceIds: {},
+      gelatoProductUids: {},
+      notes,
+    };
+
+    await writePosterDrafts([draft, ...drafts]);
+    revalidatePath('/internal/posters');
+
+    return { ok: true, message: `Created draft for ${name}.`, slug };
+  } catch (error) {
+    if (error instanceof Error && error.message === 'PDF_PREVIEW_UNAVAILABLE') {
+      return {
+        ok: false,
+        message: 'PDF preview failed — upload a JPEG or PNG alongside this file as a fallback.',
+      };
+    }
+    console.error('[Poster Admin] Batch draft creation failed:', error);
+    return { ok: false, message: 'Failed to create draft. Check the terminal for details.' };
   }
 }
 
@@ -421,13 +694,13 @@ async function writeDerivatives(previewBuffer: Buffer, uploadDir: string) {
   await normalized
     .clone()
     .resize({ width: 1600, height: 2240, fit: 'inside', withoutEnlargement: true })
-    .webp({ quality: 86 })
+    .webp({ quality: 92 })
     .toFile(path.join(uploadDir, 'poster-flat.webp'));
 
   await normalized
     .clone()
     .resize({ width: 520, height: 728, fit: 'cover' })
-    .webp({ quality: 78 })
+    .webp({ quality: 84 })
     .toFile(path.join(uploadDir, 'poster-thumb.webp'));
 
 }

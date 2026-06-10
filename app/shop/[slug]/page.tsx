@@ -29,7 +29,7 @@ export default async function ProductPage({
     images: [draft.images.flat, ...draft.images.lifestyle].filter(Boolean),
     printFileUrl: draft.printFileUrl,
     format,
-    variants: buildVariants(format, draft.basePrices ?? {}),
+    variants: buildVariants(format, draft.basePrices ?? {}, draft.stripePriceIds ?? {}),
   };
 
   return <ProductPageClient product={product} />;

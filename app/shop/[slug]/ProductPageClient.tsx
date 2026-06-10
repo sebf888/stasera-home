@@ -57,6 +57,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
       frame: selectedFrame,
       priceGBP: variant.priceGBP,
       gelatoProductUid: variant.gelatoProductUid,
+      stripePriceId: variant.stripePriceId,
     });
     setAdded(true);
     if (resetTimer.current) clearTimeout(resetTimer.current);

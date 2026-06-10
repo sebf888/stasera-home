@@ -14,6 +14,7 @@ export interface CartItem {
   frame: Frame;
   priceGBP: number;
   gelatoProductUid: string;
+  stripePriceId: string;
   quantity: number;
 }
 

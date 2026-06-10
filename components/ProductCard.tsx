@@ -67,6 +67,7 @@ export default function ProductCard({ product }: Props) {
         frame: selectedFrame,
         priceGBP: v.priceGBP,
         gelatoProductUid: v.gelatoProductUid,
+        stripePriceId: v.stripePriceId,
       });
     }
     setBtnState('added');

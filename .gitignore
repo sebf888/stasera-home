@@ -42,3 +42,6 @@ next-env.d.ts
 
 # print masters (large binary files, not for git)
 /data/poster-masters/
+
+# generated poster web assets (committed once, then ignored — see deployment notes)
+/public/uploads/posters/

@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { useActionState } from 'react';
 import {
   addArtist,
+  archivePoster,
   createPosterDraft,
+  publishPoster,
   PosterUploadState,
   updateArtist,
   updatePosterDraft,
@@ -12,7 +14,6 @@ import {
 import {
   ArtistProfile,
   CopyTemplate,
-  DraftStatus,
   PosterDraft,
 } from '@/lib/poster-admin';
 import {
@@ -274,21 +275,6 @@ export function PosterEditForm({
             className="h-10 border border-[#d7d2c8] bg-white px-3 text-sm font-normal outline-none focus:border-[#334157]"
           />
         </label>
-        <label className="grid gap-2 text-sm font-medium text-[#292b28]">
-          Status
-          <select
-            name="status"
-            required
-            defaultValue={draft.status}
-            className="h-10 border border-[#d7d2c8] bg-white px-3 text-sm font-normal outline-none focus:border-[#334157]"
-          >
-            {(['draft', 'ready-for-stripe', 'ready-for-gelato', 'ready-to-publish'] satisfies DraftStatus[]).map((status) => (
-              <option key={status} value={status}>
-                {status.replace(/-/g, ' ')}
-              </option>
-            ))}
-          </select>
-        </label>
       </div>
 
       <label className="grid gap-2 text-sm font-medium text-[#292b28]">
@@ -396,6 +382,41 @@ export function PosterEditForm({
           </p>
         )}
       </div>
+    </form>
+  );
+}
+
+export function PublishArchiveForm({
+  slug,
+  isPublished,
+}: {
+  slug: string;
+  isPublished: boolean;
+}) {
+  const action = isPublished ? archivePoster : publishPoster;
+  const [state, formAction, isPending] = useActionState(action, { ok: false, message: '' });
+
+  return (
+    <form action={formAction} className="flex flex-wrap items-center gap-3">
+      <input type="hidden" name="slug" value={slug} />
+      <button
+        type="submit"
+        disabled={isPending}
+        className={`h-9 px-4 text-sm transition-opacity disabled:cursor-not-allowed disabled:opacity-60 ${
+          isPublished
+            ? 'border border-[#c9c1b3] bg-white text-[#55564f] hover:bg-[#f6f3ee]'
+            : 'bg-[#334157] text-white hover:opacity-90'
+        }`}
+      >
+        {isPending
+          ? isPublished ? 'Archiving...' : 'Publishing...'
+          : isPublished ? 'Archive' : 'Publish'}
+      </button>
+      {state.message && (
+        <p className={`text-sm ${state.ok ? 'text-[#2f684e]' : 'text-[#9d2f2f]'}`}>
+          {state.message}
+        </p>
+      )}
     </form>
   );
 }
