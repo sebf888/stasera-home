@@ -2,7 +2,7 @@
   {
     "id": "poster_tyler_the_creator_call_me_if_you_get_lost",
     "slug": "tyler-the-creator-call-me-if-you-get-lost",
-    "name": "Tyler the Creator   Call Me if You Get Lost",
+    "name": "Tyler the Creator - CMiYGL Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Tyler the Creator - CMiYGL Poster",
@@ -17,7 +17,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:40.652Z",
-    "updatedAt": "2026-06-10T17:15:37.879Z",
+    "updatedAt": "2026-06-12T20:32:15.005Z",
     "printFilePath": "data/poster-masters/tyler-the-creator-call-me-if-you-get-lost/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Tyler+the+Creator+-+Call+Me+if+You+Get+Lost.jpg",
     "images": {
@@ -52,7 +52,7 @@
   {
     "id": "poster_the_weeknd_trilogy",
     "slug": "the-weeknd-trilogy",
-    "name": "The Weeknd   Trilogy",
+    "name": "The Weeknd - Trilogy Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "The Weeknd - Trilogy Poster",
@@ -67,7 +67,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:38.732Z",
-    "updatedAt": "2026-06-10T17:15:37.410Z",
+    "updatedAt": "2026-06-12T20:32:14.687Z",
     "printFilePath": "data/poster-masters/the-weeknd-trilogy/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/The+Weeknd+-+Trilogy.jpg",
     "images": {
@@ -76,7 +76,7 @@
       "thumb": "/uploads/posters/the-weeknd-trilogy/poster-thumb.webp",
       "lifestyle": []
     },
-    "format": "a-series",
+    "format": "ratio-4x3",
     "basePrices": {},
     "stripePriceIds": {
       "A4_none": "price_1TgpceDsdGxbrpLwQLHonn0E",
@@ -102,7 +102,7 @@
   {
     "id": "poster_vivienne_westwood_nike_poster",
     "slug": "vivienne-westwood-nike-poster",
-    "name": "Vivienne Westwood Nike  Poster",
+    "name": "Vivienne Moss Poster",
     "artist": "Erzrahd",
     "artistSlug": "erzrahd",
     "description": "Vivienne Moss Poster",
@@ -117,7 +117,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:37.249Z",
-    "updatedAt": "2026-06-10T17:48:53.885Z",
+    "updatedAt": "2026-06-12T20:32:13.457Z",
     "printFilePath": "data/poster-masters/vivienne-westwood-nike-poster/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Vivienne+Westwood+Nike++Poster.jpg",
     "images": {
@@ -152,7 +152,7 @@
   {
     "id": "poster_lil_uzi_pink_tape_poste",
     "slug": "lil-uzi-pink-tape-poste",
-    "name": "LIL UZI Pink Tape Poste",
+    "name": "LIL UZI VERT - Pink Tape Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "LIL UZI VERT - Pink Tape Poster",
@@ -167,7 +167,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:35.615Z",
-    "updatedAt": "2026-06-10T17:15:36.021Z",
+    "updatedAt": "2026-06-12T20:32:13.156Z",
     "printFilePath": "data/poster-masters/lil-uzi-pink-tape-poste/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/LIL+UZI+Pink+Tape+Poste.jpg",
     "images": {
@@ -202,7 +202,7 @@
   {
     "id": "poster_travis_scott_utopia_final",
     "slug": "travis-scott-utopia-final",
-    "name": "Travis Scott Utopia Final",
+    "name": "Travis Scott - Utopia Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Travis Scott - Utopia Poster",
@@ -217,7 +217,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:33.856Z",
-    "updatedAt": "2026-06-10T17:15:35.385Z",
+    "updatedAt": "2026-06-12T20:32:12.072Z",
     "printFilePath": "data/poster-masters/travis-scott-utopia-final/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Travis+Scott+Utopia+Final.jpg",
     "images": {
@@ -226,7 +226,7 @@
       "thumb": "/uploads/posters/travis-scott-utopia-final/poster-thumb.webp",
       "lifestyle": []
     },
-    "format": "a-series",
+    "format": "ratio-4x3",
     "basePrices": {},
     "stripePriceIds": {
       "A4_none": "price_1TgpcNDsdGxbrpLwGepGFH4j",
@@ -252,7 +252,7 @@
   {
     "id": "poster_steve_lacy_gemini_rights",
     "slug": "steve-lacy-gemini-rights",
-    "name": "Steve Lacy   Gemini Rights",
+    "name": "Steve Lacy - Gemini Rights Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Steve Lacy - Gemini Rights Poster",
@@ -267,7 +267,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:31.956Z",
-    "updatedAt": "2026-06-10T17:15:34.863Z",
+    "updatedAt": "2026-06-12T20:32:11.311Z",
     "printFilePath": "data/poster-masters/steve-lacy-gemini-rights/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Steve+Lacy+-+Gemini+Rights.jpg",
     "images": {
@@ -302,7 +302,7 @@
   {
     "id": "poster_blade_runner_2049_updated",
     "slug": "blade-runner-2049-updated",
-    "name": "Blade Runner 2049 Updated",
+    "name": "Blade Runner 2049 Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Blade Runner 2049 Poster",
@@ -317,7 +317,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:29.701Z",
-    "updatedAt": "2026-06-10T17:08:32.790Z",
+    "updatedAt": "2026-06-12T20:32:10.404Z",
     "printFilePath": "data/poster-masters/blade-runner-2049-updated/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Blade+Runner+2049+Updated.jpg",
     "images": {
@@ -352,7 +352,7 @@
   {
     "id": "poster_dune",
     "slug": "dune",
-    "name": "Dune",
+    "name": "Dune Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Dune Poster",
@@ -367,7 +367,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:26.905Z",
-    "updatedAt": "2026-06-10T17:13:32.608Z",
+    "updatedAt": "2026-06-12T20:32:09.903Z",
     "printFilePath": "data/poster-masters/dune/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Dune.jpg",
     "images": {
@@ -402,7 +402,7 @@
   {
     "id": "poster_destroy_lonely_w",
     "slug": "destroy-lonely-w",
-    "name": "Destroy Lonely W",
+    "name": "Destroy Lonely Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Destroy Lonely Poster",
@@ -417,7 +417,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T17:02:24.880Z",
-    "updatedAt": "2026-06-10T17:15:33.474Z",
+    "updatedAt": "2026-06-12T20:32:09.587Z",
     "printFilePath": "data/poster-masters/destroy-lonely-w/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Destroy+Lonely+W.jpg",
     "images": {
@@ -452,7 +452,7 @@
   {
     "id": "poster_sonder",
     "slug": "sonder",
-    "name": "Sonder",
+    "name": "Sonder Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Sonder Poster",
@@ -467,7 +467,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T16:20:21.467Z",
-    "updatedAt": "2026-06-10T17:15:32.953Z",
+    "updatedAt": "2026-06-12T20:32:09.043Z",
     "printFilePath": "data/poster-masters/sonder/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Sonder+.jpg",
     "images": {
@@ -502,7 +502,7 @@
   {
     "id": "poster_scarface_minimal",
     "slug": "scarface-minimal",
-    "name": "Scarface Minimal",
+    "name": "Scarface Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Scarface Poster",
@@ -517,7 +517,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T16:20:20.555Z",
-    "updatedAt": "2026-06-10T16:36:15.187Z",
+    "updatedAt": "2026-06-12T20:32:08.372Z",
     "printFilePath": "data/poster-masters/scarface-minimal/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Scarface+Minimal.jpg",
     "images": {
@@ -585,7 +585,7 @@
   {
     "id": "poster_kanye_west_yeezus_big",
     "slug": "kanye-west-yeezus-big",
-    "name": "Kanye West   Yeezus Big",
+    "name": "Kanye West - Yeezus Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Kanye West - Yeezus Poster",
@@ -600,7 +600,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T16:20:17.425Z",
-    "updatedAt": "2026-06-10T17:15:31.225Z",
+    "updatedAt": "2026-06-12T20:32:06.821Z",
     "printFilePath": "data/poster-masters/kanye-west-yeezus-big/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Kanye+West+-+Yeezus.jpg",
     "images": {
@@ -635,7 +635,7 @@
   {
     "id": "poster_frank_ocean_blond",
     "slug": "frank-ocean-blond",
-    "name": "Frank Ocean   Blond",
+    "name": "Frank Ocean - Blond Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "Frank Ocean - Blond Poster",
@@ -650,7 +650,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T16:20:15.803Z",
-    "updatedAt": "2026-06-10T17:15:30.680Z",
+    "updatedAt": "2026-06-12T20:32:06.373Z",
     "printFilePath": "data/poster-masters/frank-ocean-blond/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Frank+Ocean+-+Blond.jpg",
     "images": {
@@ -685,7 +685,7 @@
   {
     "id": "poster_fight_club",
     "slug": "fight-club",
-    "name": "Fight Club",
+    "name": "Fight Club Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Fight Club Poster",
@@ -700,7 +700,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T16:18:31.833Z",
-    "updatedAt": "2026-06-10T16:35:59.320Z",
+    "updatedAt": "2026-06-12T20:32:05.203Z",
     "printFilePath": "data/poster-masters/fight-club/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Fight+Club+.jpg",
     "images": {
@@ -735,7 +735,7 @@
   {
     "id": "poster_fantastic_mr_fox_poster",
     "slug": "fantastic-mr-fox-poster",
-    "name": "Fantastic Mr Fox Poster",
+    "name": "Fantastic Mr. Fox Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Fantastic Mr. Fox Poster",
@@ -750,7 +750,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T15:56:47.296Z",
-    "updatedAt": "2026-06-10T16:35:53.878Z",
+    "updatedAt": "2026-06-12T20:32:04.856Z",
     "printFilePath": "data/poster-masters/fantastic-mr-fox-poster/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Fantastic+Mr+Fox+Poster.jpg",
     "images": {
@@ -785,7 +785,7 @@
   {
     "id": "poster_mf_doom_nike",
     "slug": "mf-doom-nike",
-    "name": "MF DOOM   Nike",
+    "name": "MF DOOM Nike Poster",
     "artist": "J. Kadera",
     "artistSlug": "j-kadera",
     "description": "MF DOOM Nike Poster",
@@ -800,7 +800,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T13:35:42.458Z",
-    "updatedAt": "2026-06-10T17:15:29.946Z",
+    "updatedAt": "2026-06-12T20:32:03.975Z",
     "printFilePath": "data/poster-masters/mf-doom-nike/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/MF+DOOM+-+Nike.jpg",
     "images": {
@@ -835,7 +835,7 @@
   {
     "id": "poster_la_haine",
     "slug": "la-haine",
-    "name": "La Haine",
+    "name": "La Haine Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "La Haine Poster",
@@ -850,7 +850,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T13:35:41.050Z",
-    "updatedAt": "2026-06-10T16:35:43.034Z",
+    "updatedAt": "2026-06-12T20:32:03.355Z",
     "printFilePath": "data/poster-masters/la-haine/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/La+Haine.jpg",
     "images": {
@@ -885,7 +885,7 @@
   {
     "id": "poster_interstellar",
     "slug": "interstellar",
-    "name": "Interstellar",
+    "name": "Interstellar Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Interstellar Poster",
@@ -900,7 +900,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T13:35:37.541Z",
-    "updatedAt": "2026-06-10T16:35:37.784Z",
+    "updatedAt": "2026-06-12T20:32:02.825Z",
     "printFilePath": "data/poster-masters/interstellar/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Interstellar+.jpg",
     "images": {
@@ -935,7 +935,7 @@
   {
     "id": "poster_donnie_darko_updated",
     "slug": "donnie-darko-updated",
-    "name": "Donnie Darko Updated",
+    "name": "Donnie Darko Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Donnie Darko Poster",
@@ -950,7 +950,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-10T13:35:33.364Z",
-    "updatedAt": "2026-06-10T16:35:32.380Z",
+    "updatedAt": "2026-06-12T20:32:02.358Z",
     "printFilePath": "data/poster-masters/donnie-darko-updated/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/Donnie+Darko+Updated.jpg",
     "images": {
@@ -985,7 +985,7 @@
   {
     "id": "poster_goodfellas",
     "slug": "goodfellas",
-    "name": "Goodfellas",
+    "name": "Goodfellas Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "Goodfellas Poster",
@@ -1000,7 +1000,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-09T18:47:49.939Z",
-    "updatedAt": "2026-06-10T16:25:44.404Z",
+    "updatedAt": "2026-06-12T20:32:01.727Z",
     "printFilePath": "data/poster-masters/goodfellas/print-master.jpg",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/GoodFellas.jpg",
     "images": {
@@ -1035,7 +1035,7 @@
   {
     "id": "poster_american_psycho",
     "slug": "american-psycho",
-    "name": "American Psycho",
+    "name": "American Psycho Poster",
     "artist": "D. Vallelonga",
     "artistSlug": "d-vallelonga",
     "description": "American Psycho Poster",
@@ -1050,7 +1050,7 @@
     },
     "status": "ready-to-publish",
     "createdAt": "2026-06-05T23:56:05.734Z",
-    "updatedAt": "2026-06-10T16:25:45.704Z",
+    "updatedAt": "2026-06-12T20:32:01.134Z",
     "printFilePath": "data/poster-masters/american-psycho/print-master.png",
     "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/American+Psycho+-+Stack.jpg",
     "images": {

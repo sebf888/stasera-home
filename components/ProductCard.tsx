@@ -79,7 +79,7 @@ export default function ProductCard({ product }: Props) {
     <div>
       <Link href={`/shop/${product.slug}`} className="block group">
         <div
-          className="relative w-full"
+          className="relative w-[calc(100%+1rem)] -ml-[0.5rem] lg:w-[calc(100%+5vw)] lg:-ml-[2.5vw]"
           style={{ aspectRatio: '8/11' }}
         >
           {/* Poster image positioned inside aperture (with bleed) */}
@@ -113,19 +113,19 @@ export default function ProductCard({ product }: Props) {
         </div>
 
         {/* Title — full card width, single line */}
-        <p className="mt-4 text-[12px] tracking-[-0.03em] text-[#4B4C4A] leading-snug whitespace-nowrap">
+        <p className="-mt-3 relative z-[11] text-[13px] tracking-[-0.03em] text-[#4B4C4A] leading-snug whitespace-nowrap">
           <span className="font-medium">{product.name}</span>
           <span className="font-normal"> by {product.artist}</span>
         </p>
       </Link>
 
       {/* Price + swatches (left) | Button (right, top at price midpoint) */}
-      <div className="mt-[1px] flex items-start justify-between gap-3">
+      <div className="mt-[1px] relative z-[11] flex items-start justify-between gap-3">
 
         {/* Left column — height matches button bottom (mt 8px + height 37px) */}
         <div className="min-w-0 flex flex-col justify-between h-[45px]">
           {/* Price */}
-          <p className="text-[11px] font-normal tracking-[-0.03em] text-[#4B4C4A]">
+          <p className="text-[12px] font-normal tracking-[-0.03em] text-[#4B4C4A]">
             {price}
           </p>
 

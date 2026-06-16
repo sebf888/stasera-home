@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useCart } from '@/lib/cart-context';
 import { formatPrice, SIZE_LABELS, FRAME_LABELS } from '@/data/products';
 
-export default function CartButton() {
+export default function CartButton({ isTransparent = false }: { isTransparent?: boolean }) {
   const { items, totalItems, subtotalGBP, removeItem } = useCart();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ export default function CartButton() {
     >
       <Link
         href="/cart"
-        className="text-[11px] sm:text-[12px] lg:text-[13px] font-normal tracking-[-0.03em] text-[#4B4C4A] whitespace-nowrap"
+        className={`text-[11px] sm:text-[12px] lg:text-[13px] font-normal tracking-[-0.03em] whitespace-nowrap transition-colors duration-300 ${isTransparent ? 'text-white' : 'text-[#4B4C4A]'}`}
       >
         {label}
       </Link>
