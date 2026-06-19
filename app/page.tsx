@@ -45,7 +45,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <MaterialsSection />
+      <ReadyToHangSection />
+      <MuseumQualitySection />
 
       <div className="px-5 sm:px-10 lg:px-[70px]">
         <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-x-4 lg:gap-x-[5vw] gap-y-24">
@@ -74,9 +75,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-
-      <ReadyToHangSection />
-      <MuseumQualitySection />
     </main>
     </>
   );

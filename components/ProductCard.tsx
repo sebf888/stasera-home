@@ -33,6 +33,9 @@ export default function ProductCard({ product }: Props) {
   const [selectedSize, setSelectedSize] = useState<Size>(availableSizes[0] ?? 'A4');
   const [selectedFrame, setSelectedFrame] = useState<Frame>('black');
   const [btnState, setBtnState] = useState<ButtonState>('idle');
+  const [zoomed, setZoomed] = useState(false);
+  const [origin, setOrigin] = useState('50% 50%');
+  const imageContainerRef = useRef<HTMLDivElement>(null);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { addItem } = useCart();
 
@@ -42,6 +45,21 @@ export default function ProductCard({ product }: Props) {
 
   const variant = getVariant(product, selectedSize, selectedFrame);
   const price = variant ? formatPrice(variant.priceGBP) : '—';
+
+  const apertureLeft   = product.format === 'a-series' ? 10.625 : 8.594;
+  const apertureTop    = 9.659;
+  const apertureWidth  = product.format === 'a-series' ? 78.75  : 82.813;
+  const apertureHeight = 80.682;
+
+  function handleImageMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!imageContainerRef.current) return;
+    const rect = imageContainerRef.current.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) / rect.width * 100;
+    const cy = (e.clientY - rect.top) / rect.height * 100;
+    const ox = (cx - apertureLeft) / apertureWidth * 100;
+    const oy = (cy - apertureTop) / apertureHeight * 100;
+    setOrigin(`${ox}% ${oy}%`);
+  }
 
   function handleMouseEnter() {
     if (btnState !== 'added') setBtnState('picking');
@@ -75,33 +93,55 @@ export default function ProductCard({ product }: Props) {
     resetTimer.current = setTimeout(() => setBtnState('idle'), 1400);
   }
 
+
   return (
     <div>
       <Link href={`/shop/${product.slug}`} className="block group">
         <div
+          ref={imageContainerRef}
           className="relative w-[calc(100%+1rem)] -ml-[0.5rem] lg:w-[calc(100%+5vw)] lg:-ml-[2.5vw]"
           style={{ aspectRatio: '8/11' }}
+          onMouseMove={handleImageMouseMove}
+          onMouseEnter={() => setZoomed(true)}
+          onMouseLeave={() => { setZoomed(false); setOrigin('50% 50%'); }}
         >
-          {/* Poster image positioned inside aperture (with bleed) */}
+          {/* Poster — cursor-tracked zoom within aperture on hover */}
           <div
             className="absolute overflow-hidden"
             style={{
-              left:   product.format === 'a-series' ? '10.625%' : '8.594%',
-              top:    '9.659%',
-              width:  product.format === 'a-series' ? '78.75%'  : '82.813%',
-              height: '80.682%',
+              left:   `${apertureLeft}%`,
+              top:    `${apertureTop}%`,
+              width:  `${apertureWidth}%`,
+              height: `${apertureHeight}%`,
             }}
           >
-            <Image
-              src={product.images[0]}
-              fill
-              sizes="(max-width: 1024px) 50vw, 20vw"
-              className="object-cover"
-              alt={product.name}
-            />
+            <div
+              className="absolute inset-0"
+              style={{
+                transform: zoomed ? 'scale(1.5)' : 'scale(1)',
+                transformOrigin: origin,
+                transition: 'transform 0.4s ease',
+              }}
+            >
+              <Image
+                src={product.images[0]}
+                fill
+                sizes="(max-width: 1024px) 50vw, 20vw"
+                className="object-cover"
+                alt={product.name}
+              />
+            </div>
           </div>
-          {/* Frame overlay */}
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 10 }}>
+
+          {/* Frame overlay — fades out on hover */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              zIndex: 10,
+              opacity: zoomed ? 0 : 1,
+              transition: 'opacity 0.4s ease',
+            }}
+          >
             <Image
               src={`/frames/frame-${product.format}-${selectedFrame === 'none' ? 'black' : selectedFrame}.webp`}
               fill

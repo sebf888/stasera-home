@@ -1,7 +1,17 @@
+import Image from 'next/image';
+
 export default function HeroSection() {
   return (
     <section className="relative h-screen bg-[#1c1c1a] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+      <Image
+        src="/hero_comp.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-black/35 pointer-events-none" />
 
       <div className="absolute bottom-0 left-0 px-5 pb-10 sm:px-10 sm:pb-12 lg:px-[70px] lg:pb-[70px] text-white">
         <p className="flex items-center gap-[10px] text-[10px] sm:text-[11px] lg:text-[12px] uppercase tracking-[0.12em] mb-3 sm:mb-4 font-medium">

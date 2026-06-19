@@ -1,13 +1,18 @@
+import Image from 'next/image';
+
 export default function ReadyToHangSection() {
   return (
-    <section className="pt-16 pb-6 lg:pt-24 lg:pb-8 px-5 sm:px-10 lg:px-[70px]">
+    <section className="pt-16 pb-1 lg:pt-24 lg:pb-1 px-5 sm:px-10 lg:px-[70px]">
       <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
 
-        {/* Placeholder image */}
-        <div className="w-full lg:w-[48%] aspect-[16/9] bg-[#D4D4D2] flex-shrink-0 flex items-center justify-center">
-          <span className="text-[13px] tracking-[-0.03em] text-[#4B4C4A] opacity-50">
-            Image placeholder
-          </span>
+        <div className="relative w-full lg:w-[48%] aspect-[16/9] flex-shrink-0 bg-[#D4D4D2]">
+          <Image
+            src="/ready-to-hang.jpg"
+            alt="Ready to hang poster in a frame"
+            fill
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            className="object-cover"
+          />
         </div>
 
         {/* Text content */}

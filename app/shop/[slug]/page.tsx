@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { readPosterDrafts } from '@/lib/poster-admin';
 import { buildVariants, PosterFormat } from '@/data/products';
 import ProductPageClient from './ProductPageClient';
+import ReadyToHangSection from '@/components/ReadyToHangSection';
+import MuseumQualitySection from '@/components/MuseumQualitySection';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,5 +34,11 @@ export default async function ProductPage({
     variants: buildVariants(format, draft.basePrices ?? {}, draft.stripePriceIds ?? {}),
   };
 
-  return <ProductPageClient product={product} />;
+  return (
+    <>
+      <ProductPageClient product={product} />
+      <ReadyToHangSection />
+      <MuseumQualitySection />
+    </>
+  );
 }

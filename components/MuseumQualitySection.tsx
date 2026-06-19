@@ -1,6 +1,8 @@
+import Image from 'next/image';
+
 export default function MuseumQualitySection() {
   return (
-    <section className="pt-6 pb-16 lg:pt-8 lg:pb-24 px-5 sm:px-10 lg:px-[70px]">
+    <section className="pt-1 pb-16 lg:pt-1 lg:pb-24 px-5 sm:px-10 lg:px-[70px]">
       <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
 
         {/* Text content */}
@@ -29,11 +31,14 @@ export default function MuseumQualitySection() {
           </ul>
         </div>
 
-        {/* Placeholder image */}
-        <div className="w-full lg:w-[48%] aspect-[16/9] bg-[#D4D4D2] flex-shrink-0 flex items-center justify-center order-1 lg:order-2">
-          <span className="text-[13px] tracking-[-0.03em] text-[#4B4C4A] opacity-50">
-            Image placeholder
-          </span>
+        <div className="relative w-full lg:w-[48%] aspect-[16/9] flex-shrink-0 bg-[#D4D4D2] order-1 lg:order-2">
+          <Image
+            src="/museum-quality-rfad.jpg"
+            alt="Museum quality canvas print"
+            fill
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            className="object-cover"
+          />
         </div>
 
       </div>
