@@ -28,17 +28,17 @@ export default async function Home() {
       variants: buildVariants(draft.format ?? 'a-series', draft.basePrices ?? {}, draft.stripePriceIds ?? {}),
     }));
 
-  const firstRow  = products.slice(0, 4);
-  const secondRow = products.slice(4, 8);
-  const thirdRow  = products.slice(8, 12);
-  const fourthRow = products.slice(12);
+  const firstRow  = products.slice(0, 3);
+  const secondRow = products.slice(3, 6);
+  const thirdRow  = products.slice(6, 9);
+  const fourthRow = products.slice(9, 12);
 
   return (
     <>
     <HeroSection />
     <main className="pb-10">
       <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-x-4 lg:gap-x-[5vw] gap-y-24">
+        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
           {firstRow.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -49,7 +49,7 @@ export default async function Home() {
       <MuseumQualitySection />
 
       <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-x-4 lg:gap-x-[5vw] gap-y-24">
+        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
           {secondRow.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -59,7 +59,7 @@ export default async function Home() {
       <QuotesSection />
 
       <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-x-4 lg:gap-x-[5vw] gap-y-24">
+        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
           {thirdRow.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -69,7 +69,7 @@ export default async function Home() {
       <FAQSection />
 
       <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-4 items-start gap-x-4 lg:gap-x-[5vw] gap-y-24">
+        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
           {fourthRow.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

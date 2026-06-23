@@ -9,7 +9,7 @@ export default function QuotesSection() {
       <div className="flex flex-col sm:flex-row gap-3 lg:gap-4">
 
         {/* Left panel — larger */}
-        <div className="relative flex-[2] bg-[#334157] flex items-center justify-center px-10 lg:px-16 min-h-[590px] lg:min-h-[700px] overflow-hidden">
+        <div className="relative flex-[2] bg-[#334157] flex items-center justify-center px-10 lg:px-16 min-h-[420px] lg:min-h-[500px] overflow-hidden">
           <Image
             src="/quote-left.jpg"
             alt=""
@@ -31,7 +31,7 @@ export default function QuotesSection() {
         </div>
 
         {/* Right panel — smaller */}
-        <div className="relative flex-[1] bg-[#334157] flex items-center justify-center px-8 lg:px-12 min-h-[590px] lg:min-h-[700px] overflow-hidden">
+        <div className="relative flex-[1] bg-[#334157] flex items-center justify-center px-8 lg:px-12 min-h-[420px] lg:min-h-[500px] overflow-hidden">
           <Image
             src="/quote-right.jpg"
             alt=""
