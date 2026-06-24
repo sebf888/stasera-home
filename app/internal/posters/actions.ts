@@ -2,6 +2,7 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
+import { randomUUID } from 'crypto';
 import sharp from 'sharp';
 import Stripe from 'stripe';
 import { revalidatePath } from 'next/cache';
@@ -17,6 +18,7 @@ import {
   writePosterDrafts,
 } from '@/lib/poster-admin';
 import { FORMAT_SIZES, PosterFormat, Size, SizePrices, buildVariants } from '@/data/products';
+import { backblazeConfigured, uploadToBackblaze } from '@/lib/backblaze';
 
 const MAX_IMAGE_BYTES = 30 * 1024 * 1024;
 const MAX_PRINT_BYTES = 250 * 1024 * 1024;
@@ -111,6 +113,7 @@ export async function createPosterDraft(
     const summary = field(formData, 'summary');
     const productDetailsId = field(formData, 'productDetailsId');
     const deliveryAndReturnsId = field(formData, 'deliveryAndReturnsId');
+    const printFileUrl = field(formData, 'printFileUrl', false);
     const notes = field(formData, 'notes', false);
     const format = (field(formData, 'format', false) || 'a-series') as PosterFormat;
     const basePrices = parsePriceFields(formData, format);
@@ -182,6 +185,14 @@ export async function createPosterDraft(
     await writeDerivatives(previewBuffer, uploadDir);
     const lifestyleImages = await writeLifestyleImages(lifestyleFiles, uploadDir, slug);
 
+    const resolvedPrintFileUrl = await resolvePrintFileUrl(
+      printFileUrl,
+      printBuffer,
+      slug,
+      printFileName,
+      printFile.type,
+    );
+
     const publicBase = `/uploads/posters/${slug}`;
     const draft: PosterDraft = {
       id,
@@ -203,7 +214,7 @@ export async function createPosterDraft(
       createdAt,
       updatedAt: createdAt,
       printFilePath: `data/poster-masters/${slug}/${printFileName}`,
-      printFileUrl: '',
+      printFileUrl: resolvedPrintFileUrl,
       images: {
         flat: `${publicBase}/poster-flat.webp`,
         frame: `${publicBase}/poster-flat.webp`,
@@ -378,10 +389,22 @@ export async function publishPoster(
   const idx = drafts.findIndex((d) => d.slug === slug);
   if (idx < 0) return { ok: false, message: 'Poster not found.' };
 
-  const draft = drafts[idx];
+  let draft = drafts[idx];
 
   if (!draft.printFileUrl) {
-    return { ok: false, message: 'Add a public print file URL before publishing — Gelato needs it to fulfil orders.' };
+    // Backfill from the stored master via Backblaze (for drafts created before
+    // auto-upload existed). Persist immediately so retries don't re-upload.
+    const backfilled = await backfillPrintFileUrl(draft);
+    if (!backfilled) {
+      return {
+        ok: false,
+        message:
+          'Add a public print file URL before publishing — Gelato needs it to fulfil orders. (Auto-upload to Backblaze did not run — check the master file exists and the B2_* env vars are set.)',
+      };
+    }
+    draft = { ...draft, printFileUrl: backfilled, updatedAt: new Date().toISOString() };
+    drafts[idx] = draft;
+    await writePosterDrafts(drafts);
   }
 
   const now = new Date().toISOString();
@@ -587,6 +610,14 @@ export async function createDraftFromMaster(
     await writeDerivatives(previewBuffer, uploadDir);
     const lifestyleImages = await writeLifestyleImages(lifestyleFiles, uploadDir, slug);
 
+    const resolvedPrintFileUrl = await resolvePrintFileUrl(
+      printFileUrl,
+      printBuffer,
+      slug,
+      printFileName,
+      printFile.type,
+    );
+
     const publicBase = `/uploads/posters/${slug}`;
     const basePrices = parsePriceFields(formData, format);
 
@@ -610,7 +641,7 @@ export async function createDraftFromMaster(
       createdAt,
       updatedAt: createdAt,
       printFilePath: `data/poster-masters/${slug}/${printFileName}`,
-      printFileUrl,
+      printFileUrl: resolvedPrintFileUrl,
       images: {
         flat: `${publicBase}/poster-flat.webp`,
         frame: `${publicBase}/poster-flat.webp`,
@@ -637,6 +668,78 @@ export async function createDraftFromMaster(
     }
     console.error('[Poster Admin] Batch draft creation failed:', error);
     return { ok: false, message: 'Failed to create draft. Check the terminal for details.' };
+  }
+}
+
+/**
+ * Resolves the public print-file URL Gelato will fetch.
+ * A manually-entered URL always wins; otherwise, if Backblaze is configured,
+ * the master is uploaded and its public URL returned. Upload failures are
+ * logged and fall back to an empty string (the draft is still created).
+ */
+async function resolvePrintFileUrl(
+  manualUrl: string,
+  printBuffer: Buffer,
+  slug: string,
+  printFileName: string,
+  contentType: string,
+): Promise<string> {
+  if (manualUrl) return manualUrl;
+  if (!backblazeConfigured()) return '';
+  try {
+    return await uploadToBackblaze(
+      printBuffer,
+      printMasterKey(slug, printFileName),
+      contentType,
+    );
+  } catch (error) {
+    console.error('[Poster Admin] Backblaze upload failed:', error);
+    return '';
+  }
+}
+
+/**
+ * Object key for a print master. The random token makes the public URL
+ * unguessable so the full-resolution master can't be enumerated from the
+ * publicly-visible shop slug.
+ */
+function printMasterKey(slug: string, fileName: string) {
+  return `print-masters/${slug}/${randomUUID()}/${fileName}`;
+}
+
+const EXTENSION_CONTENT_TYPES: Record<string, string> = {
+  '.pdf': 'application/pdf',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.png': 'image/png',
+  '.tif': 'image/tiff',
+  '.tiff': 'image/tiff',
+};
+
+/**
+ * Uploads a draft's already-stored local print master to Backblaze and returns
+ * the public URL. Used to backfill drafts created before B2 auto-upload existed.
+ * Returns '' if B2 is unconfigured, the master is missing, or the upload fails.
+ */
+async function backfillPrintFileUrl(draft: PosterDraft): Promise<string> {
+  if (!backblazeConfigured() || !draft.printFilePath) return '';
+
+  const absPath = path.join(process.cwd(), draft.printFilePath);
+  let buffer: Buffer;
+  try {
+    buffer = await fs.readFile(absPath);
+  } catch {
+    return ''; // master no longer on disk — caller falls back to manual URL
+  }
+
+  const fileName = path.basename(draft.printFilePath);
+  const contentType = EXTENSION_CONTENT_TYPES[path.extname(fileName).toLowerCase()] || 'application/octet-stream';
+
+  try {
+    return await uploadToBackblaze(buffer, printMasterKey(draft.slug, fileName), contentType);
+  } catch (error) {
+    console.error('[Poster Admin] Backblaze backfill failed:', error);
+    return '';
   }
 }
 

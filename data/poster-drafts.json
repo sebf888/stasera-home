@@ -1,5 +1,605 @@
 [
   {
+    "id": "poster_le_cunard",
+    "slug": "le-cunard",
+    "name": "Le Cunard",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:37.723Z",
+    "updatedAt": "2026-06-24T14:28:04.505Z",
+    "printFilePath": "data/poster-masters/le-cunard/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/le-cunard/188ef70f-2eb4-4643-b540-bdfea9af989b/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/le-cunard/poster-flat.webp",
+      "frame": "/uploads/posters/le-cunard/poster-flat.webp",
+      "thumb": "/uploads/posters/le-cunard/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrmbDsdGxbrpLwIKjsXPqe",
+      "A4_black": "price_1TlrmbDsdGxbrpLw7CmE5ieO",
+      "A4_white": "price_1TlrmbDsdGxbrpLwiLmwjl1U",
+      "A4_wood": "price_1TlrmbDsdGxbrpLw1I8BcIJw",
+      "A3_none": "price_1TlrmcDsdGxbrpLwFSOclVu2",
+      "A3_black": "price_1TlrmcDsdGxbrpLw88RdiMDg",
+      "A3_white": "price_1TlrmcDsdGxbrpLwfR21RNrf",
+      "A3_wood": "price_1TlrmdDsdGxbrpLwfBfUGrDm",
+      "A2_none": "price_1TlrmdDsdGxbrpLwqVPoLTCu",
+      "A2_black": "price_1TlrmdDsdGxbrpLwzFJSXx1J",
+      "A2_white": "price_1TlrmdDsdGxbrpLwVRLTmikl",
+      "A2_wood": "price_1TlrmeDsdGxbrpLwwG9WGwIb",
+      "A1_none": "price_1TlrmeDsdGxbrpLwpLk6oJBe",
+      "A1_black": "price_1TlrmeDsdGxbrpLw7tiXRNNH",
+      "A1_white": "price_1TlrmfDsdGxbrpLw8Av75xwm",
+      "A1_wood": "price_1TlrmfDsdGxbrpLw9xit00Mp"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_marouf",
+    "slug": "marouf",
+    "name": "Marouf",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:33.954Z",
+    "updatedAt": "2026-06-24T14:27:58.222Z",
+    "printFilePath": "data/poster-masters/marouf/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/marouf/055def7a-5f0e-4700-ba37-8ff67dbb0079/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/marouf/poster-flat.webp",
+      "frame": "/uploads/posters/marouf/poster-flat.webp",
+      "thumb": "/uploads/posters/marouf/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrmUDsdGxbrpLwItLvxSuj",
+      "A4_black": "price_1TlrmVDsdGxbrpLwTUo8QvIv",
+      "A4_white": "price_1TlrmVDsdGxbrpLwNso87paD",
+      "A4_wood": "price_1TlrmVDsdGxbrpLwqEMBCq6a",
+      "A3_none": "price_1TlrmWDsdGxbrpLwVR2noqUS",
+      "A3_black": "price_1TlrmWDsdGxbrpLwI3cfciSn",
+      "A3_white": "price_1TlrmWDsdGxbrpLwGDEcB4we",
+      "A3_wood": "price_1TlrmXDsdGxbrpLwZnWvbQ7v",
+      "A2_none": "price_1TlrmXDsdGxbrpLwcdfv7JM3",
+      "A2_black": "price_1TlrmXDsdGxbrpLwfBObHNuV",
+      "A2_white": "price_1TlrmYDsdGxbrpLw6LkPQmHB",
+      "A2_wood": "price_1TlrmYDsdGxbrpLwNbwDeJlW",
+      "A1_none": "price_1TlrmYDsdGxbrpLw1TLYsb3O",
+      "A1_black": "price_1TlrmZDsdGxbrpLwMRthHkb4",
+      "A1_white": "price_1TlrmZDsdGxbrpLwJQZIbS7T",
+      "A1_wood": "price_1TlrmZDsdGxbrpLwgKcfxXs7"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_couture_sport_lingerie",
+    "slug": "couture-sport-lingerie",
+    "name": "Couture Sport Lingerie",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:31.537Z",
+    "updatedAt": "2026-06-24T14:25:28.156Z",
+    "printFilePath": "data/poster-masters/couture-sport-lingerie/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/couture-sport-lingerie/da2724e4-0dc4-4a8b-9b8c-2c0c8d54b6a6/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/couture-sport-lingerie/poster-flat.webp",
+      "frame": "/uploads/posters/couture-sport-lingerie/poster-flat.webp",
+      "thumb": "/uploads/posters/couture-sport-lingerie/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1Tlrk4DsdGxbrpLwMPdako7b",
+      "A4_black": "price_1Tlrk4DsdGxbrpLwTSq2Y0Hs",
+      "A4_white": "price_1Tlrk5DsdGxbrpLwz7pyTMQ4",
+      "A4_wood": "price_1Tlrk5DsdGxbrpLwbZUjSeu3",
+      "A3_none": "price_1Tlrk5DsdGxbrpLwDQ7Sy5iV",
+      "A3_black": "price_1Tlrk6DsdGxbrpLwtf9mioIv",
+      "A3_white": "price_1Tlrk6DsdGxbrpLwfGcI7Ijw",
+      "A3_wood": "price_1Tlrk6DsdGxbrpLwlbn9MOrZ",
+      "A2_none": "price_1Tlrk6DsdGxbrpLw9a8thgPn",
+      "A2_black": "price_1Tlrk7DsdGxbrpLwFLv9DDzU",
+      "A2_white": "price_1Tlrk7DsdGxbrpLwo5cpeaX8",
+      "A2_wood": "price_1Tlrk7DsdGxbrpLwoSNgSb6X",
+      "A1_none": "price_1Tlrk8DsdGxbrpLwRfhhRZI4",
+      "A1_black": "price_1Tlrk8DsdGxbrpLw7LXunwmS",
+      "A1_white": "price_1Tlrk8DsdGxbrpLwbWmqP4yE",
+      "A1_wood": "price_1Tlrk9DsdGxbrpLwsWc73JWo"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_le_dessin",
+    "slug": "le-dessin",
+    "name": "Le Dessin",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:28.167Z",
+    "updatedAt": "2026-06-24T14:25:22.715Z",
+    "printFilePath": "data/poster-masters/le-dessin/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/le-dessin/4c128cd8-e66b-433e-93e9-330d488deeee/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/le-dessin/poster-flat.webp",
+      "frame": "/uploads/posters/le-dessin/poster-flat.webp",
+      "thumb": "/uploads/posters/le-dessin/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjzDsdGxbrpLwHAOh4scu",
+      "A4_black": "price_1TlrjzDsdGxbrpLwXALxWMNZ",
+      "A4_white": "price_1TlrjzDsdGxbrpLw0A1lMgN8",
+      "A4_wood": "price_1Tlrk0DsdGxbrpLwnNp8BX7d",
+      "A3_none": "price_1Tlrk0DsdGxbrpLwOoUG9TY6",
+      "A3_black": "price_1Tlrk0DsdGxbrpLwwSw1YrBS",
+      "A3_white": "price_1Tlrk1DsdGxbrpLw87I9K4B5",
+      "A3_wood": "price_1Tlrk1DsdGxbrpLwckfpGo7e",
+      "A2_none": "price_1Tlrk1DsdGxbrpLwND9sfoiN",
+      "A2_black": "price_1Tlrk1DsdGxbrpLweTBpAlZP",
+      "A2_white": "price_1Tlrk2DsdGxbrpLwbrZApD5l",
+      "A2_wood": "price_1Tlrk2DsdGxbrpLwAxCxQAZh",
+      "A1_none": "price_1Tlrk2DsdGxbrpLwAEjjgMdq",
+      "A1_black": "price_1Tlrk3DsdGxbrpLw9LizCKeW",
+      "A1_white": "price_1Tlrk3DsdGxbrpLwDTMx29sv",
+      "A1_wood": "price_1Tlrk3DsdGxbrpLwG7rFRuMi"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_vera_savina",
+    "slug": "vera-savina",
+    "name": "Vera Savina",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:25.057Z",
+    "updatedAt": "2026-06-24T14:25:17.347Z",
+    "printFilePath": "data/poster-masters/vera-savina/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/vera-savina/4addd9b0-15f8-43e9-8933-7fb60c13175b/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/vera-savina/poster-flat.webp",
+      "frame": "/uploads/posters/vera-savina/poster-flat.webp",
+      "thumb": "/uploads/posters/vera-savina/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjtDsdGxbrpLwA9XP6pHA",
+      "A4_black": "price_1TlrjuDsdGxbrpLwtiwsPpMz",
+      "A4_white": "price_1TlrjuDsdGxbrpLwqBaGvQwh",
+      "A4_wood": "price_1TlrjuDsdGxbrpLwNJEP35Bl",
+      "A3_none": "price_1TlrjuDsdGxbrpLwIJUlxWfT",
+      "A3_black": "price_1TlrjvDsdGxbrpLwPV8R8UdO",
+      "A3_white": "price_1TlrjvDsdGxbrpLw3KYVkYXP",
+      "A3_wood": "price_1TlrjvDsdGxbrpLwPKFjo6jS",
+      "A2_none": "price_1TlrjwDsdGxbrpLwc83n8v8l",
+      "A2_black": "price_1TlrjwDsdGxbrpLwIH5QEc0s",
+      "A2_white": "price_1TlrjwDsdGxbrpLwj4PdZueX",
+      "A2_wood": "price_1TlrjwDsdGxbrpLwaEClifea",
+      "A1_none": "price_1TlrjxDsdGxbrpLwdn9uQhOH",
+      "A1_black": "price_1TlrjxDsdGxbrpLw0YSPJi81",
+      "A1_white": "price_1TlrjxDsdGxbrpLwIw9g78hT",
+      "A1_wood": "price_1TlrjyDsdGxbrpLwE9APZAeO"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_la_chatte",
+    "slug": "la-chatte",
+    "name": "La Chatte",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:22.147Z",
+    "updatedAt": "2026-06-24T14:25:12.254Z",
+    "printFilePath": "data/poster-masters/la-chatte/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/la-chatte/d4ed8271-b5ea-484c-8efe-13787f9d5c3f/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/la-chatte/poster-flat.webp",
+      "frame": "/uploads/posters/la-chatte/poster-flat.webp",
+      "thumb": "/uploads/posters/la-chatte/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjoDsdGxbrpLw076FRKBg",
+      "A4_black": "price_1TlrjpDsdGxbrpLw5l8Y8bmn",
+      "A4_white": "price_1TlrjpDsdGxbrpLwpIFPmYap",
+      "A4_wood": "price_1TlrjpDsdGxbrpLwJl79JNvx",
+      "A3_none": "price_1TlrjpDsdGxbrpLwbHUgB4iF",
+      "A3_black": "price_1TlrjqDsdGxbrpLw8PvhyZpn",
+      "A3_white": "price_1TlrjqDsdGxbrpLwwYEAfjQE",
+      "A3_wood": "price_1TlrjqDsdGxbrpLwukYogfNK",
+      "A2_none": "price_1TlrjrDsdGxbrpLwAxJpfyCQ",
+      "A2_black": "price_1TlrjrDsdGxbrpLwNiyDJewW",
+      "A2_white": "price_1TlrjrDsdGxbrpLwuDmJNCHk",
+      "A2_wood": "price_1TlrjsDsdGxbrpLwwNTN8c3Z",
+      "A1_none": "price_1TlrjsDsdGxbrpLwO4TeXxdv",
+      "A1_black": "price_1TlrjsDsdGxbrpLwxZDAt8dY",
+      "A1_white": "price_1TlrjsDsdGxbrpLwujrDmPZy",
+      "A1_wood": "price_1TlrjtDsdGxbrpLw0lNdPZ02"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_fourrures",
+    "slug": "fourrures",
+    "name": "Fourrures",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "aside",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:16.327Z",
+    "updatedAt": "2026-06-24T14:25:07.144Z",
+    "printFilePath": "data/poster-masters/fourrures/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/fourrures/e9b706fa-48bc-4bd2-877b-a72a3286b574/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/fourrures/poster-flat.webp",
+      "frame": "/uploads/posters/fourrures/poster-flat.webp",
+      "thumb": "/uploads/posters/fourrures/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjjDsdGxbrpLwrWuJrdkd",
+      "A4_black": "price_1TlrjjDsdGxbrpLwjfOWVNmS",
+      "A4_white": "price_1TlrjkDsdGxbrpLwVH2eaMTD",
+      "A4_wood": "price_1TlrjkDsdGxbrpLwEmaOJsk8",
+      "A3_none": "price_1TlrjkDsdGxbrpLwNBjqw641",
+      "A3_black": "price_1TlrjlDsdGxbrpLwNPrYZe9F",
+      "A3_white": "price_1TlrjlDsdGxbrpLw9USYgPoJ",
+      "A3_wood": "price_1TlrjlDsdGxbrpLwRE6iVsB9",
+      "A2_none": "price_1TlrjmDsdGxbrpLwSxf1ZbKJ",
+      "A2_black": "price_1TlrjmDsdGxbrpLwxUQ00xlV",
+      "A2_white": "price_1TlrjmDsdGxbrpLw2ftALYAM",
+      "A2_wood": "price_1TlrjmDsdGxbrpLwzAsSZUkB",
+      "A1_none": "price_1TlrjnDsdGxbrpLwIr7X0YfJ",
+      "A1_black": "price_1TlrjnDsdGxbrpLwEGahjwo9",
+      "A1_white": "price_1TlrjnDsdGxbrpLw6q7UgxD5",
+      "A1_wood": "price_1TlrjoDsdGxbrpLwTyEnEgQc"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_la_madeleine",
+    "slug": "la-madeleine",
+    "name": "La Madeleine",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:11.325Z",
+    "updatedAt": "2026-06-24T14:25:01.722Z",
+    "printFilePath": "data/poster-masters/la-madeleine/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/la-madeleine/ab2402d5-9e5c-4306-b588-2421a9c5f94e/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/la-madeleine/poster-flat.webp",
+      "frame": "/uploads/posters/la-madeleine/poster-flat.webp",
+      "thumb": "/uploads/posters/la-madeleine/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjeDsdGxbrpLwQUHdiumG",
+      "A4_black": "price_1TlrjeDsdGxbrpLwpmKCT9JU",
+      "A4_white": "price_1TlrjeDsdGxbrpLw927ySHDq",
+      "A4_wood": "price_1TlrjfDsdGxbrpLwlcxmKN2S",
+      "A3_none": "price_1TlrjfDsdGxbrpLwssEqv7h9",
+      "A3_black": "price_1TlrjfDsdGxbrpLwsxQSr9pu",
+      "A3_white": "price_1TlrjgDsdGxbrpLw8K3pSfJi",
+      "A3_wood": "price_1TlrjgDsdGxbrpLwdfIWMfyK",
+      "A2_none": "price_1TlrjgDsdGxbrpLw4fWHWUVb",
+      "A2_black": "price_1TlrjhDsdGxbrpLwKom5Mth7",
+      "A2_white": "price_1TlrjhDsdGxbrpLwrDoVFFzA",
+      "A2_wood": "price_1TlrjhDsdGxbrpLwf2KAPvBM",
+      "A1_none": "price_1TlrjiDsdGxbrpLwppPJ0Mls",
+      "A1_black": "price_1TlrjiDsdGxbrpLwAnllVyU0",
+      "A1_white": "price_1TlrjiDsdGxbrpLwZs3oZaCf",
+      "A1_wood": "price_1TlrjiDsdGxbrpLwDzkwv2UI"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_les_meilleurs",
+    "slug": "les-meilleurs",
+    "name": "Les Meilleurs",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:09.075Z",
+    "updatedAt": "2026-06-24T14:24:53.409Z",
+    "printFilePath": "data/poster-masters/les-meilleurs/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/les-meilleurs/c101529d-8ab0-4c44-a2f5-48a4a4d2226a/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/les-meilleurs/poster-flat.webp",
+      "frame": "/uploads/posters/les-meilleurs/poster-flat.webp",
+      "thumb": "/uploads/posters/les-meilleurs/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjVDsdGxbrpLwyj1Tj5qB",
+      "A4_black": "price_1TlrjWDsdGxbrpLwspo6pCdl",
+      "A4_white": "price_1TlrjWDsdGxbrpLwdr8vPhc5",
+      "A4_wood": "price_1TlrjWDsdGxbrpLwp8jwETRe",
+      "A3_none": "price_1TlrjXDsdGxbrpLwlEZKI8UH",
+      "A3_black": "price_1TlrjXDsdGxbrpLw57GaCaV4",
+      "A3_white": "price_1TlrjXDsdGxbrpLwfLNLDPH1",
+      "A3_wood": "price_1TlrjXDsdGxbrpLwHuom6sH4",
+      "A2_none": "price_1TlrjYDsdGxbrpLwy4IcknFu",
+      "A2_black": "price_1TlrjYDsdGxbrpLw5KJaCA6A",
+      "A2_white": "price_1TlrjYDsdGxbrpLwYveeSr6v",
+      "A2_wood": "price_1TlrjZDsdGxbrpLwWFgOmC73",
+      "A1_none": "price_1TlrjZDsdGxbrpLw4zA2lZ0P",
+      "A1_black": "price_1TlrjZDsdGxbrpLw9PmXOxN9",
+      "A1_white": "price_1TlrjaDsdGxbrpLwu5VHvTTk",
+      "A1_wood": "price_1TlrjaDsdGxbrpLw7JPlikZI"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_geugeot_marseille",
+    "slug": "geugeot-marseille",
+    "name": "Geugeot Marseille",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "afsd",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:06.049Z",
+    "updatedAt": "2026-06-24T14:24:48.276Z",
+    "printFilePath": "data/poster-masters/geugeot-marseille/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/geugeot-marseille/0189c3bd-e747-4548-b7c3-7c8e44719f31/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/geugeot-marseille/poster-flat.webp",
+      "frame": "/uploads/posters/geugeot-marseille/poster-flat.webp",
+      "thumb": "/uploads/posters/geugeot-marseille/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjQDsdGxbrpLwCDl0Jbfh",
+      "A4_black": "price_1TlrjQDsdGxbrpLwZ2tYiJ0i",
+      "A4_white": "price_1TlrjRDsdGxbrpLwPiOcRNfy",
+      "A4_wood": "price_1TlrjRDsdGxbrpLwQr9zl3uk",
+      "A3_none": "price_1TlrjRDsdGxbrpLwERq7TgxE",
+      "A3_black": "price_1TlrjSDsdGxbrpLwnuXHrY19",
+      "A3_white": "price_1TlrjSDsdGxbrpLw3cf1f18t",
+      "A3_wood": "price_1TlrjSDsdGxbrpLwZnwGaiVQ",
+      "A2_none": "price_1TlrjTDsdGxbrpLwU3hm51D9",
+      "A2_black": "price_1TlrjTDsdGxbrpLwcEYdW6ai",
+      "A2_white": "price_1TlrjTDsdGxbrpLwbVFrXtUJ",
+      "A2_wood": "price_1TlrjTDsdGxbrpLwrPSyweT5",
+      "A1_none": "price_1TlrjUDsdGxbrpLwG9BlmMcx",
+      "A1_black": "price_1TlrjUDsdGxbrpLwpw9yY4G3",
+      "A1_white": "price_1TlrjUDsdGxbrpLwblEvaNxM",
+      "A1_wood": "price_1TlrjVDsdGxbrpLwmYNsUahp"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_lanvin",
+    "slug": "lanvin",
+    "name": "Lanvin",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:39:02.617Z",
+    "updatedAt": "2026-06-24T14:24:43.031Z",
+    "printFilePath": "data/poster-masters/lanvin/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/lanvin/4ef71523-100b-4f21-b981-3ab964b0b648/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/lanvin/poster-flat.webp",
+      "frame": "/uploads/posters/lanvin/poster-flat.webp",
+      "thumb": "/uploads/posters/lanvin/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjLDsdGxbrpLw4kJ7dnQt",
+      "A4_black": "price_1TlrjLDsdGxbrpLwfZrN6ZpO",
+      "A4_white": "price_1TlrjMDsdGxbrpLw3erR2PPl",
+      "A4_wood": "price_1TlrjMDsdGxbrpLwMt7EIscw",
+      "A3_none": "price_1TlrjMDsdGxbrpLwUy2dbRyn",
+      "A3_black": "price_1TlrjMDsdGxbrpLwoAlCvmoW",
+      "A3_white": "price_1TlrjNDsdGxbrpLwE0ikWltp",
+      "A3_wood": "price_1TlrjNDsdGxbrpLwXM0dSiZk",
+      "A2_none": "price_1TlrjNDsdGxbrpLwM0DdRE0v",
+      "A2_black": "price_1TlrjODsdGxbrpLw7n02ejYV",
+      "A2_white": "price_1TlrjODsdGxbrpLwaIqxQtLg",
+      "A2_wood": "price_1TlrjODsdGxbrpLwB5iC5M5g",
+      "A1_none": "price_1TlrjODsdGxbrpLwaEp7SkUC",
+      "A1_black": "price_1TlrjPDsdGxbrpLwDG3a0oXG",
+      "A1_white": "price_1TlrjPDsdGxbrpLwCHg6HQP8",
+      "A1_wood": "price_1TlrjPDsdGxbrpLwk5UV5H0e"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
+    "id": "poster_monte_carlo_ballet_picasso",
+    "slug": "monte-carlo-ballet-picasso",
+    "name": "Monte Carlo Ballet  - Picasso",
+    "artist": "N. Birzinska",
+    "artistSlug": "n-birzinska",
+    "description": "asdf",
+    "descriptions": {
+      "aboutArtist": "asdf",
+      "deliveryAndReturns": "Produced to order and shipped from the closest available fulfilment partner where possible. Returns are accepted for damaged, faulty, or incorrect items in line with our returns policy.",
+      "productDetails": "Printed on premium archival paper with rich colour reproduction, a refined matte finish, and careful handling from production to dispatch."
+    },
+    "templateIds": {
+      "deliveryAndReturns": "standard-global",
+      "productDetails": "museum-print"
+    },
+    "status": "ready-to-publish",
+    "createdAt": "2026-06-24T12:38:59.528Z",
+    "updatedAt": "2026-06-24T14:24:37.727Z",
+    "printFilePath": "data/poster-masters/monte-carlo-ballet-picasso/print-master.jpg",
+    "printFileUrl": "https://f005.backblazeb2.com/file/home-posters/print-masters/monte-carlo-ballet-picasso/dda98b02-0d66-4409-b7ea-64197472ed82/print-master.jpg",
+    "images": {
+      "flat": "/uploads/posters/monte-carlo-ballet-picasso/poster-flat.webp",
+      "frame": "/uploads/posters/monte-carlo-ballet-picasso/poster-flat.webp",
+      "thumb": "/uploads/posters/monte-carlo-ballet-picasso/poster-thumb.webp",
+      "lifestyle": []
+    },
+    "format": "a-series",
+    "basePrices": {},
+    "stripePriceIds": {
+      "A4_none": "price_1TlrjGDsdGxbrpLwVe9mmiuP",
+      "A4_black": "price_1TlrjGDsdGxbrpLwTqk9NBrk",
+      "A4_white": "price_1TlrjGDsdGxbrpLwqr5q2Dgd",
+      "A4_wood": "price_1TlrjHDsdGxbrpLw7Ls5n1q4",
+      "A3_none": "price_1TlrjHDsdGxbrpLw0w6UX3UY",
+      "A3_black": "price_1TlrjHDsdGxbrpLwQdwYE99s",
+      "A3_white": "price_1TlrjHDsdGxbrpLwwJoxAwCD",
+      "A3_wood": "price_1TlrjIDsdGxbrpLwc8UCNH9u",
+      "A2_none": "price_1TlrjIDsdGxbrpLwU2QeR0Wb",
+      "A2_black": "price_1TlrjIDsdGxbrpLw0xNNTUTD",
+      "A2_white": "price_1TlrjJDsdGxbrpLwCb18eUm9",
+      "A2_wood": "price_1TlrjJDsdGxbrpLwIotDLw4P",
+      "A1_none": "price_1TlrjJDsdGxbrpLwnnzALpnf",
+      "A1_black": "price_1TlrjKDsdGxbrpLwWlO63iTc",
+      "A1_white": "price_1TlrjKDsdGxbrpLw6CzMoyAc",
+      "A1_wood": "price_1TlrjKDsdGxbrpLwkRW093Xy"
+    },
+    "gelatoProductUids": {},
+    "notes": ""
+  },
+  {
     "id": "poster_tyler_the_creator_call_me_if_you_get_lost",
     "slug": "tyler-the-creator-call-me-if-you-get-lost",
     "name": "Tyler the Creator - CMiYGL Poster",

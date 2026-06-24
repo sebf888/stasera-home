@@ -37,7 +37,7 @@ export default async function Home() {
     <>
     <HeroSection />
     <main className="pb-10">
-      <div className="px-5 sm:px-10 lg:px-[70px]">
+      <div className="px-5 sm:px-10 lg:px-[70px] pt-10">
         <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
           {firstRow.map((product) => (
             <ProductCard key={product.id} product={product} />

@@ -214,7 +214,7 @@ export default function BatchUploader({ artists, productDetailTemplates, deliver
                     Description
                   </th>
                   <th className="pb-2 pr-3 text-xs font-medium uppercase tracking-[0.1em] text-[#74756f] min-w-[200px]">
-                    Print file URL
+                    Print file URL <span className="normal-case tracking-normal text-[#a8a19a]">(auto)</span>
                   </th>
                   <th className="pb-2 pr-3 text-xs font-medium uppercase tracking-[0.1em] text-[#74756f] w-28">
                     Lifestyle
@@ -349,7 +349,7 @@ function BatchRowEditor({
           value={row.printFileUrl}
           onChange={(e) => onChange({ printFileUrl: e.target.value })}
           className={cell}
-          placeholder="https://…"
+          placeholder="Auto-uploaded to Backblaze — or paste to override"
         />
       </td>
 

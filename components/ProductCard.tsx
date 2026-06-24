@@ -34,13 +34,14 @@ const FRAME_BOX_WIDTH = 62;
 const HOVER_SCALE = 1.06;
 
 const FRAME_ASPECT: Record<PosterFormat, number> = {
-  'a-series':  0.74,
-  'ratio-4x3': 0.78,
+  'a-series':  0.7196, // 634 × 881
+  'ratio-4x3': 0.7616, // 671 × 881
 };
 
+// Poster opening, measured from the frame assets (tucked ~0.5% under the moulding).
 const FRAME_APERTURE: Record<PosterFormat, { top: number; left: number; width: number; height: number }> = {
-  'a-series':  { top: 5, left: 6, width: 88, height: 90 },
-  'ratio-4x3': { top: 5, left: 6, width: 88, height: 90 },
+  'a-series':  { top: 1.8, left: 2.6, width: 94.6, height: 96.3 },
+  'ratio-4x3': { top: 1.8, left: 2.6, width: 94.8, height: 96.3 },
 };
 
 type ButtonState = 'idle' | 'picking' | 'added';
@@ -152,7 +153,7 @@ export default function ProductCard({ product }: Props) {
                 src={`/frames/frame-${product.format}-${selectedFrame}-v2.webp`}
                 fill
                 sizes="(max-width: 1024px) 50vw, 33vw"
-                className="object-cover pointer-events-none"
+                className="object-contain pointer-events-none"
                 alt=""
               />
             )}
