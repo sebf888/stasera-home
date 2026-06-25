@@ -13,7 +13,8 @@ export default function PrivacyPolicyPage() {
       <LegalSection heading="1. Who We Are">
         <p>
           Stasera (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an online fine art print retailer
-          operated by Stasera Home, based at [BUSINESS ADDRESS], United Kingdom.
+          operated by Stasera Home (a trading name of Stanley Phillips), based at
+          40 Cecil Road, Hertford, Hertfordshire, SG13 8HR, United Kingdom.
           You can reach us at info@stasera.digital.
         </p>
       </LegalSection>

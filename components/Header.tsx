@@ -18,7 +18,14 @@ export default function Header() {
   const [heroGone, setHeroGone] = useState(false);
   const [shrunk, setShrunk] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+
+  // Close the mobile menu on navigation, or when the header auto-hides on scroll.
+  useEffect(() => setMenuOpen(false), [pathname]);
+  useEffect(() => {
+    if (!visible) setMenuOpen(false);
+  }, [visible]);
 
   useEffect(() => {
     // On non-homepage pages the header is never transparent
@@ -85,7 +92,45 @@ export default function Header() {
       <div className="flex items-center gap-3 sm:gap-5">
         <CurrencySwitcher transparent={transparent} />
         <CartButton isTransparent={transparent} />
+        {/* Mobile menu toggle — only shown below the sm breakpoint, where the
+            inline nav links are hidden. */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          className={[
+            'sm:hidden flex items-center justify-center -mr-1 p-1 transition-colors duration-300',
+            transparent && !menuOpen ? 'text-white' : 'text-[#4B4C4A]',
+          ].join(' ')}
+        >
+          {menuOpen ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          )}
+        </button>
       </div>
+
+      {/* Mobile dropdown panel */}
+      {menuOpen && (
+        <div className="sm:hidden absolute left-0 right-0 top-full bg-white border-t border-black/5 shadow-sm px-5 py-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className="block py-3 text-[14px] tracking-[-0.03em] text-[#4B4C4A] border-b border-black/5 last:border-b-0"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 }

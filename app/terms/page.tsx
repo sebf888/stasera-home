@@ -16,7 +16,8 @@ export default function TermsPage() {
       <LegalSection heading="1. About Us">
         <p>
           These terms govern your use of stasera.digital (the &quot;Site&quot;) and any purchase
-          made through it. The Site is operated by Stasera Home, [BUSINESS ADDRESS],
+          made through it. The Site is operated by Stasera Home (a trading name of
+          Stanley Phillips), 40 Cecil Road, Hertford, Hertfordshire, SG13 8HR,
           United Kingdom. By placing an order you agree to these terms.
         </p>
       </LegalSection>
