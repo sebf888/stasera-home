@@ -30,6 +30,12 @@ import { useCurrency } from '@/lib/currency-context';
                        the frame image box (top / left / width / height).
    ──────────────────────────────────────────────────────────────────────── */
 const CANVAS_ASPECT = '5 / 6';
+// Shared drop shadow (Figma: x -6, y 6, blur 6.5, spread 0, #000 @ 25%).
+// Cast from a solid "shadow plate" behind the art via box-shadow — box-shadow
+// composites cleanly under the hover scale, whereas a drop-shadow filter gets
+// re-rasterised and shows tiling seams while the group animates.
+const POSTER_SHADOW = '-6px 6px 6.5px 0 rgba(0, 0, 0, 0.25)';
+
 const FRAME_BOX_WIDTH = 62;
 const HOVER_SCALE = 1.06;
 
@@ -126,6 +132,20 @@ export default function ProductCard({ product }: Props) {
               transition: 'transform 0.4s ease',
             }}
           >
+            {/* Shadow plate — solid rectangle behind the art, sized to the
+                visible edge so box-shadow casts from a clean outline. Framed:
+                the full frame outer rectangle (assets are tightly cropped, no
+                transparent padding). Unframed: the poster opening itself. */}
+            <div
+              className="absolute"
+              style={{
+                left:   hasFrame ? 0 : `${aperture.left}%`,
+                top:    hasFrame ? 0 : `${aperture.top}%`,
+                width:  hasFrame ? '100%' : `${aperture.width}%`,
+                height: hasFrame ? '100%' : `${aperture.height}%`,
+                boxShadow: POSTER_SHADOW,
+              }}
+            />
             {/* Poster — underlies the frame, sits within the aperture */}
             <div
               className="absolute overflow-hidden"
@@ -134,9 +154,6 @@ export default function ProductCard({ product }: Props) {
                 top:    `${aperture.top}%`,
                 width:  `${aperture.width}%`,
                 height: `${aperture.height}%`,
-                // Soft shadow only when unframed — framed posters use the
-                // shadow baked into the frame asset.
-                boxShadow: hasFrame ? undefined : '0 8px 24px rgba(0, 0, 0, 0.16)',
               }}
             >
               <Image
@@ -148,7 +165,8 @@ export default function ProductCard({ product }: Props) {
               />
             </div>
 
-            {/* Frame overlay — transparent PNG/WebP, shadows baked in */}
+            {/* Frame overlay — transparent WebP, tightly cropped so its outer
+                edge fills the group box; the shadow plate sits flush behind. */}
             {hasFrame && (
               <Image
                 src={`/frames/frame-${product.format}-${selectedFrame}-v2.webp`}

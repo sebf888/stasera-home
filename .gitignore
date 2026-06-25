@@ -45,3 +45,6 @@ next-env.d.ts
 
 # generated poster web assets (committed once, then ignored — see deployment notes)
 # /public/uploads/posters/
+
+# one-off live-price migration progress (local only)
+scripts/.regen-state.json
