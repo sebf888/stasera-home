@@ -4,10 +4,12 @@ import { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/lib/cart-context';
-import { formatPrice, SIZE_LABELS, FRAME_LABELS } from '@/data/products';
+import { useCurrency } from '@/lib/currency-context';
+import { SIZE_LABELS, FRAME_LABELS } from '@/data/products';
 
 export default function CartButton({ isTransparent = false }: { isTransparent?: boolean }) {
   const { items, totalItems, subtotalGBP, removeItem } = useCart();
+  const { format } = useCurrency();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -83,7 +85,7 @@ export default function CartButton({ isTransparent = false }: { isTransparent?: 
                         {SIZE_LABELS[item.size]} · {FRAME_LABELS[item.frame]}
                       </p>
                       <p className="text-[11px] tracking-[-0.03em] text-[#4B4C4A] mt-0.5">
-                        {formatPrice(item.priceGBP)} × {item.quantity}
+                        {format(item.priceGBP)} × {item.quantity}
                       </p>
                     </div>
                     <button
@@ -101,7 +103,7 @@ export default function CartButton({ isTransparent = false }: { isTransparent?: 
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A]">Subtotal</span>
                   <span className="text-[12px] font-medium tracking-[-0.03em] text-[#4B4C4A]">
-                    {formatPrice(subtotalGBP)}
+                    {format(subtotalGBP)}
                   </span>
                 </div>
                 <div className="flex gap-2">

@@ -2,9 +2,7 @@ import Link from 'next/link';
 
 const shopLinks = [
   { label: 'All Prints', href: '/shop' },
-  { label: 'Collections', href: '/collections' },
   { label: 'About Us', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 const legalLinks = [

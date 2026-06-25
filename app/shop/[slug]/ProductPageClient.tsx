@@ -10,9 +10,9 @@ import {
   FRAMES,
   SIZE_LABELS,
   getVariant,
-  formatPrice,
 } from '@/data/products';
 import { useCart } from '@/lib/cart-context';
+import { useCurrency } from '@/lib/currency-context';
 
 const FRAME_SWATCHES: Record<Frame, { bg: string; noFrame?: boolean }> = {
   none:  { bg: '#FFFFFF', noFrame: true },
@@ -36,13 +36,14 @@ export default function ProductPageClient({ product }: { product: Product }) {
   const [added, setAdded] = useState(false);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { addItem } = useCart();
+  const { format } = useCurrency();
 
   useEffect(() => {
     return () => { if (resetTimer.current) clearTimeout(resetTimer.current); };
   }, []);
 
   const variant = getVariant(product, selectedSize, selectedFrame);
-  const price = variant ? formatPrice(variant.priceGBP) : '—';
+  const price = variant ? format(variant.priceGBP) : '—';
 
   function handleAddToCart() {
     if (!variant) return;

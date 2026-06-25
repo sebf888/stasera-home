@@ -14,15 +14,11 @@ export default function ContactPage() {
 
           <p>
             <a
-              href="mailto:hello@yourdomain.com"
+              href="mailto:info@stasera.digital"
               className="underline underline-offset-2 hover:opacity-60 transition-opacity"
             >
-              hello@yourdomain.com
+              info@stasera.digital
             </a>
-          </p>
-
-          <p className="opacity-50 text-[12px]">
-            [Replace the email address above with your actual contact email.]
           </p>
         </div>
       </div>

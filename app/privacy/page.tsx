@@ -8,13 +8,13 @@ import LegalPage, { LegalSection } from '@/components/LegalPage';
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="[Date]">
+    <LegalPage title="Privacy Policy" lastUpdated="25 June 2026">
 
       <LegalSection heading="1. Who We Are">
         <p>
           Stasera (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an online fine art print retailer
-          operated by [Your Full Legal Name / Company Name], registered at [Address],
-          [Country]. You can reach us at [hello@yourdomain.com].
+          operated by Stasera Home, based at [BUSINESS ADDRESS], United Kingdom.
+          You can reach us at info@stasera.digital.
         </p>
       </LegalSection>
 
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
 
       <LegalSection heading="5. Data Retention">
         <p>
-          Order data is retained for [X] years in line with UK tax and accounting requirements.
+          Order data is retained for 6 years in line with UK tax and accounting requirements.
           You may request deletion of personal data not required for legal compliance at any time.
         </p>
       </LegalSection>
@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
         <p>
           Under UK GDPR you have the right to access, rectify, erase, restrict, or port
           your personal data, and to object to processing. To exercise any of these rights
-          email us at [hello@yourdomain.com]. You also have the right to lodge a complaint
+          email us at info@stasera.digital. You also have the right to lodge a complaint
           with the Information Commissioner&apos;s Office (ico.org.uk).
         </p>
       </LegalSection>
@@ -64,7 +64,6 @@ export default function PrivacyPolicyPage() {
         <p>
           This site uses essential cookies only (cart persistence via localStorage).
           No third-party tracking or advertising cookies are set without your consent.
-          [Update this section if you add analytics or advertising tools.]
         </p>
       </LegalSection>
 

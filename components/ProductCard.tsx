@@ -12,9 +12,9 @@ import {
   SIZE_LABELS,
   FRAME_LABELS,
   getVariant,
-  formatPrice,
 } from '@/data/products';
 import { useCart } from '@/lib/cart-context';
+import { useCurrency } from '@/lib/currency-context';
 
 /* ────────────────────────────────────────────────────────────────────────
    Layout tunables — adjust these once the real (tightly-cropped, transparent,
@@ -58,13 +58,14 @@ export default function ProductCard({ product }: Props) {
   const [zoomed, setZoomed] = useState(false);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { addItem } = useCart();
+  const { format } = useCurrency();
 
   useEffect(() => {
     return () => { if (resetTimer.current) clearTimeout(resetTimer.current); };
   }, []);
 
   const variant = getVariant(product, selectedSize, selectedFrame);
-  const price = variant ? formatPrice(variant.priceGBP) : '—';
+  const price = variant ? format(variant.priceGBP) : '—';
 
   const aperture = FRAME_APERTURE[product.format];
   const hasFrame = selectedFrame !== 'none';

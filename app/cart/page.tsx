@@ -4,11 +4,20 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '@/lib/cart-context';
-import { formatPrice, SIZE_LABELS, FRAME_LABELS } from '@/data/products';
+import { useCurrency } from '@/lib/currency-context';
+import { SIZE_LABELS, FRAME_LABELS } from '@/data/products';
+import { FREE_SHIPPING_THRESHOLD_PENCE, SHIPPING_FEE_PENCE } from '@/lib/shipping';
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, subtotalGBP } = useCart();
+  const { format } = useCurrency();
   const [loading, setLoading] = useState(false);
+
+  const shippingPence =
+    subtotalGBP >= FREE_SHIPPING_THRESHOLD_PENCE ? 0 : SHIPPING_FEE_PENCE;
+  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD_PENCE - subtotalGBP);
+  const shippingProgress = Math.min(1, Math.max(0, subtotalGBP / FREE_SHIPPING_THRESHOLD_PENCE));
+  const totalPence = subtotalGBP + shippingPence;
 
   async function handleCheckout() {
     if (items.length === 0) return;
@@ -77,7 +86,7 @@ export default function CartPage() {
                   {SIZE_LABELS[item.size]} · {FRAME_LABELS[item.frame]}
                 </p>
                 <p className="text-[12px] tracking-[-0.03em] text-[#4B4C4A] mt-0.5">
-                  {formatPrice(item.priceGBP)}
+                  {format(item.priceGBP)}
                 </p>
 
                 <div className="flex items-center gap-3 mt-3">
@@ -114,7 +123,7 @@ export default function CartPage() {
                   ×
                 </button>
                 <p className="text-[13px] font-medium tracking-[-0.03em] text-[#4B4C4A]">
-                  {formatPrice(item.priceGBP * item.quantity)}
+                  {format(item.priceGBP * item.quantity)}
                 </p>
               </div>
             </div>
@@ -127,20 +136,39 @@ export default function CartPage() {
             <h2 className="text-[13px] font-medium tracking-[-0.03em] text-[#4B4C4A] mb-5">
               Order Summary
             </h2>
+
+            {shippingPence === 0 ? (
+              <p className="text-[11px] tracking-[-0.03em] text-[#4B4C4A] mb-5 pb-5 border-b border-[#EBEBEB]">
+                You&apos;ve unlocked free shipping.
+              </p>
+            ) : (
+              <div className="mb-5 pb-5 border-b border-[#EBEBEB]">
+                <p className="text-[11px] tracking-[-0.03em] text-[#4B4C4A] opacity-70 mb-2">
+                  You&apos;re {format(remaining)} away from free shipping
+                </p>
+                <div className="h-[3px] w-full bg-[#EBEBEB] overflow-hidden">
+                  <div
+                    className="h-full bg-[#334157] transition-[width] duration-500 ease-out"
+                    style={{ width: `${shippingProgress * 100}%` }}
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="flex justify-between mb-2">
               <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A] opacity-60">
                 Subtotal
               </span>
               <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A]">
-                {formatPrice(subtotalGBP)}
+                {format(subtotalGBP)}
               </span>
             </div>
             <div className="flex justify-between mb-5">
               <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A] opacity-60">
                 Shipping
               </span>
-              <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A] opacity-60">
-                Calculated at checkout
+              <span className="text-[12px] tracking-[-0.03em] text-[#4B4C4A]">
+                {shippingPence === 0 ? 'Free' : format(SHIPPING_FEE_PENCE)}
               </span>
             </div>
             <div className="border-t border-[#EBEBEB] pt-4 flex justify-between mb-6">
@@ -148,7 +176,7 @@ export default function CartPage() {
                 Total
               </span>
               <span className="text-[13px] font-medium tracking-[-0.03em] text-[#4B4C4A]">
-                {formatPrice(subtotalGBP)}
+                {format(totalPence)}
               </span>
             </div>
             <button

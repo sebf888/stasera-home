@@ -11,13 +11,13 @@ import LegalPage, { LegalSection } from '@/components/LegalPage';
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms & Conditions" lastUpdated="[Date]">
+    <LegalPage title="Terms & Conditions" lastUpdated="25 June 2026">
 
       <LegalSection heading="1. About Us">
         <p>
-          These terms govern your use of stasera.co.uk (the &quot;Site&quot;) and any purchase
-          made through it. The Site is operated by [Your Full Legal Name / Company Name],
-          [Address]. By placing an order you agree to these terms.
+          These terms govern your use of stasera.digital (the &quot;Site&quot;) and any purchase
+          made through it. The Site is operated by Stasera Home, [BUSINESS ADDRESS],
+          United Kingdom. By placing an order you agree to these terms.
         </p>
       </LegalSection>
 
@@ -35,17 +35,19 @@ export default function TermsPage() {
         <p>
           Orders are subject to acceptance and availability. We reserve the right to
           refuse or cancel any order. Payment is taken in full at the time of order via
-          Stripe. All prices are in GBP and include VAT where applicable.
-          [Confirm your VAT status with an accountant before going live.]
+          Stripe. All prices are in GBP. Stasera Home is not currently VAT-registered,
+          so no VAT is charged on your order.
         </p>
       </LegalSection>
 
       <LegalSection heading="4. Delivery">
         <p>
-          Estimated delivery times are [X–X business days] for UK orders and
-          [X–X business days] internationally. Times are estimates only and we cannot
-          guarantee delivery by a specific date. Risk passes to you on delivery.
-          [Fill in actual Gelato delivery estimates for your regions.]
+          All items are made to order and shipped by our fulfilment partner, Gelato.
+          Total delivery time is production plus shipping, and varies by product size
+          and destination — larger and framed pieces may take longer. As a general
+          guide, UK orders typically arrive within 3–6 business days and international
+          orders within 7–14 business days. These times are estimates only and are not
+          guaranteed. Risk passes to you on delivery.
         </p>
       </LegalSection>
 
@@ -63,7 +65,6 @@ export default function TermsPage() {
           All artwork sold on the Site is licensed for personal, non-commercial display
           only. You may not reproduce, resell, or distribute any artwork purchased.
           All rights remain with the respective artists.
-          [Confirm your licensing agreements with contributing artists.]
         </p>
       </LegalSection>
 

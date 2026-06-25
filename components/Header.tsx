@@ -3,13 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import CartButton from './CartButton';
+import CurrencySwitcher from './CurrencySwitcher';
 
 const navItems = [
   { label: 'All Prints', href: '/shop' },
-  { label: 'Collections', href: '/collections' },
-  { label: 'Reviews', href: '/reviews' },
   { label: 'About Us', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Header() {
@@ -53,7 +51,7 @@ export default function Header() {
   return (
     <header
       className={[
-        'fixed top-0 left-0 right-0 z-50 flex items-center w-full px-5 sm:px-10 lg:px-[80px]',
+        'fixed top-[34px] sm:top-[36px] left-0 right-0 z-50 flex items-center w-full px-5 sm:px-10 lg:px-[80px]',
         'transition-all duration-300 ease-in-out',
         transparent
           ? 'bg-transparent py-6 sm:py-8 lg:py-12'
@@ -84,7 +82,10 @@ export default function Header() {
           </Link>
         ))}
       </nav>
-      <CartButton isTransparent={transparent} />
+      <div className="flex items-center gap-3 sm:gap-5">
+        <CurrencySwitcher transparent={transparent} />
+        <CartButton isTransparent={transparent} />
+      </div>
     </header>
   );
 }

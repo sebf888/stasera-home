@@ -8,7 +8,7 @@ import LegalPage, { LegalSection } from '@/components/LegalPage';
 
 export default function ReturnsPage() {
   return (
-    <LegalPage title="Returns & Refunds" lastUpdated="[Date]">
+    <LegalPage title="Returns & Refunds" lastUpdated="25 June 2026">
 
       <LegalSection heading="Made-to-Order Policy">
         <p>
@@ -24,10 +24,10 @@ export default function ReturnsPage() {
           issue a full refund at no cost to you. Please contact us within{' '}
           <strong>14 days of delivery</strong> at{' '}
           <a
-            href="mailto:hello@yourdomain.com"
+            href="mailto:info@stasera.digital"
             className="underline underline-offset-2"
           >
-            hello@yourdomain.com
+            info@stasera.digital
           </a>{' '}
           with:
         </p>
@@ -37,7 +37,7 @@ export default function ReturnsPage() {
           <li>– A brief description of the issue</li>
         </ul>
         <p className="mt-3">
-          We will respond within [X] business days with next steps. You do not need to
+          We will respond within 2 business days with next steps. You do not need to
           return the damaged item.
         </p>
       </LegalSection>
@@ -45,14 +45,14 @@ export default function ReturnsPage() {
       <LegalSection heading="Refunds">
         <p>
           Approved refunds are processed to your original payment method via Stripe
-          within [5–10] business days. Stripe may take additional time to post the
+          within 5–10 business days. Stripe may take additional time to post the
           credit depending on your bank.
         </p>
       </LegalSection>
 
       <LegalSection heading="Lost in Transit">
         <p>
-          If your order has not arrived within [X] days of the estimated delivery date,
+          If your order has not arrived within 30 days of the estimated delivery date,
           please contact us and we will investigate with our fulfilment partner.
           If confirmed lost, we will reprint and reship at no charge.
         </p>
@@ -62,10 +62,10 @@ export default function ReturnsPage() {
         <p>
           For all returns or refund enquiries:{' '}
           <a
-            href="mailto:hello@yourdomain.com"
+            href="mailto:info@stasera.digital"
             className="underline underline-offset-2"
           >
-            hello@yourdomain.com
+            info@stasera.digital
           </a>
         </p>
       </LegalSection>
