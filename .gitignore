@@ -44,4 +44,4 @@ next-env.d.ts
 /data/poster-masters/
 
 # generated poster web assets (committed once, then ignored — see deployment notes)
-/public/uploads/posters/
+# /public/uploads/posters/
