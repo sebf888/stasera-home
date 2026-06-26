@@ -6,6 +6,7 @@ const shopLinks = [
 ];
 
 const legalLinks = [
+  { label: 'Contact', href: '/contact' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
   { label: 'Returns & Refunds', href: '/returns' },
@@ -27,6 +28,12 @@ export default function Footer() {
           <p className="text-[12px] font-normal tracking-[-0.03em] text-[#4B4C4A] opacity-55 max-w-[200px] leading-[1.5]">
             Fine art prints, beautifully made.
           </p>
+          <a
+            href="mailto:info@stasera.digital"
+            className="text-[12px] font-normal tracking-[-0.03em] text-[#4B4C4A] opacity-60 hover:opacity-100 transition-opacity"
+          >
+            info@stasera.digital
+          </a>
         </div>
 
         {/* Nav columns */}

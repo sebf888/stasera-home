@@ -10,9 +10,31 @@ import { CurrencyProvider } from "@/lib/currency-context";
 import { getRates } from "@/lib/fx";
 import { currencyForCountry, isCurrency, type Currency } from "@/lib/currency";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.stasera.digital";
+
+const SITE_DESCRIPTION =
+  "Museum-quality fine art prints, made to order and ready to hang. Archival inks, premium papers, and framing options — shipped worldwide.";
+
 export const metadata: Metadata = {
-  title: "Stasera",
-  description: "Stasera — All Prints",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Stasera — Fine Art Prints",
+    template: "%s — Stasera",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Stasera",
+    title: "Stasera — Fine Art Prints",
+    description: SITE_DESCRIPTION,
+    images: ["/hero_comp.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stasera — Fine Art Prints",
+    description: SITE_DESCRIPTION,
+    images: ["/hero_comp.jpg"],
+  },
 };
 
 export default async function RootLayout({

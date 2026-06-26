@@ -1,11 +1,5 @@
 import LegalPage, { LegalSection } from '@/components/LegalPage';
 
-// CONTENT GUIDANCE:
-// Generate a compliant UK/EU privacy policy at https://termly.io or https://www.iubenda.com
-// It must cover: data controller identity, what data you collect, lawful basis (GDPR Art.6),
-// how it is used, third parties (Stripe, Gelato), retention periods, and user rights.
-// Replace the placeholder sections below with the generated text before going live.
-
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage title="Privacy Policy" lastUpdated="25 June 2026">

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { readPosterDrafts } from '@/lib/poster-admin';
 import { buildVariants, PosterFormat } from '@/data/products';
@@ -6,6 +7,39 @@ import ReadyToHangSection from '@/components/ReadyToHangSection';
 import MuseumQualitySection from '@/components/MuseumQualitySection';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const drafts = await readPosterDrafts();
+  const draft = drafts.find((d) => d.slug === slug && d.status === 'ready-to-publish');
+
+  if (!draft) return { title: 'Print Not Found' };
+
+  const title = `${draft.name} by ${draft.artist}`;
+  const description = `${draft.name} by ${draft.artist} — a museum-quality fine art print, made to order and ready to hang.`;
+  const image = draft.images?.flat;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} — Stasera`,
+      description,
+      type: 'website',
+      images: image ? [image] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} — Stasera`,
+      description,
+      images: image ? [image] : undefined,
+    },
+  };
+}
 
 export default async function ProductPage({
   params,

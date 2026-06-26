@@ -12,6 +12,7 @@ export default function CartPage() {
   const { items, removeItem, updateQuantity, subtotalGBP } = useCart();
   const { format } = useCurrency();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const shippingPence =
     subtotalGBP >= FREE_SHIPPING_THRESHOLD_PENCE ? 0 : SHIPPING_FEE_PENCE;
@@ -22,6 +23,7 @@ export default function CartPage() {
   async function handleCheckout() {
     if (items.length === 0) return;
     setLoading(true);
+    setError(null);
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
@@ -33,6 +35,11 @@ export default function CartPage() {
       window.location.href = data.url;
     } catch (err) {
       console.error('Checkout error:', err);
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'Something went wrong starting checkout. Please try again.'
+      );
       setLoading(false);
     }
   }
@@ -186,6 +193,11 @@ export default function CartPage() {
             >
               {loading ? 'Redirecting…' : 'Proceed to Checkout'}
             </button>
+            {error && (
+              <p className="mt-3 text-[11px] tracking-[-0.03em] text-[#b3261e] leading-[1.5]">
+                {error}
+              </p>
+            )}
           </div>
         </div>
       </div>

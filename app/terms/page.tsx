@@ -1,14 +1,5 @@
 import LegalPage, { LegalSection } from '@/components/LegalPage';
 
-// CONTENT GUIDANCE:
-// Generate compliant UK Terms & Conditions at https://termly.io or https://www.rocketlawyer.com/gb/en
-// Key requirements under UK Consumer Rights Act 2015 and Consumer Contracts Regulations 2013:
-// - 14-day right to cancel (distance selling)
-// - Clear description of goods
-// - Delivery timeframes
-// - Your liability limitations
-// Replace the placeholder sections below before going live.
-
 export default function TermsPage() {
   return (
     <LegalPage title="Terms & Conditions" lastUpdated="25 June 2026">

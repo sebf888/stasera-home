@@ -1,11 +1,5 @@
 import LegalPage, { LegalSection } from '@/components/LegalPage';
 
-// CONTENT GUIDANCE:
-// Because prints are made-to-order, you are NOT required to accept returns for
-// buyer's remorse under UK Consumer Contracts Regulations (personalised goods exemption).
-// However you MUST offer remedies for damaged, defective, or incorrectly fulfilled items
-// under the Consumer Rights Act 2015. Fill in your actual email and timeframes below.
-
 export default function ReturnsPage() {
   return (
     <LegalPage title="Returns & Refunds" lastUpdated="25 June 2026">

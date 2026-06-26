@@ -26,11 +26,11 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     q: 'Shipping?',
-    a: 'Orders are dispatched within 2–4 business days and shipped via tracked courier throughout the UK and Europe. Delivery typically takes 3–7 business days depending on your location. All prints are flat-packed in acid-free tissue and rigid board-backed packaging to arrive in perfect condition.',
+    a: 'Every print is made to order, then shipped via tracked courier. As a general guide, UK orders arrive within 3–6 business days and international orders within 7–14 business days from the order date. All prints are flat-packed in acid-free tissue and rigid board-backed packaging to arrive in perfect condition.',
   },
   {
     q: 'Returns?',
-    a: 'We stand behind every print. If your order arrives damaged or defective we will replace it at no cost — just send us a photo within 7 days of delivery. As all prints are made to order we are unable to accept returns for change of mind, but please reach out and we will always do our best to find a resolution.',
+    a: 'We stand behind every print. If your order arrives damaged or defective we will replace it or refund it at no cost — just email info@stasera.digital with a photo within 14 days of delivery. As all prints are made to order we are unable to accept returns for change of mind, but please reach out and we will always do our best to find a resolution.',
   },
 ];
 
