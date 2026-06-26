@@ -5,23 +5,27 @@ export default function AboutPage() {
     <LegalPage title="About Us" lastUpdated="">
       <LegalSection heading="Who We Are">
         <p>
-          [Tell your story here — who you are, why you started Stasera, and what drives
-          your curation. Keep it personal and concise.]
+          Stasera is an independent print studio based in the United Kingdom. We curate
+          distinctive artwork and turn it into museum-quality prints — made to order,
+          one piece at a time, and shipped worldwide.
         </p>
       </LegalSection>
 
       <LegalSection heading="Our Prints">
         <p>
-          [Describe your print offering — the artists, the aesthetic, the quality
-          standards you hold yourself to.]
+          Every Stasera print is produced on premium archival materials using pigment
+          inks rated to last well over 100 years. Choose from a range of fine-art papers
+          and framing options, each made to order — so nothing sits in a warehouse, and
+          every piece is produced specifically for you.
         </p>
       </LegalSection>
 
       <LegalSection heading="How It Works">
         <p>
-          Every print is made to order and fulfilled by Gelato — a global network of
-          certified print partners. Orders are produced and shipped directly to you,
-          typically within [X–X] business days.
+          Orders are produced and shipped by our fulfilment partner, Gelato — a global
+          network of certified print partners — and sent directly to you. As a general
+          guide, UK orders arrive within 3–6 business days and international orders within
+          7–14 business days.
         </p>
       </LegalSection>
     </LegalPage>
