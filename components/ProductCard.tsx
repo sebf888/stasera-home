@@ -20,10 +20,12 @@ import { useCurrency } from '@/lib/currency-context';
    Layout tunables — adjust these once the real (tightly-cropped, transparent,
    shadow-baked) frame assets are dropped in at /frames/frame-{format}-{frame}-v2.webp
 
-   - CANVAS_ASPECT     gradient canvas box ratio (width / height)
+   - canvas aspect     gradient box ratio, set on the canvas via Tailwind when
+                       `tall`: aspect-[5/7] on mobile (gradient runs taller below
+                       the poster), lg:aspect-[5/6] on desktop. Non-tall = 5/6.
    - frame box width   set responsively on the group via Tailwind (w-[78%] on
                        mobile so the poster fills more of the canvas, lg:w-[62%]
-                       on desktop) — the gradient canvas itself stays the same.
+                       on desktop).
    - HOVER_SCALE       how much the frame + poster enlarge together on hover
    - FRAME_ASPECT      intrinsic ratio (width / height) of each frame image,
                        INCLUDING the baked-in shadow padding. Must match the
@@ -31,7 +33,6 @@ import { useCurrency } from '@/lib/currency-context';
    - FRAME_APERTURE    where the poster sits inside the frame image, as a % of
                        the frame image box (top / left / width / height).
    ──────────────────────────────────────────────────────────────────────── */
-const CANVAS_ASPECT = '5 / 6';
 // Shared drop shadow (Figma: x -6, y 6, blur 6.5, spread 0, #000 @ 25%).
 // Cast from a solid "shadow plate" behind the art via box-shadow — box-shadow
 // composites cleanly under the hover scale, whereas a drop-shadow filter gets
@@ -57,27 +58,30 @@ function PosterFramePreview({
   product,
   frame,
   zoom = false,
+  tall = false,
 }: {
   product: Product;
   frame: Frame;
   zoom?: boolean;
+  tall?: boolean;
 }) {
   const aperture = FRAME_APERTURE[product.format];
   const hasFrame = frame !== 'none';
 
   return (
     <div
-      className="relative w-full overflow-hidden"
-      style={{
-        aspectRatio: CANVAS_ASPECT,
-        background: 'linear-gradient(to top right, #D4D2CC, #F1F1EF)',
-      }}
+      className={`relative flex w-full justify-center overflow-hidden ${
+        tall
+          ? 'items-start aspect-[5/7] lg:items-center lg:aspect-[5/6]'
+          : 'items-center aspect-[5/6]'
+      }`}
+      style={{ background: 'linear-gradient(to top right, #D4D2CC, #F1F1EF)' }}
     >
       <div
-        className="absolute left-1/2 top-1/2 w-[78%] lg:w-[62%]"
+        className={`relative w-[78%] lg:w-[62%] ${tall ? 'mt-[6%] lg:mt-0' : ''}`}
         style={{
           aspectRatio: `${FRAME_ASPECT[product.format]}`,
-          transform: `translate(-50%, -50%) scale(${zoom ? HOVER_SCALE : 1})`,
+          transform: `scale(${zoom ? HOVER_SCALE : 1})`,
           transformOrigin: 'center center',
           transition: 'transform 0.4s ease',
         }}
@@ -249,7 +253,7 @@ export default function ProductCard({ product }: Props) {
     <div>
       <Link href={`/shop/${product.slug}`} className="block group">
         <div onMouseEnter={() => setZoomed(true)} onMouseLeave={() => setZoomed(false)}>
-          <PosterFramePreview product={product} frame={selectedFrame} zoom={zoomed} />
+          <PosterFramePreview product={product} frame={selectedFrame} zoom={zoomed} tall />
         </div>
 
         {/* Row 1 — title. Clamped to two lines with a reserved two-line height so
