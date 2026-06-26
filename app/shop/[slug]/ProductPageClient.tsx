@@ -14,13 +14,6 @@ import {
 import { useCart } from '@/lib/cart-context';
 import { useCurrency } from '@/lib/currency-context';
 
-const FRAME_SWATCHES: Record<Frame, { bg: string; noFrame?: boolean }> = {
-  none:  { bg: '#FFFFFF', noFrame: true },
-  black: { bg: '#303030' },
-  white: { bg: '#EEEEEE' },
-  wood:  { bg: '#C49B58' },
-};
-
 const FRAME_SHORT: Record<Frame, string> = {
   none:  'No Frame',
   black: 'Black',
@@ -186,7 +179,6 @@ export default function ProductPageClient({ product }: { product: Product }) {
             </p>
             <div className="flex flex-wrap gap-x-5 gap-y-3">
               {FRAMES.map((frame) => {
-                const { bg, noFrame } = FRAME_SWATCHES[frame];
                 const isSelected = selectedFrame === frame;
                 return (
                   <button
@@ -196,26 +188,21 @@ export default function ProductPageClient({ product }: { product: Product }) {
                     aria-label={FRAME_SHORT[frame]}
                   >
                     <span
-                      className="relative rounded-full flex-shrink-0"
+                      className="relative rounded-full overflow-hidden flex-shrink-0"
                       style={{
-                        width: 14,
-                        height: 14,
-                        backgroundColor: bg,
+                        width: 30,
+                        height: 30,
                         outline: isSelected ? '1.5px solid #4B4C4A' : '1.5px solid transparent',
                         outlineOffset: '2px',
-                        border: '1px solid rgba(0,0,0,0.14)',
                       }}
                     >
-                      {noFrame && (
-                        <span
-                          aria-hidden
-                          className="absolute inset-0 rounded-full overflow-hidden pointer-events-none"
-                          style={{
-                            background:
-                              'linear-gradient(to bottom right, transparent calc(50% - 0.7px), #ef4444 calc(50% - 0.7px), #ef4444 calc(50% + 0.7px), transparent calc(50% + 0.7px))',
-                          }}
-                        />
-                      )}
+                      <Image
+                        src={`/frames/swatch-${frame}.webp`}
+                        fill
+                        sizes="30px"
+                        className="object-cover"
+                        alt=""
+                      />
                     </span>
                     <span
                       className={`text-[12px] tracking-[-0.03em] transition-opacity ${

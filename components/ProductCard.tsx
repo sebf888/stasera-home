@@ -21,7 +21,9 @@ import { useCurrency } from '@/lib/currency-context';
    shadow-baked) frame assets are dropped in at /frames/frame-{format}-{frame}-v2.webp
 
    - CANVAS_ASPECT     gradient canvas box ratio (width / height)
-   - FRAME_BOX_WIDTH   frame outer width as a % of the canvas width (centred)
+   - frame box width   set responsively on the group via Tailwind (w-[78%] on
+                       mobile so the poster fills more of the canvas, lg:w-[62%]
+                       on desktop) — the gradient canvas itself stays the same.
    - HOVER_SCALE       how much the frame + poster enlarge together on hover
    - FRAME_ASPECT      intrinsic ratio (width / height) of each frame image,
                        INCLUDING the baked-in shadow padding. Must match the
@@ -36,7 +38,6 @@ const CANVAS_ASPECT = '5 / 6';
 // re-rasterised and shows tiling seams while the group animates.
 const POSTER_SHADOW = '-6px 6px 6.5px 0 rgba(0, 0, 0, 0.25)';
 
-const FRAME_BOX_WIDTH = 62;
 const HOVER_SCALE = 1.06;
 
 const FRAME_ASPECT: Record<PosterFormat, number> = {
@@ -73,9 +74,8 @@ function PosterFramePreview({
       }}
     >
       <div
-        className="absolute left-1/2 top-1/2"
+        className="absolute left-1/2 top-1/2 w-[78%] lg:w-[62%]"
         style={{
-          width: `${FRAME_BOX_WIDTH}%`,
           aspectRatio: `${FRAME_ASPECT[product.format]}`,
           transform: `translate(-50%, -50%) scale(${zoom ? HOVER_SCALE : 1})`,
           transformOrigin: 'center center',
