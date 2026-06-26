@@ -20,12 +20,25 @@ export default function Header() {
   const [visible, setVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
+  const headerRef = useRef<HTMLElement>(null);
 
   // Close the mobile menu on navigation, or when the header auto-hides on scroll.
   useEffect(() => setMenuOpen(false), [pathname]);
   useEffect(() => {
     if (!visible) setMenuOpen(false);
   }, [visible]);
+
+  // Close the menu when the user clicks/taps anywhere outside the header.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handlePointerDown = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
+  }, [menuOpen]);
 
   useEffect(() => {
     // On non-homepage pages the header is never transparent
@@ -53,10 +66,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomepage]);
 
-  const transparent = isHomepage && !heroGone;
+  // While the mobile menu is open, render the solid (scrolled) treatment so the
+  // open panel reads as one white surface; closing it reverts to transparent.
+  const transparent = isHomepage && !heroGone && !menuOpen;
 
   return (
     <header
+      ref={headerRef}
       className={[
         'fixed top-[34px] sm:top-[36px] left-0 right-0 z-50 flex items-center w-full px-5 sm:px-10 lg:px-[80px]',
         'transition-all duration-300 ease-in-out',

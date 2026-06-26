@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function MuseumQualitySection() {
   return (
-    <section className="pt-1 pb-16 lg:pt-1 lg:pb-24 px-5 sm:px-10 lg:px-[70px]">
+    <section className="pt-6 pb-16 lg:pt-1 lg:pb-24 px-5 sm:px-10 lg:px-[70px]">
       <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
 
         {/* Text content */}
