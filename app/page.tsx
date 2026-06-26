@@ -8,6 +8,37 @@ import HeroSection from '@/components/HeroSection';
 
 export const dynamic = 'force-dynamic';
 
+// Each homepage section groups products differently per device so every grid
+// fills cleanly: 3 per section on desktop (one row of 3) and 4 per section on
+// mobile (a 2×2). The two groupings render independently and are toggled with
+// Tailwind, so neither breakpoint ever shows an orphan card.
+function ProductSection({
+  mobile,
+  desktop,
+  className = '',
+}: {
+  mobile: Product[];
+  desktop: Product[];
+  className?: string;
+}) {
+  return (
+    <div className={`px-5 sm:px-10 lg:px-[70px] ${className}`}>
+      {/* Mobile — 2 columns, 4 per section */}
+      <div className="grid grid-cols-2 items-start gap-x-[10px] gap-y-8 lg:hidden">
+        {mobile.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+      {/* Desktop — 3 columns, 3 per section */}
+      <div className="hidden grid-cols-3 items-start gap-x-[10px] gap-y-8 lg:grid">
+        {desktop.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default async function Home() {
   const drafts = await readPosterDrafts();
   const products: Product[] = drafts
@@ -26,53 +57,24 @@ export default async function Home() {
       variants: buildVariants(draft.format ?? 'a-series', draft.basePrices ?? {}, draft.stripePriceIds ?? {}),
     }));
 
-  // 4 per section: fills the 2-col mobile grid cleanly (2 rows of 2, no orphan).
-  // On the 3-col desktop grid this is a row of 3 + 1, by design.
-  const firstRow  = products.slice(0, 4);
-  const secondRow = products.slice(4, 8);
-  const thirdRow  = products.slice(8, 12);
-  const fourthRow = products.slice(12, 16);
+  // Independent groupings: mobile takes 4 per section, desktop 3 per section.
+  const m = (a: number, b: number) => products.slice(a, b);
 
   return (
     <>
     <HeroSection />
     <main className="pb-10">
-      <div className="px-5 sm:px-10 lg:px-[70px] pt-10">
-        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
-          {firstRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
+      <ProductSection mobile={m(0, 4)} desktop={m(0, 3)} className="pt-10" />
 
       <ReadyToHangSection />
       <MuseumQualitySection />
 
-      <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
-          {secondRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-
-      <div className="px-5 sm:px-10 lg:px-[70px] mt-8">
-        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
-          {thirdRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
+      <ProductSection mobile={m(4, 8)} desktop={m(3, 6)} />
+      <ProductSection mobile={m(8, 12)} desktop={m(6, 9)} className="mt-8" />
 
       <FAQSection />
 
-      <div className="px-5 sm:px-10 lg:px-[70px]">
-        <div className="grid grid-cols-2 lg:grid-cols-3 items-start gap-x-[10px] gap-y-8">
-          {fourthRow.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
+      <ProductSection mobile={m(12, 16)} desktop={m(9, 12)} />
     </main>
     </>
   );
