@@ -15,10 +15,10 @@ export default function TermsPage() {
 
       <LegalSection heading="2. Products">
         <p>
-          All prints are made to order by our fulfilment partner, Gelato, and printed on
-          the materials described at the time of purchase. Colours may vary slightly from
-          screen representations due to monitor calibration and print process differences.
-          We reserve the right to change product specifications or discontinue products
+          All prints are produced individually for your order and printed on the materials
+          described at the time of purchase. Colours may vary slightly from screen
+          representations due to monitor calibration and print process differences. We
+          reserve the right to change product specifications or discontinue products
           without notice.
         </p>
       </LegalSection>
@@ -34,12 +34,11 @@ export default function TermsPage() {
 
       <LegalSection heading="4. Delivery">
         <p>
-          All items are made to order and shipped by our fulfilment partner, Gelato.
-          Total delivery time is production plus shipping, and varies by product size
-          and destination — larger and framed pieces may take longer. As a general
-          guide, UK orders typically arrive within 3–6 business days and international
-          orders within 7–14 business days. These times are estimates only and are not
-          guaranteed. Risk passes to you on delivery.
+          Orders are produced and shipped through our production partners, who print close
+          to your delivery address wherever possible. As a general guide, UK orders
+          typically arrive within 3 to 6 business days and international orders within 7 to
+          14 business days. Larger and framed pieces may take a little longer. These times
+          are estimates only and are not guaranteed. Risk passes to you on delivery.
         </p>
       </LegalSection>
 

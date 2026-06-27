@@ -26,7 +26,7 @@ export default function Footer() {
             Stasera
           </Link>
           <p className="text-[12px] font-normal tracking-[-0.03em] text-[#4B4C4A] opacity-55 max-w-[200px] leading-[1.5]">
-            Fine art prints, beautifully made.
+            Prints worth framing.
           </p>
           <a
             href="mailto:info@stasera.digital"

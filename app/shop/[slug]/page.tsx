@@ -20,21 +20,21 @@ export async function generateMetadata({
   if (!draft) return { title: 'Print Not Found' };
 
   const title = `${draft.name} by ${draft.artist}`;
-  const description = `${draft.name} by ${draft.artist} — a museum-quality fine art print, made to order and ready to hang.`;
+  const description = `${draft.name} by ${draft.artist}. A fine art print, shipped worldwide.`;
   const image = draft.images?.flat;
 
   return {
     title,
     description,
     openGraph: {
-      title: `${title} — Stasera`,
+      title: `${title} · Stasera`,
       description,
       type: 'website',
       images: image ? [image] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} — Stasera`,
+      title: `${title} · Stasera`,
       description,
       images: image ? [image] : undefined,
     },

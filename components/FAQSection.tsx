@@ -10,27 +10,27 @@ interface FAQItem {
 const FAQ_ITEMS: FAQItem[] = [
   {
     q: 'Printing Process?',
-    a: 'Every print is produced through Gelato\'s network of certified print partners across the UK and Europe. We use giclée technology — archival-grade inks deposited at high resolution onto carefully selected substrates — ensuring faithful colour reproduction and prints built to last.',
+    a: `We use giclée printing and archival pigment inks, so colours come out sharp and accurate and hold up over time.`,
   },
   {
     q: 'Quality?',
-    a: 'We hold ourselves to one standard: the print you receive should look exactly as it does on screen. We use only museum-grade papers and pH-neutral pigment inks rated to resist fading for over 100 years under normal display conditions. Every order is inspected before dispatch.',
+    a: `The print you get should look like what you saw on screen. We use heavyweight archival paper and pigment inks that resist fading for decades, and every order is checked before it ships.`,
   },
   {
     q: 'Paper or Canvas?',
-    a: 'Our prints are available on a range of premium fine art papers — matte, satin, and fine art cotton rag — as well as framed options with Ponderosa pine and lacquered finishes. Each material has its own character; explore our materials section to find the right fit for your space.',
+    a: `Prints come on a few fine art papers (matte, satin and cotton rag), plus framed options in pine and lacquered finishes. Each has its own feel, so pick whatever suits your space.`,
   },
   {
     q: 'Lifespan?',
-    a: 'All prints are produced with archival pigment inks rated to last in excess of 100 years when displayed away from direct sunlight and high humidity. For maximum longevity we recommend framing with UV-protective glass, which can extend the rated lifespan considerably.',
+    a: `Our archival inks are rated to last for decades when kept out of direct sunlight and damp. Framing behind UV glass helps them last even longer.`,
   },
   {
     q: 'Shipping?',
-    a: 'Every print is made to order, then shipped via tracked courier. As a general guide, UK orders arrive within 3–6 business days and international orders within 7–14 business days from the order date. All prints are flat-packed in acid-free tissue and rigid board-backed packaging to arrive in perfect condition.',
+    a: `Wherever you are, we can get a print to you. We work with production partners around the world who print close to your address and send it by tracked courier, so UK orders usually arrive in 3 to 6 business days and international orders in 7 to 14. Prints ship flat, wrapped in tissue and backed with board so they turn up in good shape.`,
   },
   {
     q: 'Returns?',
-    a: 'We stand behind every print. If your order arrives damaged or defective we will replace it or refund it at no cost — just email info@stasera.digital with a photo within 14 days of delivery. As all prints are made to order we are unable to accept returns for change of mind, but please reach out and we will always do our best to find a resolution.',
+    a: `If your order turns up damaged or faulty, we'll replace or refund it. Just email info@stasera.digital with a photo within 14 days. Because each piece is produced individually for you, we can't take returns for a change of mind, but if something's wrong, get in touch and we'll sort it out.`,
   },
 ];
 

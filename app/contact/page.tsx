@@ -8,7 +8,7 @@ export default function ContactPage() {
 
         <div className="flex flex-col gap-6 text-[13px] font-normal tracking-[-0.03em] text-[#4B4C4A] leading-[1.7]">
           <p>
-            For order enquiries, returns, or anything else — get in touch and we&apos;ll
+            For order enquiries, returns, or anything else, get in touch and we&apos;ll
             get back to you within one business day.
           </p>
 

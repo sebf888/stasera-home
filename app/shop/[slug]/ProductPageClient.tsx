@@ -153,7 +153,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
           {/* Size selector */}
           <div className="mt-7">
             <p className="text-[11px] uppercase tracking-[0.1em] text-[#4B4C4A] opacity-40 mb-3">
-              Size — <span className="normal-case tracking-[-0.03em]">{SIZE_LABELS[selectedSize]}</span>
+              Size · <span className="normal-case tracking-[-0.03em]">{SIZE_LABELS[selectedSize]}</span>
             </p>
             <div className="flex flex-wrap gap-2">
               {availableSizes.map((size) => (
@@ -175,7 +175,7 @@ export default function ProductPageClient({ product }: { product: Product }) {
           {/* Frame selector */}
           <div className="mt-6">
             <p className="text-[11px] uppercase tracking-[0.1em] text-[#4B4C4A] opacity-40 mb-3">
-              Frame — <span className="normal-case tracking-[-0.03em]">{FRAME_SHORT[selectedFrame]}</span>
+              Frame · <span className="normal-case tracking-[-0.03em]">{FRAME_SHORT[selectedFrame]}</span>
             </p>
             <div className="flex flex-wrap gap-x-5 gap-y-3">
               {FRAMES.map((frame) => {

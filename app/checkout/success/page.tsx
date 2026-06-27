@@ -15,8 +15,8 @@ export default async function SuccessPage({
         Thank you for your order
       </h1>
       <p className="text-[13px] font-normal tracking-[-0.03em] text-[#4B4C4A] opacity-60 max-w-[380px]">
-        Your payment was successful and your print is on its way to production.
-        A confirmation email will be with you shortly.
+        Your payment went through and your order is on its way. A confirmation
+        email will be with you shortly.
       </p>
       {session_id && (
         <p className="text-[11px] text-[#4B4C4A] opacity-35 font-mono mt-2">

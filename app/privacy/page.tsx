@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
       <LegalSection heading="2. Data We Collect">
         <p>
           When you place an order we collect: your name, email address, postal address,
-          and payment details (processed directly by Stripe — we never see or store full
+          and payment details (processed directly by Stripe, so we never see or store full
           card numbers). We also collect standard server logs (IP address, browser type,
           pages visited) for security and analytics purposes.
         </p>

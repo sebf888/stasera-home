@@ -4,11 +4,11 @@ export default function ReturnsPage() {
   return (
     <LegalPage title="Returns & Refunds" lastUpdated="25 June 2026">
 
-      <LegalSection heading="Made-to-Order Policy">
+      <LegalSection heading="Returns Policy">
         <p>
-          Every Stasera print is produced specifically for your order. As personalised /
-          made-to-order goods, we are unable to accept returns or exchanges for reasons
-          of personal preference or change of mind.
+          Every Stasera print is produced individually for your order. Because of this, we
+          are unable to accept returns or exchanges for reasons of personal preference or
+          change of mind.
         </p>
       </LegalSection>
 
@@ -39,7 +39,7 @@ export default function ReturnsPage() {
       <LegalSection heading="Refunds">
         <p>
           Approved refunds are processed to your original payment method via Stripe
-          within 5–10 business days. Stripe may take additional time to post the
+          within 5 to 10 business days. Stripe may take additional time to post the
           credit depending on your bank.
         </p>
       </LegalSection>

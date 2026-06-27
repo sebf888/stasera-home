@@ -19,10 +19,10 @@ export default function HeroSection() {
           New Collection
         </p>
         <h1 className="text-[38px] sm:text-[58px] lg:text-[74px] font-bold tracking-[-0.025em] leading-none mb-3 sm:mb-4">
-          Culture, Framed.
+          Posters worth framing.
         </h1>
         <p className="text-[13px] sm:text-[15px] opacity-80">
-          Museum-quality prints, made to order and ready to hang.
+          Fine art prints, shipped worldwide.
         </p>
       </div>
     </section>

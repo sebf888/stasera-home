@@ -12,14 +12,14 @@ export default function MuseumQualitySection() {
           </h2>
 
           <p className="mt-1 text-[13px] font-normal tracking-[-0.03em] text-[#4B4C4A]">
-            Premium materials. Gallery level execution.
+            Proper materials, made with care.
           </p>
 
           <ul className="mt-5 flex flex-col gap-[6px]">
             {[
-              '100+ year archival canvas',
-              'Hand-stretched in Norway',
-              'Vibrant, fade-resistant inks',
+              'Archival paper and canvas',
+              'Fade-resistant pigment inks',
+              'Checked by hand before it ships',
             ].map((item) => (
               <li
                 key={item}
