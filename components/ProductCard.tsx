@@ -251,7 +251,10 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div>
-      <Link href={`/shop/${product.slug}`} className="block group">
+      {/* Clicking the product opens the configurator drawer (not the product
+          page) — keeps shoppers in the catalogue. The product page is reachable
+          via "View full details" inside the drawer. */}
+      <button type="button" onClick={openSheet} className="group block w-full text-left">
         <div onMouseEnter={() => setZoomed(true)} onMouseLeave={() => setZoomed(false)}>
           <PosterFramePreview product={product} frame={selectedFrame} zoom={zoomed} tall />
         </div>
@@ -262,7 +265,7 @@ export default function ProductCard({ product }: Props) {
           <span className="font-medium">{product.name}</span>
           <span className="font-normal"> by {product.artist}</span>
         </p>
-      </Link>
+      </button>
 
       {/* ── Desktop (lg+): price + swatches, hover-reveal size picker ───────── */}
       <div className="hidden lg:block">
@@ -361,9 +364,9 @@ export default function ProductCard({ product }: Props) {
         </button>
       </div>
 
-      {/* ── Mobile configurator sheet ──────────────────────────────────────── */}
+      {/* ── Configurator drawer — bottom sheet on mobile, centred modal on desktop ─ */}
       {sheetOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 flex items-end justify-center lg:items-center">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/40 transition-opacity duration-300"
@@ -373,10 +376,10 @@ export default function ProductCard({ product }: Props) {
 
           {/* Panel */}
           <div
-            className="absolute inset-x-0 bottom-0 max-h-[90vh] overflow-y-auto rounded-t-2xl bg-white px-5 pt-3 pb-6 transition-transform duration-300"
+            className="relative z-10 max-h-[90vh] w-full overflow-y-auto rounded-t-2xl bg-white px-5 pt-3 pb-6 transition-transform duration-300 lg:max-h-[88vh] lg:w-[420px] lg:rounded-2xl"
             style={{ transform: sheetVisible ? 'translateY(0)' : 'translateY(100%)' }}
           >
-            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#d8d1c4]" />
+            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-[#d8d1c4] lg:hidden" />
 
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
@@ -482,6 +485,14 @@ export default function ProductCard({ product }: Props) {
                 ? `Add to Cart · ${format(sheetVariant.priceGBP)}`
                 : 'Select a size & frame'}
             </button>
+
+            {/* Opt-in path to the full product page */}
+            <Link
+              href={`/shop/${product.slug}`}
+              className="mt-4 block text-center text-[12px] tracking-[-0.03em] text-[#74756f] underline underline-offset-2 transition-colors hover:text-[#4B4C4A]"
+            >
+              View full details
+            </Link>
           </div>
         </div>
       )}
