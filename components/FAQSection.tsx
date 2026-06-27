@@ -26,7 +26,7 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     q: 'Shipping?',
-    a: `Wherever you are, we can get a print to you. We work with production partners around the world who print close to your address and send it by tracked courier, so UK orders usually arrive in 3 to 6 business days and international orders in 7 to 14. Prints ship flat, wrapped in tissue and backed with board so they turn up in good shape.`,
+    a: `Wherever you are, we can get a print to you. We work with production partners around the world who print close to your address and send it by tracked courier, so UK orders usually arrive in 3 to 6 business days and international orders in 7 to 14. Framed pieces can take a little longer. Prints ship flat, wrapped in tissue and backed with board so they turn up in good shape.`,
   },
   {
     q: 'Returns?',
