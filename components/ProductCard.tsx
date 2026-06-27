@@ -21,8 +21,8 @@ import { useCurrency } from '@/lib/currency-context';
    shadow-baked) frame assets are dropped in at /frames/frame-{format}-{frame}-v2.webp
 
    - canvas aspect     gradient box ratio, set on the canvas via Tailwind when
-                       `tall`: aspect-[5/7] on mobile (gradient runs taller below
-                       the poster), lg:aspect-[5/6] on desktop. Non-tall = 5/6.
+                       `tall`: aspect-[5/7] on mobile (taller canvas, poster
+                       vertically centred), lg:aspect-[5/6] on desktop. Non-tall = 5/6.
    - frame box width   set responsively on the group via Tailwind (w-[78%] on
                        mobile so the poster fills more of the canvas, lg:w-[62%]
                        on desktop).
@@ -70,15 +70,13 @@ function PosterFramePreview({
 
   return (
     <div
-      className={`relative flex w-full justify-center overflow-hidden ${
-        tall
-          ? 'items-start aspect-[5/7] lg:items-center lg:aspect-[5/6]'
-          : 'items-center aspect-[5/6]'
+      className={`relative flex w-full items-center justify-center overflow-hidden ${
+        tall ? 'aspect-[5/7] lg:aspect-[5/6]' : 'aspect-[5/6]'
       }`}
       style={{ background: 'linear-gradient(to top right, #D4D2CC, #F1F1EF)' }}
     >
       <div
-        className={`relative w-[78%] lg:w-[62%] ${tall ? 'mt-[6%] lg:mt-0' : ''}`}
+        className="relative w-[78%] lg:w-[62%]"
         style={{
           aspectRatio: `${FRAME_ASPECT[product.format]}`,
           transform: `scale(${zoom ? HOVER_SCALE : 1})`,
